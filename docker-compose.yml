@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16
+    container_name: pokemon-ai-db
+    environment:
+      POSTGRES_DB: pokemon_ai_trainer
+      POSTGRES_USER: pokemon
+      POSTGRES_PASSWORD: pokemon_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pokemon -d pokemon_ai_trainer"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
