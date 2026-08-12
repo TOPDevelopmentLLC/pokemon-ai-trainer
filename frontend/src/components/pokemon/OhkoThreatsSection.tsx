@@ -3,6 +3,7 @@ import type { OhkoThreat } from '../../types/threat-analysis';
 import { TypeBadge } from '../common/TypeBadge';
 import { SEVERITY_LABELS } from './severity-labels';
 import { ThreatSeverityFilter, type ThreatFilter } from './ThreatSeverityFilter';
+import { ThreatsEmptyState } from './ThreatsEmptyState';
 import { Sprites } from '@pkmn/img';
 
 interface OhkoThreatsSectionProps {
@@ -24,11 +25,7 @@ export const OhkoThreatsSection = ({ threats }: OhkoThreatsSectionProps) => {
         <ThreatSeverityFilter value={filter} onChange={setFilter} />
       </div>
 
-      {filtered.length === 0 && (
-        <div style={{ padding: '20px', textAlign: 'center', color: '#64748b', fontSize: '13px' }}>
-          {threats.length === 0 ? 'No significant threats found from common competitive sets.' : 'No threats match this filter.'}
-        </div>
-      )}
+      {filtered.length === 0 && <ThreatsEmptyState totalCount={threats.length} />}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
         {filtered.map(threat => {
