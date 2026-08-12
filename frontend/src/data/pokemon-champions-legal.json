@@ -1,0 +1,3504 @@
+{
+  "game": "Pokemon Champions",
+  "regulation": "Regular Roster M-B",
+  "regulationEndDate": "2026-09-02",
+  "retrievedOn": "2026-08-11",
+  "sources": [
+    "https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_in_Pok%C3%A9mon_Champions",
+    "https://www.serebii.net/pokemonchampions/pokemon.shtml"
+  ],
+  "counts": {
+    "species": 208,
+    "megaEvolutions": 75,
+    "totalEntries": 298
+  },
+  "notes": [
+    "Regional forms are listed as separate entries but count as one species.",
+    "Purely cosmetic or in-battle forms (Vivillon patterns, Furfrou trims, Alcremie flavours, Rotom appliances, Maushold/Palafin/Aegislash forms, etc.) are not broken out."
+  ],
+  "pokemon": [
+    {
+      "id": "venusaur",
+      "dexNumber": 3,
+      "name": "Venusaur",
+      "form": null,
+      "types": [
+        "Grass",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-venusaur",
+      "dexNumber": 3,
+      "name": "Mega Venusaur",
+      "form": "Mega Evolution",
+      "types": [
+        "Grass",
+        "Poison"
+      ],
+      "isMega": true,
+      "baseSpecies": "Venusaur"
+    },
+    {
+      "id": "charizard",
+      "dexNumber": 6,
+      "name": "Charizard",
+      "form": null,
+      "types": [
+        "Fire",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-charizard-x",
+      "dexNumber": 6,
+      "name": "Mega Charizard X",
+      "form": "Mega Evolution",
+      "types": [
+        "Fire",
+        "Dragon"
+      ],
+      "isMega": true,
+      "baseSpecies": "Charizard"
+    },
+    {
+      "id": "mega-charizard-y",
+      "dexNumber": 6,
+      "name": "Mega Charizard Y",
+      "form": "Mega Evolution",
+      "types": [
+        "Fire",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Charizard"
+    },
+    {
+      "id": "blastoise",
+      "dexNumber": 9,
+      "name": "Blastoise",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-blastoise",
+      "dexNumber": 9,
+      "name": "Mega Blastoise",
+      "form": "Mega Evolution",
+      "types": [
+        "Water"
+      ],
+      "isMega": true,
+      "baseSpecies": "Blastoise"
+    },
+    {
+      "id": "beedrill",
+      "dexNumber": 15,
+      "name": "Beedrill",
+      "form": null,
+      "types": [
+        "Bug",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-beedrill",
+      "dexNumber": 15,
+      "name": "Mega Beedrill",
+      "form": "Mega Evolution",
+      "types": [
+        "Bug",
+        "Poison"
+      ],
+      "isMega": true,
+      "baseSpecies": "Beedrill"
+    },
+    {
+      "id": "pidgeot",
+      "dexNumber": 18,
+      "name": "Pidgeot",
+      "form": null,
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-pidgeot",
+      "dexNumber": 18,
+      "name": "Mega Pidgeot",
+      "form": "Mega Evolution",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Pidgeot"
+    },
+    {
+      "id": "arbok",
+      "dexNumber": 24,
+      "name": "Arbok",
+      "form": null,
+      "types": [
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "pikachu",
+      "dexNumber": 25,
+      "name": "Pikachu",
+      "form": null,
+      "types": [
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "notes": "Regular form only"
+    },
+    {
+      "id": "raichu",
+      "dexNumber": 26,
+      "name": "Raichu",
+      "form": null,
+      "types": [
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "raichu-alolan",
+      "dexNumber": 26,
+      "name": "Raichu",
+      "form": "Alolan",
+      "types": [
+        "Electric",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-raichu-x",
+      "dexNumber": 26,
+      "name": "Mega Raichu X",
+      "form": "Mega Evolution",
+      "types": [
+        "Electric"
+      ],
+      "isMega": true,
+      "baseSpecies": "Raichu"
+    },
+    {
+      "id": "mega-raichu-y",
+      "dexNumber": 26,
+      "name": "Mega Raichu Y",
+      "form": "Mega Evolution",
+      "types": [
+        "Electric"
+      ],
+      "isMega": true,
+      "baseSpecies": "Raichu"
+    },
+    {
+      "id": "clefable",
+      "dexNumber": 36,
+      "name": "Clefable",
+      "form": null,
+      "types": [
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-clefable",
+      "dexNumber": 36,
+      "name": "Mega Clefable",
+      "form": "Mega Evolution",
+      "types": [
+        "Fairy",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Clefable"
+    },
+    {
+      "id": "ninetales",
+      "dexNumber": 38,
+      "name": "Ninetales",
+      "form": null,
+      "types": [
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "ninetales-alolan",
+      "dexNumber": 38,
+      "name": "Ninetales",
+      "form": "Alolan",
+      "types": [
+        "Ice",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "vileplume",
+      "dexNumber": 45,
+      "name": "Vileplume",
+      "form": null,
+      "types": [
+        "Grass",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "arcanine",
+      "dexNumber": 59,
+      "name": "Arcanine",
+      "form": null,
+      "types": [
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "arcanine-hisuian",
+      "dexNumber": 59,
+      "name": "Arcanine",
+      "form": "Hisuian",
+      "types": [
+        "Fire",
+        "Rock"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "alakazam",
+      "dexNumber": 65,
+      "name": "Alakazam",
+      "form": null,
+      "types": [
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-alakazam",
+      "dexNumber": 65,
+      "name": "Mega Alakazam",
+      "form": "Mega Evolution",
+      "types": [
+        "Psychic"
+      ],
+      "isMega": true,
+      "baseSpecies": "Alakazam"
+    },
+    {
+      "id": "machamp",
+      "dexNumber": 68,
+      "name": "Machamp",
+      "form": null,
+      "types": [
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "victreebel",
+      "dexNumber": 71,
+      "name": "Victreebel",
+      "form": null,
+      "types": [
+        "Grass",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-victreebel",
+      "dexNumber": 71,
+      "name": "Mega Victreebel",
+      "form": "Mega Evolution",
+      "types": [
+        "Grass",
+        "Poison"
+      ],
+      "isMega": true,
+      "baseSpecies": "Victreebel"
+    },
+    {
+      "id": "slowbro",
+      "dexNumber": 80,
+      "name": "Slowbro",
+      "form": null,
+      "types": [
+        "Water",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "slowbro-galarian",
+      "dexNumber": 80,
+      "name": "Slowbro",
+      "form": "Galarian",
+      "types": [
+        "Poison",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-slowbro",
+      "dexNumber": 80,
+      "name": "Mega Slowbro",
+      "form": "Mega Evolution",
+      "types": [
+        "Water",
+        "Psychic"
+      ],
+      "isMega": true,
+      "baseSpecies": "Slowbro"
+    },
+    {
+      "id": "gengar",
+      "dexNumber": 94,
+      "name": "Gengar",
+      "form": null,
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-gengar",
+      "dexNumber": 94,
+      "name": "Mega Gengar",
+      "form": "Mega Evolution",
+      "types": [
+        "Ghost",
+        "Poison"
+      ],
+      "isMega": true,
+      "baseSpecies": "Gengar"
+    },
+    {
+      "id": "kangaskhan",
+      "dexNumber": 115,
+      "name": "Kangaskhan",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-kangaskhan",
+      "dexNumber": 115,
+      "name": "Mega Kangaskhan",
+      "form": "Mega Evolution",
+      "types": [
+        "Normal"
+      ],
+      "isMega": true,
+      "baseSpecies": "Kangaskhan"
+    },
+    {
+      "id": "starmie",
+      "dexNumber": 121,
+      "name": "Starmie",
+      "form": null,
+      "types": [
+        "Water",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-starmie",
+      "dexNumber": 121,
+      "name": "Mega Starmie",
+      "form": "Mega Evolution",
+      "types": [
+        "Water",
+        "Psychic"
+      ],
+      "isMega": true,
+      "baseSpecies": "Starmie"
+    },
+    {
+      "id": "pinsir",
+      "dexNumber": 127,
+      "name": "Pinsir",
+      "form": null,
+      "types": [
+        "Bug"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-pinsir",
+      "dexNumber": 127,
+      "name": "Mega Pinsir",
+      "form": "Mega Evolution",
+      "types": [
+        "Bug",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Pinsir"
+    },
+    {
+      "id": "tauros",
+      "dexNumber": 128,
+      "name": "Tauros",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "tauros-paldean-combat-breed",
+      "dexNumber": 128,
+      "name": "Tauros",
+      "form": "Paldean (Combat Breed)",
+      "types": [
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "tauros-paldean-blaze-breed",
+      "dexNumber": 128,
+      "name": "Tauros",
+      "form": "Paldean (Blaze Breed)",
+      "types": [
+        "Fighting",
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "tauros-paldean-aqua-breed",
+      "dexNumber": 128,
+      "name": "Tauros",
+      "form": "Paldean (Aqua Breed)",
+      "types": [
+        "Fighting",
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "gyarados",
+      "dexNumber": 130,
+      "name": "Gyarados",
+      "form": null,
+      "types": [
+        "Water",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-gyarados",
+      "dexNumber": 130,
+      "name": "Mega Gyarados",
+      "form": "Mega Evolution",
+      "types": [
+        "Water",
+        "Dark"
+      ],
+      "isMega": true,
+      "baseSpecies": "Gyarados"
+    },
+    {
+      "id": "ditto",
+      "dexNumber": 132,
+      "name": "Ditto",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "vaporeon",
+      "dexNumber": 134,
+      "name": "Vaporeon",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "jolteon",
+      "dexNumber": 135,
+      "name": "Jolteon",
+      "form": null,
+      "types": [
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "flareon",
+      "dexNumber": 136,
+      "name": "Flareon",
+      "form": null,
+      "types": [
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "aerodactyl",
+      "dexNumber": 142,
+      "name": "Aerodactyl",
+      "form": null,
+      "types": [
+        "Rock",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-aerodactyl",
+      "dexNumber": 142,
+      "name": "Mega Aerodactyl",
+      "form": "Mega Evolution",
+      "types": [
+        "Rock",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Aerodactyl"
+    },
+    {
+      "id": "snorlax",
+      "dexNumber": 143,
+      "name": "Snorlax",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "dragonite",
+      "dexNumber": 149,
+      "name": "Dragonite",
+      "form": null,
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-dragonite",
+      "dexNumber": 149,
+      "name": "Mega Dragonite",
+      "form": "Mega Evolution",
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Dragonite"
+    },
+    {
+      "id": "meganium",
+      "dexNumber": 154,
+      "name": "Meganium",
+      "form": null,
+      "types": [
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-meganium",
+      "dexNumber": 154,
+      "name": "Mega Meganium",
+      "form": "Mega Evolution",
+      "types": [
+        "Grass",
+        "Fairy"
+      ],
+      "isMega": true,
+      "baseSpecies": "Meganium"
+    },
+    {
+      "id": "typhlosion",
+      "dexNumber": 157,
+      "name": "Typhlosion",
+      "form": null,
+      "types": [
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "typhlosion-hisuian",
+      "dexNumber": 157,
+      "name": "Typhlosion",
+      "form": "Hisuian",
+      "types": [
+        "Fire",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "feraligatr",
+      "dexNumber": 160,
+      "name": "Feraligatr",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-feraligatr",
+      "dexNumber": 160,
+      "name": "Mega Feraligatr",
+      "form": "Mega Evolution",
+      "types": [
+        "Water",
+        "Dragon"
+      ],
+      "isMega": true,
+      "baseSpecies": "Feraligatr"
+    },
+    {
+      "id": "ariados",
+      "dexNumber": 168,
+      "name": "Ariados",
+      "form": null,
+      "types": [
+        "Bug",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "ampharos",
+      "dexNumber": 181,
+      "name": "Ampharos",
+      "form": null,
+      "types": [
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-ampharos",
+      "dexNumber": 181,
+      "name": "Mega Ampharos",
+      "form": "Mega Evolution",
+      "types": [
+        "Electric",
+        "Dragon"
+      ],
+      "isMega": true,
+      "baseSpecies": "Ampharos"
+    },
+    {
+      "id": "azumarill",
+      "dexNumber": 184,
+      "name": "Azumarill",
+      "form": null,
+      "types": [
+        "Water",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "politoed",
+      "dexNumber": 186,
+      "name": "Politoed",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "espeon",
+      "dexNumber": 196,
+      "name": "Espeon",
+      "form": null,
+      "types": [
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "umbreon",
+      "dexNumber": 197,
+      "name": "Umbreon",
+      "form": null,
+      "types": [
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "slowking",
+      "dexNumber": 199,
+      "name": "Slowking",
+      "form": null,
+      "types": [
+        "Water",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "slowking-galarian",
+      "dexNumber": 199,
+      "name": "Slowking",
+      "form": "Galarian",
+      "types": [
+        "Poison",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "forretress",
+      "dexNumber": 205,
+      "name": "Forretress",
+      "form": null,
+      "types": [
+        "Bug",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "steelix",
+      "dexNumber": 208,
+      "name": "Steelix",
+      "form": null,
+      "types": [
+        "Steel",
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-steelix",
+      "dexNumber": 208,
+      "name": "Mega Steelix",
+      "form": "Mega Evolution",
+      "types": [
+        "Steel",
+        "Ground"
+      ],
+      "isMega": true,
+      "baseSpecies": "Steelix"
+    },
+    {
+      "id": "qwilfish",
+      "dexNumber": 211,
+      "name": "Qwilfish",
+      "form": null,
+      "types": [
+        "Water",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "scizor",
+      "dexNumber": 212,
+      "name": "Scizor",
+      "form": null,
+      "types": [
+        "Bug",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-scizor",
+      "dexNumber": 212,
+      "name": "Mega Scizor",
+      "form": "Mega Evolution",
+      "types": [
+        "Bug",
+        "Steel"
+      ],
+      "isMega": true,
+      "baseSpecies": "Scizor"
+    },
+    {
+      "id": "heracross",
+      "dexNumber": 214,
+      "name": "Heracross",
+      "form": null,
+      "types": [
+        "Bug",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-heracross",
+      "dexNumber": 214,
+      "name": "Mega Heracross",
+      "form": "Mega Evolution",
+      "types": [
+        "Bug",
+        "Fighting"
+      ],
+      "isMega": true,
+      "baseSpecies": "Heracross"
+    },
+    {
+      "id": "skarmory",
+      "dexNumber": 227,
+      "name": "Skarmory",
+      "form": null,
+      "types": [
+        "Steel",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-skarmory",
+      "dexNumber": 227,
+      "name": "Mega Skarmory",
+      "form": "Mega Evolution",
+      "types": [
+        "Steel",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Skarmory"
+    },
+    {
+      "id": "houndoom",
+      "dexNumber": 229,
+      "name": "Houndoom",
+      "form": null,
+      "types": [
+        "Dark",
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-houndoom",
+      "dexNumber": 229,
+      "name": "Mega Houndoom",
+      "form": "Mega Evolution",
+      "types": [
+        "Dark",
+        "Fire"
+      ],
+      "isMega": true,
+      "baseSpecies": "Houndoom"
+    },
+    {
+      "id": "tyranitar",
+      "dexNumber": 248,
+      "name": "Tyranitar",
+      "form": null,
+      "types": [
+        "Rock",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-tyranitar",
+      "dexNumber": 248,
+      "name": "Mega Tyranitar",
+      "form": "Mega Evolution",
+      "types": [
+        "Rock",
+        "Dark"
+      ],
+      "isMega": true,
+      "baseSpecies": "Tyranitar"
+    },
+    {
+      "id": "sceptile",
+      "dexNumber": 254,
+      "name": "Sceptile",
+      "form": null,
+      "types": [
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-sceptile",
+      "dexNumber": 254,
+      "name": "Mega Sceptile",
+      "form": "Mega Evolution",
+      "types": [
+        "Grass",
+        "Dragon"
+      ],
+      "isMega": true,
+      "baseSpecies": "Sceptile"
+    },
+    {
+      "id": "blaziken",
+      "dexNumber": 257,
+      "name": "Blaziken",
+      "form": null,
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-blaziken",
+      "dexNumber": 257,
+      "name": "Mega Blaziken",
+      "form": "Mega Evolution",
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
+      "isMega": true,
+      "baseSpecies": "Blaziken"
+    },
+    {
+      "id": "swampert",
+      "dexNumber": 260,
+      "name": "Swampert",
+      "form": null,
+      "types": [
+        "Water",
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-swampert",
+      "dexNumber": 260,
+      "name": "Mega Swampert",
+      "form": "Mega Evolution",
+      "types": [
+        "Water",
+        "Ground"
+      ],
+      "isMega": true,
+      "baseSpecies": "Swampert"
+    },
+    {
+      "id": "pelipper",
+      "dexNumber": 279,
+      "name": "Pelipper",
+      "form": null,
+      "types": [
+        "Water",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "gardevoir",
+      "dexNumber": 282,
+      "name": "Gardevoir",
+      "form": null,
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-gardevoir",
+      "dexNumber": 282,
+      "name": "Mega Gardevoir",
+      "form": "Mega Evolution",
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
+      "isMega": true,
+      "baseSpecies": "Gardevoir"
+    },
+    {
+      "id": "sableye",
+      "dexNumber": 302,
+      "name": "Sableye",
+      "form": null,
+      "types": [
+        "Dark",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-sableye",
+      "dexNumber": 302,
+      "name": "Mega Sableye",
+      "form": "Mega Evolution",
+      "types": [
+        "Dark",
+        "Ghost"
+      ],
+      "isMega": true,
+      "baseSpecies": "Sableye"
+    },
+    {
+      "id": "mawile",
+      "dexNumber": 303,
+      "name": "Mawile",
+      "form": null,
+      "types": [
+        "Steel",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-mawile",
+      "dexNumber": 303,
+      "name": "Mega Mawile",
+      "form": "Mega Evolution",
+      "types": [
+        "Steel",
+        "Fairy"
+      ],
+      "isMega": true,
+      "baseSpecies": "Mawile"
+    },
+    {
+      "id": "aggron",
+      "dexNumber": 306,
+      "name": "Aggron",
+      "form": null,
+      "types": [
+        "Steel",
+        "Rock"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-aggron",
+      "dexNumber": 306,
+      "name": "Mega Aggron",
+      "form": "Mega Evolution",
+      "types": [
+        "Steel"
+      ],
+      "isMega": true,
+      "baseSpecies": "Aggron"
+    },
+    {
+      "id": "medicham",
+      "dexNumber": 308,
+      "name": "Medicham",
+      "form": null,
+      "types": [
+        "Fighting",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-medicham",
+      "dexNumber": 308,
+      "name": "Mega Medicham",
+      "form": "Mega Evolution",
+      "types": [
+        "Fighting",
+        "Psychic"
+      ],
+      "isMega": true,
+      "baseSpecies": "Medicham"
+    },
+    {
+      "id": "manectric",
+      "dexNumber": 310,
+      "name": "Manectric",
+      "form": null,
+      "types": [
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-manectric",
+      "dexNumber": 310,
+      "name": "Mega Manectric",
+      "form": "Mega Evolution",
+      "types": [
+        "Electric"
+      ],
+      "isMega": true,
+      "baseSpecies": "Manectric"
+    },
+    {
+      "id": "sharpedo",
+      "dexNumber": 319,
+      "name": "Sharpedo",
+      "form": null,
+      "types": [
+        "Water",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-sharpedo",
+      "dexNumber": 319,
+      "name": "Mega Sharpedo",
+      "form": "Mega Evolution",
+      "types": [
+        "Water",
+        "Dark"
+      ],
+      "isMega": true,
+      "baseSpecies": "Sharpedo"
+    },
+    {
+      "id": "camerupt",
+      "dexNumber": 323,
+      "name": "Camerupt",
+      "form": null,
+      "types": [
+        "Fire",
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-camerupt",
+      "dexNumber": 323,
+      "name": "Mega Camerupt",
+      "form": "Mega Evolution",
+      "types": [
+        "Fire",
+        "Ground"
+      ],
+      "isMega": true,
+      "baseSpecies": "Camerupt"
+    },
+    {
+      "id": "torkoal",
+      "dexNumber": 324,
+      "name": "Torkoal",
+      "form": null,
+      "types": [
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "altaria",
+      "dexNumber": 334,
+      "name": "Altaria",
+      "form": null,
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-altaria",
+      "dexNumber": 334,
+      "name": "Mega Altaria",
+      "form": "Mega Evolution",
+      "types": [
+        "Dragon",
+        "Fairy"
+      ],
+      "isMega": true,
+      "baseSpecies": "Altaria"
+    },
+    {
+      "id": "milotic",
+      "dexNumber": 350,
+      "name": "Milotic",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "castform",
+      "dexNumber": 351,
+      "name": "Castform",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "banette",
+      "dexNumber": 354,
+      "name": "Banette",
+      "form": null,
+      "types": [
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-banette",
+      "dexNumber": 354,
+      "name": "Mega Banette",
+      "form": "Mega Evolution",
+      "types": [
+        "Ghost"
+      ],
+      "isMega": true,
+      "baseSpecies": "Banette"
+    },
+    {
+      "id": "chimecho",
+      "dexNumber": 358,
+      "name": "Chimecho",
+      "form": null,
+      "types": [
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-chimecho",
+      "dexNumber": 358,
+      "name": "Mega Chimecho",
+      "form": "Mega Evolution",
+      "types": [
+        "Psychic",
+        "Steel"
+      ],
+      "isMega": true,
+      "baseSpecies": "Chimecho"
+    },
+    {
+      "id": "absol",
+      "dexNumber": 359,
+      "name": "Absol",
+      "form": null,
+      "types": [
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-absol",
+      "dexNumber": 359,
+      "name": "Mega Absol",
+      "form": "Mega Evolution",
+      "types": [
+        "Dark"
+      ],
+      "isMega": true,
+      "baseSpecies": "Absol"
+    },
+    {
+      "id": "glalie",
+      "dexNumber": 362,
+      "name": "Glalie",
+      "form": null,
+      "types": [
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-glalie",
+      "dexNumber": 362,
+      "name": "Mega Glalie",
+      "form": "Mega Evolution",
+      "types": [
+        "Ice"
+      ],
+      "isMega": true,
+      "baseSpecies": "Glalie"
+    },
+    {
+      "id": "metagross",
+      "dexNumber": 376,
+      "name": "Metagross",
+      "form": null,
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-metagross",
+      "dexNumber": 376,
+      "name": "Mega Metagross",
+      "form": "Mega Evolution",
+      "types": [
+        "Steel",
+        "Psychic"
+      ],
+      "isMega": true,
+      "baseSpecies": "Metagross"
+    },
+    {
+      "id": "torterra",
+      "dexNumber": 389,
+      "name": "Torterra",
+      "form": null,
+      "types": [
+        "Grass",
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "infernape",
+      "dexNumber": 392,
+      "name": "Infernape",
+      "form": null,
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "empoleon",
+      "dexNumber": 395,
+      "name": "Empoleon",
+      "form": null,
+      "types": [
+        "Water",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "staraptor",
+      "dexNumber": 398,
+      "name": "Staraptor",
+      "form": null,
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-staraptor",
+      "dexNumber": 398,
+      "name": "Mega Staraptor",
+      "form": "Mega Evolution",
+      "types": [
+        "Fighting",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Staraptor"
+    },
+    {
+      "id": "luxray",
+      "dexNumber": 405,
+      "name": "Luxray",
+      "form": null,
+      "types": [
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "roserade",
+      "dexNumber": 407,
+      "name": "Roserade",
+      "form": null,
+      "types": [
+        "Grass",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "rampardos",
+      "dexNumber": 409,
+      "name": "Rampardos",
+      "form": null,
+      "types": [
+        "Rock"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "bastiodon",
+      "dexNumber": 411,
+      "name": "Bastiodon",
+      "form": null,
+      "types": [
+        "Rock",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "lopunny",
+      "dexNumber": 428,
+      "name": "Lopunny",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-lopunny",
+      "dexNumber": 428,
+      "name": "Mega Lopunny",
+      "form": "Mega Evolution",
+      "types": [
+        "Normal",
+        "Fighting"
+      ],
+      "isMega": true,
+      "baseSpecies": "Lopunny"
+    },
+    {
+      "id": "spiritomb",
+      "dexNumber": 442,
+      "name": "Spiritomb",
+      "form": null,
+      "types": [
+        "Ghost",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "garchomp",
+      "dexNumber": 445,
+      "name": "Garchomp",
+      "form": null,
+      "types": [
+        "Dragon",
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-garchomp",
+      "dexNumber": 445,
+      "name": "Mega Garchomp",
+      "form": "Mega Evolution",
+      "types": [
+        "Dragon",
+        "Ground"
+      ],
+      "isMega": true,
+      "baseSpecies": "Garchomp"
+    },
+    {
+      "id": "lucario",
+      "dexNumber": 448,
+      "name": "Lucario",
+      "form": null,
+      "types": [
+        "Fighting",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-lucario",
+      "dexNumber": 448,
+      "name": "Mega Lucario",
+      "form": "Mega Evolution",
+      "types": [
+        "Fighting",
+        "Steel"
+      ],
+      "isMega": true,
+      "baseSpecies": "Lucario"
+    },
+    {
+      "id": "hippowdon",
+      "dexNumber": 450,
+      "name": "Hippowdon",
+      "form": null,
+      "types": [
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "toxicroak",
+      "dexNumber": 454,
+      "name": "Toxicroak",
+      "form": null,
+      "types": [
+        "Poison",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "abomasnow",
+      "dexNumber": 460,
+      "name": "Abomasnow",
+      "form": null,
+      "types": [
+        "Grass",
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-abomasnow",
+      "dexNumber": 460,
+      "name": "Mega Abomasnow",
+      "form": "Mega Evolution",
+      "types": [
+        "Grass",
+        "Ice"
+      ],
+      "isMega": true,
+      "baseSpecies": "Abomasnow"
+    },
+    {
+      "id": "weavile",
+      "dexNumber": 461,
+      "name": "Weavile",
+      "form": null,
+      "types": [
+        "Dark",
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "rhyperior",
+      "dexNumber": 464,
+      "name": "Rhyperior",
+      "form": null,
+      "types": [
+        "Ground",
+        "Rock"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "leafeon",
+      "dexNumber": 470,
+      "name": "Leafeon",
+      "form": null,
+      "types": [
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "glaceon",
+      "dexNumber": 471,
+      "name": "Glaceon",
+      "form": null,
+      "types": [
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "gliscor",
+      "dexNumber": 472,
+      "name": "Gliscor",
+      "form": null,
+      "types": [
+        "Ground",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mamoswine",
+      "dexNumber": 473,
+      "name": "Mamoswine",
+      "form": null,
+      "types": [
+        "Ice",
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "gallade",
+      "dexNumber": 475,
+      "name": "Gallade",
+      "form": null,
+      "types": [
+        "Psychic",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-gallade",
+      "dexNumber": 475,
+      "name": "Mega Gallade",
+      "form": "Mega Evolution",
+      "types": [
+        "Psychic",
+        "Fighting"
+      ],
+      "isMega": true,
+      "baseSpecies": "Gallade"
+    },
+    {
+      "id": "froslass",
+      "dexNumber": 478,
+      "name": "Froslass",
+      "form": null,
+      "types": [
+        "Ice",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-froslass",
+      "dexNumber": 478,
+      "name": "Mega Froslass",
+      "form": "Mega Evolution",
+      "types": [
+        "Ice",
+        "Ghost"
+      ],
+      "isMega": true,
+      "baseSpecies": "Froslass"
+    },
+    {
+      "id": "rotom",
+      "dexNumber": 479,
+      "name": "Rotom",
+      "form": null,
+      "types": [
+        "Electric",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "serperior",
+      "dexNumber": 497,
+      "name": "Serperior",
+      "form": null,
+      "types": [
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "emboar",
+      "dexNumber": 500,
+      "name": "Emboar",
+      "form": null,
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-emboar",
+      "dexNumber": 500,
+      "name": "Mega Emboar",
+      "form": "Mega Evolution",
+      "types": [
+        "Fire",
+        "Fighting"
+      ],
+      "isMega": true,
+      "baseSpecies": "Emboar"
+    },
+    {
+      "id": "samurott",
+      "dexNumber": 503,
+      "name": "Samurott",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "samurott-hisuian",
+      "dexNumber": 503,
+      "name": "Samurott",
+      "form": "Hisuian",
+      "types": [
+        "Water",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "watchog",
+      "dexNumber": 505,
+      "name": "Watchog",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "liepard",
+      "dexNumber": 510,
+      "name": "Liepard",
+      "form": null,
+      "types": [
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "simisage",
+      "dexNumber": 512,
+      "name": "Simisage",
+      "form": null,
+      "types": [
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "simisear",
+      "dexNumber": 514,
+      "name": "Simisear",
+      "form": null,
+      "types": [
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "simipour",
+      "dexNumber": 516,
+      "name": "Simipour",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "musharna",
+      "dexNumber": 518,
+      "name": "Musharna",
+      "form": null,
+      "types": [
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "excadrill",
+      "dexNumber": 530,
+      "name": "Excadrill",
+      "form": null,
+      "types": [
+        "Ground",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-excadrill",
+      "dexNumber": 530,
+      "name": "Mega Excadrill",
+      "form": "Mega Evolution",
+      "types": [
+        "Ground",
+        "Steel"
+      ],
+      "isMega": true,
+      "baseSpecies": "Excadrill"
+    },
+    {
+      "id": "audino",
+      "dexNumber": 531,
+      "name": "Audino",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-audino",
+      "dexNumber": 531,
+      "name": "Mega Audino",
+      "form": "Mega Evolution",
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
+      "isMega": true,
+      "baseSpecies": "Audino"
+    },
+    {
+      "id": "conkeldurr",
+      "dexNumber": 534,
+      "name": "Conkeldurr",
+      "form": null,
+      "types": [
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "scolipede",
+      "dexNumber": 545,
+      "name": "Scolipede",
+      "form": null,
+      "types": [
+        "Bug",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-scolipede",
+      "dexNumber": 545,
+      "name": "Mega Scolipede",
+      "form": "Mega Evolution",
+      "types": [
+        "Bug",
+        "Poison"
+      ],
+      "isMega": true,
+      "baseSpecies": "Scolipede"
+    },
+    {
+      "id": "whimsicott",
+      "dexNumber": 547,
+      "name": "Whimsicott",
+      "form": null,
+      "types": [
+        "Grass",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "krookodile",
+      "dexNumber": 553,
+      "name": "Krookodile",
+      "form": null,
+      "types": [
+        "Ground",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "scrafty",
+      "dexNumber": 560,
+      "name": "Scrafty",
+      "form": null,
+      "types": [
+        "Dark",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-scrafty",
+      "dexNumber": 560,
+      "name": "Mega Scrafty",
+      "form": "Mega Evolution",
+      "types": [
+        "Dark",
+        "Fighting"
+      ],
+      "isMega": true,
+      "baseSpecies": "Scrafty"
+    },
+    {
+      "id": "cofagrigus",
+      "dexNumber": 563,
+      "name": "Cofagrigus",
+      "form": null,
+      "types": [
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "garbodor",
+      "dexNumber": 569,
+      "name": "Garbodor",
+      "form": null,
+      "types": [
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "zoroark",
+      "dexNumber": 571,
+      "name": "Zoroark",
+      "form": null,
+      "types": [
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "zoroark-hisuian",
+      "dexNumber": 571,
+      "name": "Zoroark",
+      "form": "Hisuian",
+      "types": [
+        "Normal",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "reuniclus",
+      "dexNumber": 579,
+      "name": "Reuniclus",
+      "form": null,
+      "types": [
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "vanilluxe",
+      "dexNumber": 584,
+      "name": "Vanilluxe",
+      "form": null,
+      "types": [
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "emolga",
+      "dexNumber": 587,
+      "name": "Emolga",
+      "form": null,
+      "types": [
+        "Electric",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "eelektross",
+      "dexNumber": 604,
+      "name": "Eelektross",
+      "form": null,
+      "types": [
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-eelektross",
+      "dexNumber": 604,
+      "name": "Mega Eelektross",
+      "form": "Mega Evolution",
+      "types": [
+        "Electric"
+      ],
+      "isMega": true,
+      "baseSpecies": "Eelektross"
+    },
+    {
+      "id": "chandelure",
+      "dexNumber": 609,
+      "name": "Chandelure",
+      "form": null,
+      "types": [
+        "Ghost",
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-chandelure",
+      "dexNumber": 609,
+      "name": "Mega Chandelure",
+      "form": "Mega Evolution",
+      "types": [
+        "Ghost",
+        "Fire"
+      ],
+      "isMega": true,
+      "baseSpecies": "Chandelure"
+    },
+    {
+      "id": "beartic",
+      "dexNumber": 614,
+      "name": "Beartic",
+      "form": null,
+      "types": [
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "stunfisk",
+      "dexNumber": 618,
+      "name": "Stunfisk",
+      "form": null,
+      "types": [
+        "Ground",
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "stunfisk-galarian",
+      "dexNumber": 618,
+      "name": "Stunfisk",
+      "form": "Galarian",
+      "types": [
+        "Ground",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "golurk",
+      "dexNumber": 623,
+      "name": "Golurk",
+      "form": null,
+      "types": [
+        "Ground",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-golurk",
+      "dexNumber": 623,
+      "name": "Mega Golurk",
+      "form": "Mega Evolution",
+      "types": [
+        "Ground",
+        "Ghost"
+      ],
+      "isMega": true,
+      "baseSpecies": "Golurk"
+    },
+    {
+      "id": "hydreigon",
+      "dexNumber": 635,
+      "name": "Hydreigon",
+      "form": null,
+      "types": [
+        "Dark",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "volcarona",
+      "dexNumber": 637,
+      "name": "Volcarona",
+      "form": null,
+      "types": [
+        "Bug",
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "chesnaught",
+      "dexNumber": 652,
+      "name": "Chesnaught",
+      "form": null,
+      "types": [
+        "Grass",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-chesnaught",
+      "dexNumber": 652,
+      "name": "Mega Chesnaught",
+      "form": "Mega Evolution",
+      "types": [
+        "Grass",
+        "Fighting"
+      ],
+      "isMega": true,
+      "baseSpecies": "Chesnaught"
+    },
+    {
+      "id": "delphox",
+      "dexNumber": 655,
+      "name": "Delphox",
+      "form": null,
+      "types": [
+        "Fire",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-delphox",
+      "dexNumber": 655,
+      "name": "Mega Delphox",
+      "form": "Mega Evolution",
+      "types": [
+        "Fire",
+        "Psychic"
+      ],
+      "isMega": true,
+      "baseSpecies": "Delphox"
+    },
+    {
+      "id": "greninja",
+      "dexNumber": 658,
+      "name": "Greninja",
+      "form": null,
+      "types": [
+        "Water",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "notes": "Regular form only"
+    },
+    {
+      "id": "mega-greninja",
+      "dexNumber": 658,
+      "name": "Mega Greninja",
+      "form": "Mega Evolution",
+      "types": [
+        "Water",
+        "Dark"
+      ],
+      "isMega": true,
+      "baseSpecies": "Greninja"
+    },
+    {
+      "id": "diggersby",
+      "dexNumber": 660,
+      "name": "Diggersby",
+      "form": null,
+      "types": [
+        "Normal",
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "talonflame",
+      "dexNumber": 663,
+      "name": "Talonflame",
+      "form": null,
+      "types": [
+        "Fire",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "vivillon",
+      "dexNumber": 666,
+      "name": "Vivillon",
+      "form": null,
+      "types": [
+        "Bug",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "pyroar",
+      "dexNumber": 668,
+      "name": "Pyroar",
+      "form": null,
+      "types": [
+        "Fire",
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-pyroar",
+      "dexNumber": 668,
+      "name": "Mega Pyroar",
+      "form": "Mega Evolution",
+      "types": [
+        "Fire",
+        "Normal"
+      ],
+      "isMega": true,
+      "baseSpecies": "Pyroar"
+    },
+    {
+      "id": "floette-eternal-flower",
+      "dexNumber": 670,
+      "name": "Floette",
+      "form": "Eternal Flower",
+      "types": [
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "notes": "Transfer only: must be moved from Legends Z-A via HOME"
+    },
+    {
+      "id": "mega-floette",
+      "dexNumber": 670,
+      "name": "Mega Floette",
+      "form": "Mega Evolution",
+      "types": [
+        "Fairy"
+      ],
+      "isMega": true,
+      "baseSpecies": "Floette"
+    },
+    {
+      "id": "florges",
+      "dexNumber": 671,
+      "name": "Florges",
+      "form": null,
+      "types": [
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "pangoro",
+      "dexNumber": 675,
+      "name": "Pangoro",
+      "form": null,
+      "types": [
+        "Fighting",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "furfrou",
+      "dexNumber": 676,
+      "name": "Furfrou",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "meowstic",
+      "dexNumber": 678,
+      "name": "Meowstic",
+      "form": null,
+      "types": [
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-meowstic",
+      "dexNumber": 678,
+      "name": "Mega Meowstic",
+      "form": "Mega Evolution",
+      "types": [
+        "Psychic"
+      ],
+      "isMega": true,
+      "baseSpecies": "Meowstic"
+    },
+    {
+      "id": "aegislash",
+      "dexNumber": 681,
+      "name": "Aegislash",
+      "form": null,
+      "types": [
+        "Steel",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "aromatisse",
+      "dexNumber": 683,
+      "name": "Aromatisse",
+      "form": null,
+      "types": [
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "slurpuff",
+      "dexNumber": 685,
+      "name": "Slurpuff",
+      "form": null,
+      "types": [
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "malamar",
+      "dexNumber": 687,
+      "name": "Malamar",
+      "form": null,
+      "types": [
+        "Dark",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-malamar",
+      "dexNumber": 687,
+      "name": "Mega Malamar",
+      "form": "Mega Evolution",
+      "types": [
+        "Dark",
+        "Psychic"
+      ],
+      "isMega": true,
+      "baseSpecies": "Malamar"
+    },
+    {
+      "id": "barbaracle",
+      "dexNumber": 689,
+      "name": "Barbaracle",
+      "form": null,
+      "types": [
+        "Rock",
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-barbaracle",
+      "dexNumber": 689,
+      "name": "Mega Barbaracle",
+      "form": "Mega Evolution",
+      "types": [
+        "Rock",
+        "Fighting"
+      ],
+      "isMega": true,
+      "baseSpecies": "Barbaracle"
+    },
+    {
+      "id": "dragalge",
+      "dexNumber": 691,
+      "name": "Dragalge",
+      "form": null,
+      "types": [
+        "Poison",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-dragalge",
+      "dexNumber": 691,
+      "name": "Mega Dragalge",
+      "form": "Mega Evolution",
+      "types": [
+        "Poison",
+        "Dragon"
+      ],
+      "isMega": true,
+      "baseSpecies": "Dragalge"
+    },
+    {
+      "id": "clawitzer",
+      "dexNumber": 693,
+      "name": "Clawitzer",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "heliolisk",
+      "dexNumber": 695,
+      "name": "Heliolisk",
+      "form": null,
+      "types": [
+        "Electric",
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "tyrantrum",
+      "dexNumber": 697,
+      "name": "Tyrantrum",
+      "form": null,
+      "types": [
+        "Rock",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "aurorus",
+      "dexNumber": 699,
+      "name": "Aurorus",
+      "form": null,
+      "types": [
+        "Rock",
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "sylveon",
+      "dexNumber": 700,
+      "name": "Sylveon",
+      "form": null,
+      "types": [
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "hawlucha",
+      "dexNumber": 701,
+      "name": "Hawlucha",
+      "form": null,
+      "types": [
+        "Fighting",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-hawlucha",
+      "dexNumber": 701,
+      "name": "Mega Hawlucha",
+      "form": "Mega Evolution",
+      "types": [
+        "Fighting",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Hawlucha"
+    },
+    {
+      "id": "dedenne",
+      "dexNumber": 702,
+      "name": "Dedenne",
+      "form": null,
+      "types": [
+        "Electric",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "goodra",
+      "dexNumber": 706,
+      "name": "Goodra",
+      "form": null,
+      "types": [
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "goodra-hisuian",
+      "dexNumber": 706,
+      "name": "Goodra",
+      "form": "Hisuian",
+      "types": [
+        "Steel",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "klefki",
+      "dexNumber": 707,
+      "name": "Klefki",
+      "form": null,
+      "types": [
+        "Steel",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "trevenant",
+      "dexNumber": 709,
+      "name": "Trevenant",
+      "form": null,
+      "types": [
+        "Ghost",
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "gourgeist",
+      "dexNumber": 711,
+      "name": "Gourgeist",
+      "form": null,
+      "types": [
+        "Ghost",
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "avalugg",
+      "dexNumber": 713,
+      "name": "Avalugg",
+      "form": null,
+      "types": [
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "avalugg-hisuian",
+      "dexNumber": 713,
+      "name": "Avalugg",
+      "form": "Hisuian",
+      "types": [
+        "Ice",
+        "Rock"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "noivern",
+      "dexNumber": 715,
+      "name": "Noivern",
+      "form": null,
+      "types": [
+        "Flying",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "decidueye",
+      "dexNumber": 724,
+      "name": "Decidueye",
+      "form": null,
+      "types": [
+        "Grass",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "decidueye-hisuian",
+      "dexNumber": 724,
+      "name": "Decidueye",
+      "form": "Hisuian",
+      "types": [
+        "Grass",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "incineroar",
+      "dexNumber": 727,
+      "name": "Incineroar",
+      "form": null,
+      "types": [
+        "Fire",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "primarina",
+      "dexNumber": 730,
+      "name": "Primarina",
+      "form": null,
+      "types": [
+        "Water",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "toucannon",
+      "dexNumber": 733,
+      "name": "Toucannon",
+      "form": null,
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "crabominable",
+      "dexNumber": 740,
+      "name": "Crabominable",
+      "form": null,
+      "types": [
+        "Fighting",
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-crabominable",
+      "dexNumber": 740,
+      "name": "Mega Crabominable",
+      "form": "Mega Evolution",
+      "types": [
+        "Fighting",
+        "Ice"
+      ],
+      "isMega": true,
+      "baseSpecies": "Crabominable"
+    },
+    {
+      "id": "lycanroc",
+      "dexNumber": 745,
+      "name": "Lycanroc",
+      "form": null,
+      "types": [
+        "Rock"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "toxapex",
+      "dexNumber": 748,
+      "name": "Toxapex",
+      "form": null,
+      "types": [
+        "Poison",
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mudsdale",
+      "dexNumber": 750,
+      "name": "Mudsdale",
+      "form": null,
+      "types": [
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "araquanid",
+      "dexNumber": 752,
+      "name": "Araquanid",
+      "form": null,
+      "types": [
+        "Water",
+        "Bug"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "salazzle",
+      "dexNumber": 758,
+      "name": "Salazzle",
+      "form": null,
+      "types": [
+        "Poison",
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "tsareena",
+      "dexNumber": 763,
+      "name": "Tsareena",
+      "form": null,
+      "types": [
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "oranguru",
+      "dexNumber": 765,
+      "name": "Oranguru",
+      "form": null,
+      "types": [
+        "Normal",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "passimian",
+      "dexNumber": 766,
+      "name": "Passimian",
+      "form": null,
+      "types": [
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mimikyu",
+      "dexNumber": 778,
+      "name": "Mimikyu",
+      "form": null,
+      "types": [
+        "Ghost",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "drampa",
+      "dexNumber": 780,
+      "name": "Drampa",
+      "form": null,
+      "types": [
+        "Normal",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-drampa",
+      "dexNumber": 780,
+      "name": "Mega Drampa",
+      "form": "Mega Evolution",
+      "types": [
+        "Normal",
+        "Dragon"
+      ],
+      "isMega": true,
+      "baseSpecies": "Drampa"
+    },
+    {
+      "id": "kommo-o",
+      "dexNumber": 784,
+      "name": "Kommo-o",
+      "form": null,
+      "types": [
+        "Dragon",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "corviknight",
+      "dexNumber": 823,
+      "name": "Corviknight",
+      "form": null,
+      "types": [
+        "Flying",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "flapple",
+      "dexNumber": 841,
+      "name": "Flapple",
+      "form": null,
+      "types": [
+        "Grass",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "appletun",
+      "dexNumber": 842,
+      "name": "Appletun",
+      "form": null,
+      "types": [
+        "Grass",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "sandaconda",
+      "dexNumber": 844,
+      "name": "Sandaconda",
+      "form": null,
+      "types": [
+        "Ground"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "polteageist",
+      "dexNumber": 855,
+      "name": "Polteageist",
+      "form": null,
+      "types": [
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "hatterene",
+      "dexNumber": 858,
+      "name": "Hatterene",
+      "form": null,
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "grimmsnarl",
+      "dexNumber": 861,
+      "name": "Grimmsnarl",
+      "form": null,
+      "types": [
+        "Dark",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mr-rime",
+      "dexNumber": 866,
+      "name": "Mr. Rime",
+      "form": null,
+      "types": [
+        "Ice",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "runerigus",
+      "dexNumber": 867,
+      "name": "Runerigus",
+      "form": null,
+      "types": [
+        "Ground",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "alcremie",
+      "dexNumber": 869,
+      "name": "Alcremie",
+      "form": null,
+      "types": [
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "falinks",
+      "dexNumber": 870,
+      "name": "Falinks",
+      "form": null,
+      "types": [
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-falinks",
+      "dexNumber": 870,
+      "name": "Mega Falinks",
+      "form": "Mega Evolution",
+      "types": [
+        "Fighting"
+      ],
+      "isMega": true,
+      "baseSpecies": "Falinks"
+    },
+    {
+      "id": "morpeko",
+      "dexNumber": 877,
+      "name": "Morpeko",
+      "form": null,
+      "types": [
+        "Electric",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "dragapult",
+      "dexNumber": 887,
+      "name": "Dragapult",
+      "form": null,
+      "types": [
+        "Dragon",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "wyrdeer",
+      "dexNumber": 899,
+      "name": "Wyrdeer",
+      "form": null,
+      "types": [
+        "Normal",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "kleavor",
+      "dexNumber": 900,
+      "name": "Kleavor",
+      "form": null,
+      "types": [
+        "Bug",
+        "Rock"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "basculegion",
+      "dexNumber": 902,
+      "name": "Basculegion",
+      "form": null,
+      "types": [
+        "Water",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "sneasler",
+      "dexNumber": 903,
+      "name": "Sneasler",
+      "form": null,
+      "types": [
+        "Fighting",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "overqwil",
+      "dexNumber": 904,
+      "name": "Overqwil",
+      "form": null,
+      "types": [
+        "Dark",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "meowscarada",
+      "dexNumber": 908,
+      "name": "Meowscarada",
+      "form": null,
+      "types": [
+        "Grass",
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "skeledirge",
+      "dexNumber": 911,
+      "name": "Skeledirge",
+      "form": null,
+      "types": [
+        "Fire",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "quaquaval",
+      "dexNumber": 914,
+      "name": "Quaquaval",
+      "form": null,
+      "types": [
+        "Water",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "maushold",
+      "dexNumber": 925,
+      "name": "Maushold",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "garganacl",
+      "dexNumber": 934,
+      "name": "Garganacl",
+      "form": null,
+      "types": [
+        "Rock"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "armarouge",
+      "dexNumber": 936,
+      "name": "Armarouge",
+      "form": null,
+      "types": [
+        "Fire",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "ceruledge",
+      "dexNumber": 937,
+      "name": "Ceruledge",
+      "form": null,
+      "types": [
+        "Fire",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "bellibolt",
+      "dexNumber": 939,
+      "name": "Bellibolt",
+      "form": null,
+      "types": [
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "scovillain",
+      "dexNumber": 952,
+      "name": "Scovillain",
+      "form": null,
+      "types": [
+        "Grass",
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-scovillain",
+      "dexNumber": 952,
+      "name": "Mega Scovillain",
+      "form": "Mega Evolution",
+      "types": [
+        "Grass",
+        "Fire"
+      ],
+      "isMega": true,
+      "baseSpecies": "Scovillain"
+    },
+    {
+      "id": "espathra",
+      "dexNumber": 956,
+      "name": "Espathra",
+      "form": null,
+      "types": [
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "tinkaton",
+      "dexNumber": 959,
+      "name": "Tinkaton",
+      "form": null,
+      "types": [
+        "Fairy",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "palafin",
+      "dexNumber": 964,
+      "name": "Palafin",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "orthworm",
+      "dexNumber": 968,
+      "name": "Orthworm",
+      "form": null,
+      "types": [
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "glimmora",
+      "dexNumber": 970,
+      "name": "Glimmora",
+      "form": null,
+      "types": [
+        "Rock",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "mega-glimmora",
+      "dexNumber": 970,
+      "name": "Mega Glimmora",
+      "form": "Mega Evolution",
+      "types": [
+        "Rock",
+        "Poison"
+      ],
+      "isMega": true,
+      "baseSpecies": "Glimmora"
+    },
+    {
+      "id": "houndstone",
+      "dexNumber": 972,
+      "name": "Houndstone",
+      "form": null,
+      "types": [
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "annihilape",
+      "dexNumber": 979,
+      "name": "Annihilape",
+      "form": null,
+      "types": [
+        "Fighting",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "farigiraf",
+      "dexNumber": 981,
+      "name": "Farigiraf",
+      "form": null,
+      "types": [
+        "Normal",
+        "Psychic"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "kingambit",
+      "dexNumber": 983,
+      "name": "Kingambit",
+      "form": null,
+      "types": [
+        "Dark",
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "gholdengo",
+      "dexNumber": 1000,
+      "name": "Gholdengo",
+      "form": null,
+      "types": [
+        "Steel",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "sinistcha",
+      "dexNumber": 1013,
+      "name": "Sinistcha",
+      "form": null,
+      "types": [
+        "Grass",
+        "Ghost"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "archaludon",
+      "dexNumber": 1018,
+      "name": "Archaludon",
+      "form": null,
+      "types": [
+        "Steel",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    },
+    {
+      "id": "hydrapple",
+      "dexNumber": 1019,
+      "name": "Hydrapple",
+      "form": null,
+      "types": [
+        "Grass",
+        "Dragon"
+      ],
+      "isMega": false,
+      "baseSpecies": null
+    }
+  ]
+}
