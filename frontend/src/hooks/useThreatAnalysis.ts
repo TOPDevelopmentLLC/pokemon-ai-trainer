@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { PokemonConfig } from '../types';
 import type { ThreatAnalysisResult } from '../types/threat-analysis';
 import { runThreatAnalysis } from '../services/threat-analysis';
@@ -18,8 +18,29 @@ export function useThreatAnalysis(config: PokemonConfig | null): UseThreatAnalys
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Serialize the fields the analysis actually depends on, so the effect
+  // compares by value rather than by object identity.
+  const configKey = config
+    ? JSON.stringify([
+        config.species,
+        config.level,
+        config.nature,
+        config.ability,
+        config.item,
+        config.teraType,
+        config.evs,
+        config.ivs,
+      ])
+    : null;
+
+  // Read the latest config without adding it as a dependency; configKey
+  // already captures every field the analysis reads.
+  const configRef = useRef(config);
+  configRef.current = config;
+
   useEffect(() => {
-    if (!config) {
+    const current = configRef.current;
+    if (!current) {
       setResult(null);
       return;
     }
@@ -30,7 +51,7 @@ export function useThreatAnalysis(config: PokemonConfig | null): UseThreatAnalys
     // Run analysis in a microtask to avoid blocking the UI
     const timeoutId = setTimeout(() => {
       try {
-        const analysisResult = runThreatAnalysis(config);
+        const analysisResult = runThreatAnalysis(current);
         setResult(analysisResult);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Analysis failed');
@@ -40,17 +61,7 @@ export function useThreatAnalysis(config: PokemonConfig | null): UseThreatAnalys
     }, 0);
 
     return () => clearTimeout(timeoutId);
-  }, [
-    config?.species,
-    config?.level,
-    config?.nature,
-    config?.ability,
-    config?.item,
-    config?.teraType,
-    // Stringify EVs/IVs for stable dependency comparison
-    config && JSON.stringify(config.evs),
-    config && JSON.stringify(config.ivs),
-  ]);
+  }, [configKey]);
 
   return { result, isLoading, error };
 }
