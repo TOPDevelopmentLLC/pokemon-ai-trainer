@@ -99,7 +99,7 @@ export const OhkoThreatsSection = ({ threats }: OhkoThreatsSectionProps) => {
                     {threat.attackerSet.item && ` @ ${threat.attackerSet.item}`}
                   </div>
                   <div style={{ marginBottom: '4px' }}>
-                    <strong>EVs:</strong>{' '}
+                    <strong>Stat Points:</strong>{' '}
                     {Object.entries(threat.attackerSet.evs)
                       .filter(([, v]) => v > 0)
                       .map(([k, v]) => `${v} ${k.toUpperCase()}`)
