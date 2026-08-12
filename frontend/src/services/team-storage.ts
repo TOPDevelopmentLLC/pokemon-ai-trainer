@@ -6,7 +6,7 @@
  * throwing during render. Writes are wrapped because localStorage throws
  * when full or when the browser blocks it (private mode, disabled cookies).
  */
-import { MAX_TEAM_SIZE } from '../types/pokemon';
+import { MAX_TEAM_SIZE, DEFAULT_IVS } from '../types/pokemon';
 import type { Team, TeamSlot } from '../types/pokemon';
 import type { PersistedState, SavedTeam } from '../types/saved-team';
 import { STORAGE_VERSION } from '../types/saved-team';
@@ -32,13 +32,22 @@ function isValidSlot(value: unknown): value is TeamSlot {
   );
 }
 
+/**
+ * Force IVs to the Champions-fixed spread.
+ * Teams saved before IVs became non-editable may carry other values, and with
+ * the editor gone there would be no way to correct them from the UI.
+ */
+function normalizeSlot(slot: TeamSlot): TeamSlot {
+  return { ...slot, config: { ...slot.config, ivs: { ...DEFAULT_IVS } } };
+}
+
 /** Coerce arbitrary parsed JSON into a fixed-length team of MAX_TEAM_SIZE. */
 function normalizeTeam(value: unknown): Team {
   const slots: Team = Array(MAX_TEAM_SIZE).fill(null);
   if (!Array.isArray(value)) return slots;
 
   for (let i = 0; i < Math.min(value.length, MAX_TEAM_SIZE); i++) {
-    if (isValidSlot(value[i])) slots[i] = value[i] as TeamSlot;
+    if (isValidSlot(value[i])) slots[i] = normalizeSlot(value[i] as TeamSlot);
   }
   return slots;
 }

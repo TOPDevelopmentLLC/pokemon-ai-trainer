@@ -8,6 +8,7 @@ import { isChampionsLegal } from './champions-roster';
 import { calcDamage } from './damage-calc';
 import type { PokemonConfig, StatSpread } from '../types/pokemon';
 import {
+  DEFAULT_IVS,
   MAX_STAT_POINTS_PER_STAT,
   MAX_STAT_POINTS_TOTAL,
   totalStatPoints,
@@ -152,7 +153,7 @@ export function analyzeOhkoThreats(defenderConfig: PokemonConfig): OhkoThreat[] 
       ability: set.ability,
       item: set.item,
       evs: set.evs,
-      ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 },
+      ivs: { ...DEFAULT_IVS },
       moves: set.moves,
     };
 
