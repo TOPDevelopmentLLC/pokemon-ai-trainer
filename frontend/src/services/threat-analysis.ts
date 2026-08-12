@@ -3,7 +3,8 @@
  * Given a Pokemon config, identifies type vulnerabilities, OHKO threats
  * from common competitive Pokemon, and survival recommendations.
  */
-import { gen9 } from './dex';
+import { gen9, getSpecies, LEGAL_SPECIES_NAMES } from './dex';
+import { isChampionsLegal } from './champions-roster';
 import { calcDamage } from './damage-calc';
 import type { PokemonConfig } from '../types/pokemon';
 import type {
@@ -29,7 +30,11 @@ interface CompetitiveSet {
   moves: string[];
 }
 
-/** Top OU threats with their most common competitive sets */
+/**
+ * Top OU threats with their most common competitive sets.
+ * Filtered to Champions-legal species at use time via `championsMetagameSets()`,
+ * so entries stay here if a future regulation makes them legal again.
+ */
 const METAGAME_SETS: CompetitiveSet[] = [
   { species: 'Dragapult', nature: 'Timid', ability: 'Infiltrator', item: 'Choice Specs', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Shadow Ball', 'Draco Meteor', 'Flamethrower', 'U-turn'] },
   { species: 'Gholdengo', nature: 'Timid', ability: 'Good as Gold', item: 'Air Balloon', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Make It Rain', 'Shadow Ball', 'Recover', 'Nasty Plot'] },
@@ -53,6 +58,11 @@ const METAGAME_SETS: CompetitiveSet[] = [
   { species: 'Toxapex', nature: 'Bold', ability: 'Regenerator', item: 'Rocky Helmet', evs: { hp: 252, atk: 0, def: 252, spa: 0, spd: 4, spe: 0 }, moves: ['Scald', 'Knock Off', 'Recover', 'Toxic Spikes'] },
 ];
 
+/** The metagame pool restricted to Pokemon legal in the current regulation. */
+function championsMetagameSets(): CompetitiveSet[] {
+  return METAGAME_SETS.filter(set => isChampionsLegal(set.species));
+}
+
 // =============================================================================
 // Type Vulnerability Analysis
 // =============================================================================
@@ -61,7 +71,7 @@ export function analyzeTypeVulnerabilities(speciesName: string): {
   profile: TypeVulnerabilityProfile;
   threats: TypeThreat[];
 } {
-  const species = gen9.species.get(speciesName);
+  const species = getSpecies(speciesName);
   if (!species) {
     return {
       profile: { doubleWeaknesses: [], weaknesses: [], neutral: [], resistances: [], doubleResistances: [], immunities: [] },
@@ -120,13 +130,13 @@ function classifySeverity(minPercent: number, maxPercent: number, ohkoChance: nu
 
 export function analyzeOhkoThreats(defenderConfig: PokemonConfig): OhkoThreat[] {
   const threats: OhkoThreat[] = [];
-  const defenderSpecies = gen9.species.get(defenderConfig.species);
+  const defenderSpecies = getSpecies(defenderConfig.species);
   if (!defenderSpecies) return threats;
 
   const defenderTypes = [...defenderSpecies.types];
   let threatId = 0;
 
-  for (const set of METAGAME_SETS) {
+  for (const set of championsMetagameSets()) {
     // Skip if attacker is the same species as the defender
     if (set.species === defenderConfig.species) continue;
 
@@ -319,11 +329,15 @@ export function generateRecommendations(
       if (resists) resists.forEach(t => resistTypes.add(t));
     }
 
-    // Find species that have one of these resist types
+    // Find Champions-legal species that have one of these resist types.
+    // Iterating the legal roster keeps recommendations to Pokemon the user
+    // can actually add, and includes Megas and regional forms.
     const candidates: string[] = [];
-    for (const species of gen9.species) {
-      if (!species.exists || species.num <= 0 || species.forme) continue;
-      if (species.name === defenderConfig.species) continue;
+    for (const name of LEGAL_SPECIES_NAMES) {
+      if (name === defenderConfig.species) continue;
+
+      const species = getSpecies(name);
+      if (!species) continue;
 
       const hasResistType = species.types.some(t => resistTypes.has(t));
       if (hasResistType && species.baseStats.hp + species.baseStats.def + species.baseStats.spd > 200) {
@@ -333,7 +347,7 @@ export function generateRecommendations(
     }
 
     for (const candidate of candidates) {
-      const species = gen9.species.get(candidate);
+      const species = getSpecies(candidate);
       if (!species) continue;
 
       recommendations.push({
