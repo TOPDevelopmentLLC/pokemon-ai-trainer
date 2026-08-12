@@ -1,22 +1,17 @@
 import { useState } from 'react';
 import type { OhkoThreat } from '../../types/threat-analysis';
 import { TypeBadge } from '../common/TypeBadge';
+import { SEVERITY_LABELS } from './severity-labels';
+import { ThreatSeverityFilter, type ThreatFilter } from './ThreatSeverityFilter';
 import { Sprites } from '@pkmn/img';
 
 interface OhkoThreatsSectionProps {
   threats: OhkoThreat[];
 }
 
-const SEVERITY_LABELS: Record<string, { label: string; color: string }> = {
-  ohko: { label: 'OHKO', color: '#ef4444' },
-  near_ohko: { label: 'Near OHKO', color: '#f97316' },
-  two_hko: { label: '2HKO', color: '#eab308' },
-  pressure: { label: 'Pressure', color: '#64748b' },
-};
-
 export const OhkoThreatsSection = ({ threats }: OhkoThreatsSectionProps) => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [filter, setFilter] = useState<string>('all');
+  const [filter, setFilter] = useState<ThreatFilter>('all');
 
   const filtered = filter === 'all' ? threats : threats.filter(t => t.severity === filter);
 
@@ -26,22 +21,7 @@ export const OhkoThreatsSection = ({ threats }: OhkoThreatsSectionProps) => {
         <h3 style={{ margin: 0, fontSize: '14px', fontWeight: 700, color: '#e2e8f0' }}>
           Damage Threats ({threats.length})
         </h3>
-        <div style={{ display: 'flex', gap: '4px' }}>
-          {['all', 'ohko', 'near_ohko', 'two_hko'].map(f => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              style={{
-                padding: '3px 8px', border: 'none', borderRadius: '4px',
-                backgroundColor: filter === f ? '#334155' : 'transparent',
-                color: filter === f ? '#e2e8f0' : '#64748b',
-                fontSize: '11px', cursor: 'pointer', fontWeight: 500,
-              }}
-            >
-              {f === 'all' ? 'All' : SEVERITY_LABELS[f]?.label}
-            </button>
-          ))}
-        </div>
+        <ThreatSeverityFilter value={filter} onChange={setFilter} />
       </div>
 
       {filtered.length === 0 && (
