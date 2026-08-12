@@ -7,9 +7,9 @@ import {
   STAT_LABELS,
   totalStatPoints,
 } from '../../types';
-import { getSpecies, getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
-import { StatBar } from '../common/StatBar';
+import { getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
 import { PokemonHeader } from './PokemonHeader';
+import { BaseStatsPanel } from './BaseStatsPanel';
 
 interface PokemonConfigPanelProps {
   config: PokemonConfig;
@@ -17,7 +17,6 @@ interface PokemonConfigPanelProps {
 }
 
 export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps) => {
-  const species = getSpecies(config.species);
   const natures = getAllNatures();
   const items = getAllItems();
 
@@ -65,17 +64,7 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
     }}>
       <PokemonHeader species={config.species} />
 
-      {/* Base Stats */}
-      {species && (
-        <div style={{ marginBottom: '16px' }}>
-          <h4 style={{ margin: '0 0 6px', fontSize: '12px', color: '#64748b', textTransform: 'uppercase' }}>
-            Base Stats (BST: {species.baseStats.hp + species.baseStats.atk + species.baseStats.def + species.baseStats.spa + species.baseStats.spd + species.baseStats.spe})
-          </h4>
-          {STAT_LABELS.map(({ key, label }) => (
-            <StatBar key={key} label={label} value={species.baseStats[key]} />
-          ))}
-        </div>
-      )}
+      <BaseStatsPanel species={config.species} />
 
       {/* Nature / Ability / Item selectors */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '16px' }}>
