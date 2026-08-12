@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { usePokemonSearch } from '../../hooks/usePokemonSearch';
-import { getSpecies, getTopBaseStats } from '../../services/dex';
-import { TypeBadge } from '../common/TypeBadge';
-import { StatBar } from '../common/StatBar';
-import { Sprites } from '@pkmn/img';
+import { PokemonSearchResult } from './PokemonSearchResult';
 
 interface PokemonSearchModalProps {
   onSelect: (species: string) => void;
@@ -50,45 +47,9 @@ export const PokemonSearchModal = ({ onSelect, onClose }: PokemonSearchModalProp
               Type at least 2 characters to search
             </div>
           )}
-          {results.map(name => {
-            const species = getSpecies(name);
-            if (!species) return null;
-            const sprite = Sprites.getPokemon(name, { gen: 'ani' });
-
-            return (
-              <button
-                key={name}
-                onClick={() => onSelect(name)}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: '12px',
-                  width: '100%', padding: '8px 12px', border: 'none',
-                  backgroundColor: 'transparent', borderRadius: '8px', cursor: 'pointer',
-                  color: '#e2e8f0', textAlign: 'left',
-                }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#1e293b')}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
-              >
-                <img
-                  src={sprite.url}
-                  alt={name}
-                  width={48}
-                  height={48}
-                  style={{ imageRendering: sprite.pixelated ? 'pixelated' : 'auto' }}
-                />
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 600, marginBottom: '4px' }}>{name}</div>
-                  <div style={{ display: 'flex', gap: '4px' }}>
-                    {species.types.map(t => <TypeBadge key={t} type={t} />)}
-                  </div>
-                </div>
-                <div style={{ width: '120px' }}>
-                  {getTopBaseStats(name).map(stat => (
-                    <StatBar key={stat.key} label={stat.label} value={stat.value} />
-                  ))}
-                </div>
-              </button>
-            );
-          })}
+          {results.map(name => (
+            <PokemonSearchResult key={name} species={name} onSelect={() => onSelect(name)} />
+          ))}
         </div>
       </div>
     </div>
