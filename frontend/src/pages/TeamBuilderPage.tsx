@@ -5,6 +5,8 @@ import { TeamPanel } from '../components/pokemon/TeamPanel';
 import { ThreatAnalysisView } from '../components/pokemon/ThreatAnalysisView';
 import { TeamCoverageChart } from '../components/pokemon/TeamCoverageChart';
 import { Tabs, type TabDefinition } from '../components/common/Tabs';
+import { NavBar } from '../components/common/NavBar';
+import { TeamNameBar } from '../components/pokemon/TeamNameBar';
 
 const TABS: TabDefinition[] = [
   { id: 'analysis', label: 'Threat Analysis' },
@@ -17,13 +19,18 @@ export const TeamBuilderPage = () => {
   const coverage = useTeamCoverage(team);
 
   return (
-    <div style={{ display: 'flex', height: '100vh', backgroundColor: '#020617', color: '#e2e8f0' }}>
-      <TeamPanel />
+    <>
+      <NavBar>
+        <TeamNameBar />
+      </NavBar>
 
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-        <Tabs tabs={TABS} activeTab={activeTab} onChange={setActiveTab} />
+      <div style={{ display: 'flex', flex: 1, minHeight: 0, backgroundColor: '#020617', color: '#e2e8f0' }}>
+        <TeamPanel />
 
-        <div style={{ flex: 1, overflow: 'hidden' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+          <Tabs tabs={TABS} activeTab={activeTab} onChange={setActiveTab} />
+
+          <div style={{ flex: 1, overflow: 'hidden' }}>
           {activeTab === 'analysis' ? (
             selectedSlot && selectedSlotIndex !== null ? (
               <ThreatAnalysisView
@@ -51,8 +58,9 @@ export const TeamBuilderPage = () => {
           ) : (
             <TeamCoverageChart result={coverage} />
           )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
