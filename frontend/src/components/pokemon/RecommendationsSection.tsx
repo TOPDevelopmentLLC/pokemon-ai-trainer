@@ -1,11 +1,12 @@
 import type { Recommendation } from '../../types/threat-analysis';
+import type { StatSpread } from '../../types/pokemon';
 import { TypeBadge } from '../common/TypeBadge';
 import { Sprites } from '@pkmn/img';
 
 interface RecommendationsSectionProps {
   recommendations: Recommendation[];
   onApplyItem?: (item: string) => void;
-  onApplyEvSpread?: (evs: Record<string, number>, nature: string) => void;
+  onApplyEvSpread?: (evs: StatSpread, nature: string) => void;
   onAddTeammate?: (species: string) => void;
 }
 
@@ -78,7 +79,7 @@ export const RecommendationsSection = ({
 function renderActionButton(
   rec: Recommendation,
   onApplyItem?: (item: string) => void,
-  onApplyEvSpread?: (evs: Record<string, number>, nature: string) => void,
+  onApplyEvSpread?: (evs: StatSpread, nature: string) => void,
   onAddTeammate?: (species: string) => void,
 ) {
   if (rec.category === 'item' && onApplyItem) {
