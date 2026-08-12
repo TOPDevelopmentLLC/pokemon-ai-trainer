@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 import type { PokemonConfig, StatSpread } from '../../types';
 import { MAX_EV_PER_STAT, MAX_EV_TOTAL, MAX_IV } from '../../types';
-import { getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
-import { gen9 } from '../../services/dex';
+import { getSpecies, getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
 import { TypeBadge } from '../common/TypeBadge';
 import { StatBar } from '../common/StatBar';
 import { Sprites } from '@pkmn/img';
@@ -22,7 +21,7 @@ const STAT_LABELS: { key: keyof StatSpread; label: string }[] = [
 ];
 
 export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps) => {
-  const species = gen9.species.get(config.species);
+  const species = getSpecies(config.species);
   const sprite = Sprites.getPokemon(config.species, { gen: 'ani' });
   const natures = getAllNatures();
   const items = getAllItems();
