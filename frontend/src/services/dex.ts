@@ -11,6 +11,7 @@
 import { Dex } from '@pkmn/dex';
 import { Generations } from '@pkmn/data';
 import { CHAMPIONS_LEGAL_SPECIES } from './champions-roster';
+import { STAT_LABELS, type StatSpread } from '../types/pokemon';
 
 export const generations = new Generations(Dex);
 export const gen9 = generations.get(9);
@@ -90,6 +91,20 @@ export function getAllItems(): string[] {
     items.push(item.name);
   }
   return items.sort((a, b) => a.localeCompare(b));
+}
+
+/**
+ * The species' highest base stats, strongest first.
+ * Ties break by canonical stat order (HP, Atk, Def, SpA, SpD, Spe) so the
+ * same species always renders the same way.
+ */
+export function getTopBaseStats(speciesName: string, count = 2): { key: keyof StatSpread; label: string; value: number }[] {
+  const species = getSpecies(speciesName);
+  if (!species) return [];
+
+  return STAT_LABELS.map(({ key, label }) => ({ key, label, value: species.baseStats[key] }))
+    .sort((a, b) => b.value - a.value)
+    .slice(0, count);
 }
 
 /** Get type names for a species */
