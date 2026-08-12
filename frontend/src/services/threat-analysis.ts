@@ -6,7 +6,12 @@
 import { gen9, getSpecies, LEGAL_SPECIES_NAMES } from './dex';
 import { isChampionsLegal } from './champions-roster';
 import { calcDamage } from './damage-calc';
-import type { PokemonConfig } from '../types/pokemon';
+import type { PokemonConfig, StatSpread } from '../types/pokemon';
+import {
+  MAX_STAT_POINTS_PER_STAT,
+  MAX_STAT_POINTS_TOTAL,
+  totalStatPoints,
+} from '../types/pokemon';
 import type {
   TypeVulnerabilityProfile,
   TypeThreat,
@@ -36,26 +41,26 @@ interface CompetitiveSet {
  * so entries stay here if a future regulation makes them legal again.
  */
 const METAGAME_SETS: CompetitiveSet[] = [
-  { species: 'Dragapult', nature: 'Timid', ability: 'Infiltrator', item: 'Choice Specs', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Shadow Ball', 'Draco Meteor', 'Flamethrower', 'U-turn'] },
-  { species: 'Gholdengo', nature: 'Timid', ability: 'Good as Gold', item: 'Air Balloon', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Make It Rain', 'Shadow Ball', 'Recover', 'Nasty Plot'] },
-  { species: 'Great Tusk', nature: 'Jolly', ability: 'Protosynthesis', item: 'Booster Energy', evs: { hp: 252, atk: 0, def: 4, spa: 0, spd: 0, spe: 252 }, moves: ['Headlong Rush', 'Ice Spinner', 'Knock Off', 'Rapid Spin'] },
-  { species: 'Kingambit', nature: 'Adamant', ability: 'Supreme Overlord', item: 'Leftovers', evs: { hp: 252, atk: 252, def: 0, spa: 0, spd: 4, spe: 0 }, moves: ['Kowtow Cleave', 'Sucker Punch', 'Iron Head', 'Swords Dance'] },
-  { species: 'Garchomp', nature: 'Jolly', ability: 'Rough Skin', item: 'Rocky Helmet', evs: { hp: 0, atk: 252, def: 4, spa: 0, spd: 0, spe: 252 }, moves: ['Earthquake', 'Dragon Claw', 'Stone Edge', 'Swords Dance'] },
-  { species: 'Iron Valiant', nature: 'Timid', ability: 'Quark Drive', item: 'Booster Energy', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Moonblast', 'Aura Sphere', 'Shadow Ball', 'Psyshock'] },
-  { species: 'Heatran', nature: 'Calm', ability: 'Flash Fire', item: 'Leftovers', evs: { hp: 252, atk: 0, def: 0, spa: 4, spd: 252, spe: 0 }, moves: ['Magma Storm', 'Earth Power', 'Stealth Rock', 'Protect'] },
-  { species: 'Raging Bolt', nature: 'Modest', ability: 'Protosynthesis', item: 'Booster Energy', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Thunderclap', 'Draco Meteor', 'Thunderbolt', 'Volt Switch'] },
-  { species: 'Landorus-Therian', nature: 'Jolly', ability: 'Intimidate', item: 'Choice Scarf', evs: { hp: 0, atk: 252, def: 0, spa: 0, spd: 4, spe: 252 }, moves: ['Earthquake', 'U-turn', 'Stone Edge', 'Knock Off'] },
-  { species: 'Roaring Moon', nature: 'Jolly', ability: 'Protosynthesis', item: 'Booster Energy', evs: { hp: 0, atk: 252, def: 0, spa: 0, spd: 4, spe: 252 }, moves: ['Crunch', 'Dragon Dance', 'Acrobatics', 'Earthquake'] },
-  { species: 'Iron Moth', nature: 'Timid', ability: 'Quark Drive', item: 'Heavy-Duty Boots', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Fiery Dance', 'Sludge Wave', 'Energy Ball', 'Psychic'] },
-  { species: 'Gliscor', nature: 'Impish', ability: 'Poison Heal', item: 'Toxic Orb', evs: { hp: 252, atk: 0, def: 184, spa: 0, spd: 72, spe: 0 }, moves: ['Earthquake', 'Knock Off', 'Roost', 'Toxic'] },
-  { species: 'Kyurem', nature: 'Modest', ability: 'Pressure', item: 'Choice Specs', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Freeze-Dry', 'Draco Meteor', 'Ice Beam', 'Earth Power'] },
-  { species: 'Darkrai', nature: 'Timid', ability: 'Bad Dreams', item: 'Focus Sash', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Dark Pulse', 'Sludge Bomb', 'Nasty Plot', 'Dark Void'] },
-  { species: 'Skeledirge', nature: 'Bold', ability: 'Unaware', item: 'Heavy-Duty Boots', evs: { hp: 252, atk: 0, def: 252, spa: 0, spd: 4, spe: 0 }, moves: ['Torch Song', 'Hex', 'Will-O-Wisp', 'Slack Off'] },
-  { species: 'Weavile', nature: 'Jolly', ability: 'Pressure', item: 'Choice Band', evs: { hp: 0, atk: 252, def: 0, spa: 0, spd: 4, spe: 252 }, moves: ['Triple Axel', 'Knock Off', 'Ice Shard', 'Low Kick'] },
-  { species: 'Dragonite', nature: 'Adamant', ability: 'Multiscale', item: 'Choice Band', evs: { hp: 0, atk: 252, def: 0, spa: 0, spd: 4, spe: 252 }, moves: ['Outrage', 'Extreme Speed', 'Earthquake', 'Ice Spinner'] },
-  { species: 'Zamazenta', nature: 'Impish', ability: 'Dauntless Shield', item: 'Leftovers', evs: { hp: 252, atk: 0, def: 252, spa: 0, spd: 4, spe: 0 }, moves: ['Body Press', 'Iron Defense', 'Howl', 'Crunch'] },
-  { species: 'Volcarona', nature: 'Timid', ability: 'Flame Body', item: 'Heavy-Duty Boots', evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 }, moves: ['Quiver Dance', 'Flamethrower', 'Bug Buzz', 'Giga Drain'] },
-  { species: 'Toxapex', nature: 'Bold', ability: 'Regenerator', item: 'Rocky Helmet', evs: { hp: 252, atk: 0, def: 252, spa: 0, spd: 4, spe: 0 }, moves: ['Scald', 'Knock Off', 'Recover', 'Toxic Spikes'] },
+  { species: 'Dragapult', nature: 'Timid', ability: 'Infiltrator', item: 'Choice Specs', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Shadow Ball', 'Draco Meteor', 'Flamethrower', 'U-turn'] },
+  { species: 'Gholdengo', nature: 'Timid', ability: 'Good as Gold', item: 'Air Balloon', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Make It Rain', 'Shadow Ball', 'Recover', 'Nasty Plot'] },
+  { species: 'Great Tusk', nature: 'Jolly', ability: 'Protosynthesis', item: 'Booster Energy', evs: { hp: 32, atk: 0, def: 2, spa: 0, spd: 0, spe: 32 }, moves: ['Headlong Rush', 'Ice Spinner', 'Knock Off', 'Rapid Spin'] },
+  { species: 'Kingambit', nature: 'Adamant', ability: 'Supreme Overlord', item: 'Leftovers', evs: { hp: 32, atk: 32, def: 0, spa: 0, spd: 2, spe: 0 }, moves: ['Kowtow Cleave', 'Sucker Punch', 'Iron Head', 'Swords Dance'] },
+  { species: 'Garchomp', nature: 'Jolly', ability: 'Rough Skin', item: 'Rocky Helmet', evs: { hp: 0, atk: 32, def: 2, spa: 0, spd: 0, spe: 32 }, moves: ['Earthquake', 'Dragon Claw', 'Stone Edge', 'Swords Dance'] },
+  { species: 'Iron Valiant', nature: 'Timid', ability: 'Quark Drive', item: 'Booster Energy', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Moonblast', 'Aura Sphere', 'Shadow Ball', 'Psyshock'] },
+  { species: 'Heatran', nature: 'Calm', ability: 'Flash Fire', item: 'Leftovers', evs: { hp: 32, atk: 0, def: 0, spa: 2, spd: 32, spe: 0 }, moves: ['Magma Storm', 'Earth Power', 'Stealth Rock', 'Protect'] },
+  { species: 'Raging Bolt', nature: 'Modest', ability: 'Protosynthesis', item: 'Booster Energy', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Thunderclap', 'Draco Meteor', 'Thunderbolt', 'Volt Switch'] },
+  { species: 'Landorus-Therian', nature: 'Jolly', ability: 'Intimidate', item: 'Choice Scarf', evs: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 }, moves: ['Earthquake', 'U-turn', 'Stone Edge', 'Knock Off'] },
+  { species: 'Roaring Moon', nature: 'Jolly', ability: 'Protosynthesis', item: 'Booster Energy', evs: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 }, moves: ['Crunch', 'Dragon Dance', 'Acrobatics', 'Earthquake'] },
+  { species: 'Iron Moth', nature: 'Timid', ability: 'Quark Drive', item: 'Heavy-Duty Boots', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Fiery Dance', 'Sludge Wave', 'Energy Ball', 'Psychic'] },
+  { species: 'Gliscor', nature: 'Impish', ability: 'Poison Heal', item: 'Toxic Orb', evs: { hp: 32, atk: 0, def: 25, spa: 0, spd: 9, spe: 0 }, moves: ['Earthquake', 'Knock Off', 'Roost', 'Toxic'] },
+  { species: 'Kyurem', nature: 'Modest', ability: 'Pressure', item: 'Choice Specs', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Freeze-Dry', 'Draco Meteor', 'Ice Beam', 'Earth Power'] },
+  { species: 'Darkrai', nature: 'Timid', ability: 'Bad Dreams', item: 'Focus Sash', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Dark Pulse', 'Sludge Bomb', 'Nasty Plot', 'Dark Void'] },
+  { species: 'Skeledirge', nature: 'Bold', ability: 'Unaware', item: 'Heavy-Duty Boots', evs: { hp: 32, atk: 0, def: 32, spa: 0, spd: 2, spe: 0 }, moves: ['Torch Song', 'Hex', 'Will-O-Wisp', 'Slack Off'] },
+  { species: 'Weavile', nature: 'Jolly', ability: 'Pressure', item: 'Choice Band', evs: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 }, moves: ['Triple Axel', 'Knock Off', 'Ice Shard', 'Low Kick'] },
+  { species: 'Dragonite', nature: 'Adamant', ability: 'Multiscale', item: 'Choice Band', evs: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 }, moves: ['Outrage', 'Extreme Speed', 'Earthquake', 'Ice Spinner'] },
+  { species: 'Zamazenta', nature: 'Impish', ability: 'Dauntless Shield', item: 'Leftovers', evs: { hp: 32, atk: 0, def: 32, spa: 0, spd: 2, spe: 0 }, moves: ['Body Press', 'Iron Defense', 'Howl', 'Crunch'] },
+  { species: 'Volcarona', nature: 'Timid', ability: 'Flame Body', item: 'Heavy-Duty Boots', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Quiver Dance', 'Flamethrower', 'Bug Buzz', 'Giga Drain'] },
+  { species: 'Toxapex', nature: 'Bold', ability: 'Regenerator', item: 'Rocky Helmet', evs: { hp: 32, atk: 0, def: 32, spa: 0, spd: 2, spe: 0 }, moves: ['Scald', 'Knock Off', 'Recover', 'Toxic Spikes'] },
 ];
 
 /** The metagame pool restricted to Pokemon legal in the current regulation. */
@@ -267,9 +272,9 @@ export function generateRecommendations(
     }
   }
 
-  // Recommendation: Defensive EV investment if currently no HP/Def/SpD EVs
-  const totalDefensiveEvs = defenderConfig.evs.hp + defenderConfig.evs.def + defenderConfig.evs.spd;
-  if (totalDefensiveEvs < 100 && actualOhkos.length > 0) {
+  // Recommendation: defensive investment if the spread is currently thin there
+  const defensivePoints = defenderConfig.evs.hp + defenderConfig.evs.def + defenderConfig.evs.spd;
+  if (defensivePoints < MAX_STAT_POINTS_PER_STAT / 2 && actualOhkos.length > 0) {
     // Determine if threats are more physical or special
     const physicalThreats = actualOhkos.filter(t => t.moveCategory === 'Physical').length;
     const specialThreats = actualOhkos.filter(t => t.moveCategory === 'Special').length;
@@ -277,24 +282,34 @@ export function generateRecommendations(
     const defStat = physicalThreats >= specialThreats ? 'def' : 'spd';
     const defName = defStat === 'def' ? 'Defense' : 'Sp. Def';
 
-    recommendations.push({
-      id: `rec-${recId++}`,
-      category: 'ev_spread',
-      suggestedEvs: {
-        hp: 252,
-        atk: defenderConfig.evs.atk,
-        def: defStat === 'def' ? 128 : defenderConfig.evs.def,
-        spa: defenderConfig.evs.spa,
-        spd: defStat === 'spd' ? 128 : defenderConfig.evs.spd,
-        spe: defenderConfig.evs.spe,
-      },
-      suggestedNature: defenderConfig.nature,
-      title: `Invest in HP / ${defName}`,
-      description: `Most OHKO threats are ${physicalThreats >= specialThreats ? 'physical' : 'special'}. Running 252 HP / 128 ${defName} may help survive key hits.`,
-      addressedThreats: actualOhkos.map(t => t.id),
-      tradeoff: 'Reduces offensive or speed investment.',
-      priority: 3,
-    });
+    // Keep the user's offensive/speed investment and spend what remains of the
+    // budget on HP first, then the more relevant defense.
+    const preserved = { ...defenderConfig.evs, hp: 0, def: 0, spd: 0 };
+    const available = Math.max(0, MAX_STAT_POINTS_TOTAL - totalStatPoints(preserved));
+
+    const hp = Math.min(MAX_STAT_POINTS_PER_STAT, available);
+    const def = Math.min(MAX_STAT_POINTS_PER_STAT, available - hp);
+
+    const suggestedEvs: StatSpread = {
+      ...preserved,
+      hp,
+      [defStat]: def,
+    } as StatSpread;
+
+    // Only worth surfacing if it actually allocates something.
+    if (hp + def > 0) {
+      recommendations.push({
+        id: `rec-${recId++}`,
+        category: 'ev_spread',
+        suggestedEvs,
+        suggestedNature: defenderConfig.nature,
+        title: `Invest in HP / ${defName}`,
+        description: `Most OHKO threats are ${physicalThreats >= specialThreats ? 'physical' : 'special'}. Running ${hp} HP / ${def} ${defName} may help survive key hits.`,
+        addressedThreats: actualOhkos.map(t => t.id),
+        tradeoff: 'Reduces offensive or speed investment.',
+        priority: 3,
+      });
+    }
   }
 
   // Recommendation: Teammates that resist the top weakness types
