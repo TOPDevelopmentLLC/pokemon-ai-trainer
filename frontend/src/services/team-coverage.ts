@@ -38,9 +38,11 @@ function effectivenessAgainst(attackingType: string, defenderTypes: readonly str
   const type = gen9.types.get(attackingType);
   if (!type) return 1;
 
+  const effectiveness = type.effectiveness as Record<string, number | undefined>;
+
   let multiplier = 1;
   for (const defType of defenderTypes) {
-    const e = type.effectiveness[defType];
+    const e = effectiveness[defType];
     if (e !== undefined) multiplier *= e;
   }
   return multiplier;
