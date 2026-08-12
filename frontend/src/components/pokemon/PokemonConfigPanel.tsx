@@ -1,17 +1,11 @@
 import { useEffect, useMemo, useRef } from 'react';
 import type { PokemonConfig, StatSpread } from '../../types';
-import {
-  MAX_STAT_POINTS_PER_STAT,
-  MAX_STAT_POINTS_TOTAL,
-  MAX_IV,
-  totalStatPoints,
-} from '../../types';
+import { MAX_STAT_POINTS_PER_STAT, MAX_STAT_POINTS_TOTAL, totalStatPoints } from '../../types';
 import { getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
 import { LabeledSelect } from '../common/LabeledSelect';
 import { PokemonHeader } from './PokemonHeader';
 import { BaseStatsPanel } from './BaseStatsPanel';
 import { StatPointsSection } from './StatPointsSection';
-import { StatSpreadGrid } from './StatSpreadGrid';
 
 interface PokemonConfigPanelProps {
   config: PokemonConfig;
@@ -53,11 +47,6 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
     onChange({ ...config, evs: { ...config.evs, [stat]: clamped } });
   };
 
-  const updateIv = (stat: keyof StatSpread, value: number) => {
-    const clamped = Math.max(0, Math.min(MAX_IV, value));
-    onChange({ ...config, ivs: { ...config.ivs, [stat]: clamped } });
-  };
-
   return (
     <div style={{
       padding: '20px',
@@ -92,24 +81,8 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
       </div>
 
       <StatPointsSection spread={config.evs} onChange={updateEv} />
-
-      {/* IV Spread */}
-      <div>
-        <label style={labelStyle}>IVs</label>
-        <div style={{ marginTop: '4px' }}>
-          <StatSpreadGrid spread={config.ivs} max={MAX_IV} onChange={updateIv} />
-        </div>
-      </div>
     </div>
   );
 };
 
-const labelStyle: React.CSSProperties = {
-  display: 'block',
-  fontSize: '11px',
-  fontWeight: 600,
-  color: '#64748b',
-  textTransform: 'uppercase',
-  marginBottom: '4px',
-};
 

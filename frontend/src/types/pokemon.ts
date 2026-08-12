@@ -46,6 +46,12 @@ export const STAT_LABELS: { key: keyof StatSpread; label: string }[] = [
 ];
 
 export const DEFAULT_EVS: StatSpread = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+
+/**
+ * Champions fixes every IV at its maximum, so IVs are not user-editable.
+ * `PokemonConfig.ivs` is retained because the damage calculator needs the
+ * values, but it should always be this spread.
+ */
 export const DEFAULT_IVS: StatSpread = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
 
 // Pokemon Champions replaced classic EVs with a smaller stat-point budget.
@@ -63,7 +69,6 @@ export const EVS_PER_STAT_POINT = 8;
 /** Classic per-stat EV ceiling that @smogon/calc expects. */
 export const MAX_EV_PER_STAT = 252;
 
-export const MAX_IV = 31;
 export const MAX_TEAM_SIZE = 6;
 
 /** Convert a Champions stat-point spread into classic EVs for damage calc. */
