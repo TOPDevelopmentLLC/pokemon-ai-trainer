@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { usePokemonSearch } from '../../hooks/usePokemonSearch';
+import { SearchInput } from './SearchInput';
 import { PokemonSearchResult } from './PokemonSearchResult';
 import { SearchEmptyState } from './SearchEmptyState';
 
@@ -23,20 +24,7 @@ export const PokemonSearchModal = ({ onSelect, onClose }: PokemonSearchModalProp
         backgroundColor: '#0f172a', borderRadius: '12px', border: '1px solid #1e293b',
         overflow: 'hidden', display: 'flex', flexDirection: 'column',
       }} onClick={e => e.stopPropagation()}>
-        <div style={{ padding: '16px', borderBottom: '1px solid #1e293b' }}>
-          <input
-            type="text"
-            placeholder="Search Pokemon..."
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            autoFocus
-            style={{
-              width: '100%', padding: '10px 14px',
-              backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: '8px',
-              color: '#e2e8f0', fontSize: '14px', outline: 'none',
-            }}
-          />
-        </div>
+        <SearchInput value={query} onChange={setQuery} autoFocus />
         <div style={{ overflowY: 'auto', flex: 1, padding: '8px' }}>
           <SearchEmptyState query={query} resultCount={results.length} />
           {results.map(name => (
