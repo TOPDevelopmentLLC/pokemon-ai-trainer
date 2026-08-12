@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { usePokemonSearch } from '../../hooks/usePokemonSearch';
 import { PokemonSearchResult } from './PokemonSearchResult';
+import { SearchEmptyState } from './SearchEmptyState';
 
 interface PokemonSearchModalProps {
   onSelect: (species: string) => void;
@@ -37,16 +38,7 @@ export const PokemonSearchModal = ({ onSelect, onClose }: PokemonSearchModalProp
           />
         </div>
         <div style={{ overflowY: 'auto', flex: 1, padding: '8px' }}>
-          {results.length === 0 && query.length >= 2 && (
-            <div style={{ padding: '24px', textAlign: 'center', color: '#64748b' }}>
-              No Pokemon found
-            </div>
-          )}
-          {query.length < 2 && (
-            <div style={{ padding: '24px', textAlign: 'center', color: '#64748b' }}>
-              Type at least 2 characters to search
-            </div>
-          )}
+          <SearchEmptyState query={query} resultCount={results.length} />
           {results.map(name => (
             <PokemonSearchResult key={name} species={name} onSelect={() => onSelect(name)} />
           ))}
