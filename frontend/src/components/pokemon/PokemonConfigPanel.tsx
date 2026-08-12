@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useRef } from 'react';
 import type { PokemonConfig, StatSpread } from '../../types';
-import { MAX_EV_PER_STAT, MAX_EV_TOTAL, MAX_IV, STAT_LABELS } from '../../types';
+import {
+  MAX_STAT_POINTS_PER_STAT,
+  MAX_STAT_POINTS_TOTAL,
+  MAX_IV,
+  STAT_LABELS,
+  totalStatPoints,
+} from '../../types';
 import { getSpecies, getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
 import { TypeBadge } from '../common/TypeBadge';
 import { StatBar } from '../common/StatBar';
@@ -36,15 +42,16 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
     }
   }, [abilities]);
 
-  const totalEvs = Object.values(config.evs).reduce((sum, v) => sum + v, 0);
+  const totalPoints = totalStatPoints(config.evs);
 
   const updateEv = (stat: keyof StatSpread, value: number) => {
-    const clamped = Math.max(0, Math.min(MAX_EV_PER_STAT, value));
-    const newEvs = { ...config.evs, [stat]: clamped };
-    const newTotal = Object.values(newEvs).reduce((sum, v) => sum + v, 0);
-    if (newTotal <= MAX_EV_TOTAL) {
-      onChange({ ...config, evs: newEvs });
-    }
+    // Clamp to whatever the budget still allows rather than rejecting the edit,
+    // so dragging a stat up stops at the limit instead of doing nothing.
+    const spentElsewhere = totalPoints - config.evs[stat];
+    const budgetLeft = MAX_STAT_POINTS_TOTAL - spentElsewhere;
+    const clamped = Math.max(0, Math.min(MAX_STAT_POINTS_PER_STAT, budgetLeft, value));
+
+    onChange({ ...config, evs: { ...config.evs, [stat]: clamped } });
   };
 
   const updateIv = (stat: keyof StatSpread, value: number) => {
@@ -118,12 +125,12 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
         </div>
       </div>
 
-      {/* EV Spread */}
+      {/* Stat point spread */}
       <div style={{ marginBottom: '12px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-          <label style={labelStyle}>EVs</label>
-          <span style={{ fontSize: '11px', color: totalEvs > MAX_EV_TOTAL ? '#ef4444' : '#64748b' }}>
-            {totalEvs}/{MAX_EV_TOTAL}
+          <label style={labelStyle}>Stat Points</label>
+          <span style={{ fontSize: '11px', color: totalPoints > MAX_STAT_POINTS_TOTAL ? '#ef4444' : '#64748b' }}>
+            {totalPoints}/{MAX_STAT_POINTS_TOTAL}
           </span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '6px' }}>
@@ -135,7 +142,7 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
               <input
                 type="number"
                 min={0}
-                max={MAX_EV_PER_STAT}
+                max={MAX_STAT_POINTS_PER_STAT}
                 value={config.evs[key]}
                 onChange={e => updateEv(key, parseInt(e.target.value) || 0)}
                 style={{ ...inputStyle, textAlign: 'center', padding: '4px' }}

@@ -4,6 +4,7 @@
  */
 import { calculate, Pokemon, Move, Field, Generations, toID } from '@smogon/calc';
 import type { TypeName } from '@smogon/calc/dist/data/interface';
+import { statPointsToEvs } from '../types';
 import type { PokemonConfig, StatSpread } from '../types';
 
 const gen = Generations.get(9);
@@ -29,6 +30,15 @@ function toCalcStats(spread: StatSpread) {
   };
 }
 
+/**
+ * EV spreads for the calculator.
+ * Configs store Champions stat points, which must be scaled to classic EVs
+ * before the damage formula sees them.
+ */
+function toCalcEvs(points: StatSpread) {
+  return toCalcStats(statPointsToEvs(points));
+}
+
 /** Calculate damage from an attacker config + move against a defender config */
 export function calcDamage(
   attackerConfig: PokemonConfig,
@@ -41,7 +51,7 @@ export function calcDamage(
       nature: attackerConfig.nature,
       ability: attackerConfig.ability || undefined,
       item: attackerConfig.item || undefined,
-      evs: toCalcStats(attackerConfig.evs),
+      evs: toCalcEvs(attackerConfig.evs),
       ivs: toCalcStats(attackerConfig.ivs),
       teraType: (attackerConfig.teraType || undefined) as TypeName | undefined,
     });
@@ -51,7 +61,7 @@ export function calcDamage(
       nature: defenderConfig.nature,
       ability: defenderConfig.ability || undefined,
       item: defenderConfig.item || undefined,
-      evs: toCalcStats(defenderConfig.evs),
+      evs: toCalcEvs(defenderConfig.evs),
       ivs: toCalcStats(defenderConfig.ivs),
       teraType: (defenderConfig.teraType || undefined) as TypeName | undefined,
     });
