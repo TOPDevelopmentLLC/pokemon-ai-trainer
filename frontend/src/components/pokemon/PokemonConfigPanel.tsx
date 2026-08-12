@@ -8,6 +8,7 @@ import {
   totalStatPoints,
 } from '../../types';
 import { getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
+import { LabeledSelect } from '../common/LabeledSelect';
 import { PokemonHeader } from './PokemonHeader';
 import { BaseStatsPanel } from './BaseStatsPanel';
 
@@ -68,37 +69,25 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
 
       {/* Nature / Ability / Item selectors */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '16px' }}>
-        <div>
-          <label style={labelStyle}>Nature</label>
-          <select
-            value={config.nature}
-            onChange={e => onChange({ ...config, nature: e.target.value })}
-            style={selectStyle}
-          >
-            {natures.map(n => <option key={n} value={n}>{n}</option>)}
-          </select>
-        </div>
-        <div>
-          <label style={labelStyle}>Ability</label>
-          <select
-            value={config.ability}
-            onChange={e => onChange({ ...config, ability: e.target.value })}
-            style={selectStyle}
-          >
-            {abilities.map(a => <option key={a} value={a}>{a}</option>)}
-          </select>
-        </div>
-        <div>
-          <label style={labelStyle}>Item</label>
-          <select
-            value={config.item}
-            onChange={e => onChange({ ...config, item: e.target.value })}
-            style={selectStyle}
-          >
-            <option value="">None</option>
-            {items.map(i => <option key={i} value={i}>{i}</option>)}
-          </select>
-        </div>
+        <LabeledSelect
+          label="Nature"
+          value={config.nature}
+          options={natures}
+          onChange={nature => onChange({ ...config, nature })}
+        />
+        <LabeledSelect
+          label="Ability"
+          value={config.ability}
+          options={abilities}
+          onChange={ability => onChange({ ...config, ability })}
+        />
+        <LabeledSelect
+          label="Item"
+          value={config.item}
+          options={items}
+          onChange={item => onChange({ ...config, item })}
+          emptyOption="None"
+        />
       </div>
 
       {/* Stat point spread */}
@@ -160,16 +149,6 @@ const labelStyle: React.CSSProperties = {
   color: '#64748b',
   textTransform: 'uppercase',
   marginBottom: '4px',
-};
-
-const selectStyle: React.CSSProperties = {
-  width: '100%',
-  padding: '6px 8px',
-  backgroundColor: '#1e293b',
-  border: '1px solid #334155',
-  borderRadius: '6px',
-  color: '#e2e8f0',
-  fontSize: '13px',
 };
 
 const inputStyle: React.CSSProperties = {
