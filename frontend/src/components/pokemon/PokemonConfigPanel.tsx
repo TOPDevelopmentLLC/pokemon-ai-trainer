@@ -8,9 +8,8 @@ import {
   totalStatPoints,
 } from '../../types';
 import { getSpecies, getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
-import { TypeBadge } from '../common/TypeBadge';
 import { StatBar } from '../common/StatBar';
-import { Sprites } from '@pkmn/img';
+import { PokemonHeader } from './PokemonHeader';
 
 interface PokemonConfigPanelProps {
   config: PokemonConfig;
@@ -19,7 +18,6 @@ interface PokemonConfigPanelProps {
 
 export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps) => {
   const species = getSpecies(config.species);
-  const sprite = Sprites.getPokemon(config.species, { gen: 'ani' });
   const natures = getAllNatures();
   const items = getAllItems();
 
@@ -65,18 +63,7 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
       borderBottom: '1px solid #1e293b',
       backgroundColor: '#0f172a',
     }}>
-      {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-        <img src={sprite.url} alt={config.species} width={80} height={80} />
-        <div>
-          <h2 style={{ margin: 0, fontSize: '22px', fontWeight: 700, color: '#e2e8f0' }}>
-            {config.species}
-          </h2>
-          <div style={{ display: 'flex', gap: '4px', marginTop: '4px' }}>
-            {species?.types.map(t => <TypeBadge key={t} type={t} />)}
-          </div>
-        </div>
-      </div>
+      <PokemonHeader species={config.species} />
 
       {/* Base Stats */}
       {species && (
