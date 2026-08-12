@@ -4,13 +4,14 @@ import {
   MAX_STAT_POINTS_PER_STAT,
   MAX_STAT_POINTS_TOTAL,
   MAX_IV,
-  STAT_LABELS,
   totalStatPoints,
 } from '../../types';
 import { getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
 import { LabeledSelect } from '../common/LabeledSelect';
 import { PokemonHeader } from './PokemonHeader';
 import { BaseStatsPanel } from './BaseStatsPanel';
+import { StatPointsSection } from './StatPointsSection';
+import { StatSpreadGrid } from './StatSpreadGrid';
 
 interface PokemonConfigPanelProps {
   config: PokemonConfig;
@@ -90,52 +91,13 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
         />
       </div>
 
-      {/* Stat point spread */}
-      <div style={{ marginBottom: '12px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-          <label style={labelStyle}>Stat Points</label>
-          <span style={{ fontSize: '11px', color: totalPoints > MAX_STAT_POINTS_TOTAL ? '#ef4444' : '#64748b' }}>
-            {totalPoints}/{MAX_STAT_POINTS_TOTAL}
-          </span>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '6px' }}>
-          {STAT_LABELS.map(({ key, label }) => (
-            <div key={key}>
-              <div style={{ fontSize: '10px', color: '#64748b', textAlign: 'center', marginBottom: '2px' }}>
-                {label}
-              </div>
-              <input
-                type="number"
-                min={0}
-                max={MAX_STAT_POINTS_PER_STAT}
-                value={config.evs[key]}
-                onChange={e => updateEv(key, parseInt(e.target.value) || 0)}
-                style={{ ...inputStyle, textAlign: 'center', padding: '4px' }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      <StatPointsSection spread={config.evs} onChange={updateEv} />
 
       {/* IV Spread */}
       <div>
         <label style={labelStyle}>IVs</label>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '6px', marginTop: '4px' }}>
-          {STAT_LABELS.map(({ key, label }) => (
-            <div key={key}>
-              <div style={{ fontSize: '10px', color: '#64748b', textAlign: 'center', marginBottom: '2px' }}>
-                {label}
-              </div>
-              <input
-                type="number"
-                min={0}
-                max={MAX_IV}
-                value={config.ivs[key]}
-                onChange={e => updateIv(key, parseInt(e.target.value) || 0)}
-                style={{ ...inputStyle, textAlign: 'center', padding: '4px' }}
-              />
-            </div>
-          ))}
+        <div style={{ marginTop: '4px' }}>
+          <StatSpreadGrid spread={config.ivs} max={MAX_IV} onChange={updateIv} />
         </div>
       </div>
     </div>
@@ -151,13 +113,3 @@ const labelStyle: React.CSSProperties = {
   marginBottom: '4px',
 };
 
-const inputStyle: React.CSSProperties = {
-  width: '100%',
-  padding: '6px 8px',
-  backgroundColor: '#1e293b',
-  border: '1px solid #334155',
-  borderRadius: '6px',
-  color: '#e2e8f0',
-  fontSize: '13px',
-  boxSizing: 'border-box',
-};
