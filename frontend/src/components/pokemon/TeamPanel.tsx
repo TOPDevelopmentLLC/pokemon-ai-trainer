@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTeam } from '../../context/TeamContext';
+import { useTeam } from '../../hooks/useTeam';
 import { PokemonSearchModal } from './PokemonSearchModal';
 import { gen9 } from '../../services/dex';
 import { TypeBadge } from '../common/TypeBadge';

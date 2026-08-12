@@ -1,6 +1,7 @@
-import { createContext, useContext, useReducer, type ReactNode } from 'react';
+import { useReducer, type ReactNode } from 'react';
 import type { Team, TeamSlot, PokemonConfig } from '../types';
 import { createDefaultConfig, MAX_TEAM_SIZE } from '../types';
+import { TeamContext, type TeamContextValue } from './team-context';
 
 interface TeamState {
   team: Team;
@@ -56,16 +57,6 @@ const initialState: TeamState = {
   selectedSlotIndex: null,
 };
 
-interface TeamContextValue extends TeamState {
-  addPokemon: (species: string) => void;
-  removePokemon: (index: number) => void;
-  selectSlot: (index: number | null) => void;
-  updateConfig: (index: number, config: PokemonConfig) => void;
-  selectedSlot: TeamSlot | null;
-}
-
-const TeamContext = createContext<TeamContextValue | null>(null);
-
 export const TeamProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(teamReducer, initialState);
 
@@ -80,9 +71,3 @@ export const TeamProvider = ({ children }: { children: ReactNode }) => {
 
   return <TeamContext.Provider value={value}>{children}</TeamContext.Provider>;
 };
-
-export function useTeam() {
-  const ctx = useContext(TeamContext);
-  if (!ctx) throw new Error('useTeam must be used within TeamProvider');
-  return ctx;
-}
