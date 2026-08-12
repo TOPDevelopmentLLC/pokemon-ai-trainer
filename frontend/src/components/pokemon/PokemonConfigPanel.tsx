@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import type { PokemonConfig, StatSpread } from '../../types';
-import { MAX_EV_PER_STAT, MAX_EV_TOTAL, MAX_IV } from '../../types';
+import { MAX_EV_PER_STAT, MAX_EV_TOTAL, MAX_IV, STAT_LABELS } from '../../types';
 import { getSpecies, getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
 import { TypeBadge } from '../common/TypeBadge';
 import { StatBar } from '../common/StatBar';
@@ -10,15 +10,6 @@ interface PokemonConfigPanelProps {
   config: PokemonConfig;
   onChange: (config: PokemonConfig) => void;
 }
-
-const STAT_LABELS: { key: keyof StatSpread; label: string }[] = [
-  { key: 'hp', label: 'HP' },
-  { key: 'atk', label: 'Atk' },
-  { key: 'def', label: 'Def' },
-  { key: 'spa', label: 'SpA' },
-  { key: 'spd', label: 'SpD' },
-  { key: 'spe', label: 'Spe' },
-];
 
 export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps) => {
   const species = getSpecies(config.species);

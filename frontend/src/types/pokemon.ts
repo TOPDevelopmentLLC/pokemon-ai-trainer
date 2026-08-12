@@ -35,6 +35,16 @@ export interface TeamSlot {
 
 export type Team = (TeamSlot | null)[];
 
+/** Display labels for each stat, in canonical order. */
+export const STAT_LABELS: { key: keyof StatSpread; label: string }[] = [
+  { key: 'hp', label: 'HP' },
+  { key: 'atk', label: 'Atk' },
+  { key: 'def', label: 'Def' },
+  { key: 'spa', label: 'SpA' },
+  { key: 'spd', label: 'SpD' },
+  { key: 'spe', label: 'Spe' },
+];
+
 export const DEFAULT_EVS: StatSpread = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
 export const DEFAULT_IVS: StatSpread = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
 export const MAX_EV_PER_STAT = 252;
