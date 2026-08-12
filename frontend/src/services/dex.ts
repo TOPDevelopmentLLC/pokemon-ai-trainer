@@ -2,27 +2,37 @@
  * Centralized access to Pokemon data via @pkmn/dex + @pkmn/data.
  * All components/services should import from here rather than
  * instantiating Dex/Generations directly.
+ *
+ * Species lookups go through the gen-agnostic `Dex` rather than a numbered
+ * generation, because the Pokemon Champions roster includes Mega Evolutions
+ * and species cut from Gen 9 — neither of which exist in `gen9.species`.
+ * `gen9` is retained for type-chart and move data, which are gen-scoped.
  */
 import { Dex } from '@pkmn/dex';
 import { Generations } from '@pkmn/data';
+import { CHAMPIONS_LEGAL_SPECIES } from './champions-roster';
+import { STAT_LABELS, type StatSpread } from '../types/pokemon';
 
 export const generations = new Generations(Dex);
 export const gen9 = generations.get(9);
+export { Dex };
 
-/** Search species by name prefix (case-insensitive). Returns up to `limit` results. */
+/** Every Champions-legal species name, sorted for stable display. */
+export const LEGAL_SPECIES_NAMES: readonly string[] = [...CHAMPIONS_LEGAL_SPECIES].sort((a, b) =>
+  a.localeCompare(b),
+);
+
+/**
+ * Search Champions-legal species by name prefix (case-insensitive).
+ * Returns up to `limit` results.
+ */
 export function searchSpecies(query: string, limit = 20): string[] {
   const q = query.toLowerCase();
   const results: string[] = [];
 
-  for (const species of gen9.species) {
-    if (!species.exists) continue;
-    // Skip alternate formes, megas, etc. unless specifically searched
-    if (species.forme && !species.name.toLowerCase().startsWith(q)) continue;
-    // Skip CAP pokemon
-    if (species.num <= 0) continue;
-
-    if (species.name.toLowerCase().startsWith(q)) {
-      results.push(species.name);
+  for (const name of LEGAL_SPECIES_NAMES) {
+    if (name.toLowerCase().startsWith(q)) {
+      results.push(name);
       if (results.length >= limit) break;
     }
   }
@@ -30,9 +40,18 @@ export function searchSpecies(query: string, limit = 20): string[] {
   return results;
 }
 
+/**
+ * Look up a species by name across all generations.
+ * Use this instead of `gen9.species.get` so Megas and Gen 9-cut species resolve.
+ */
+export function getSpecies(speciesName: string) {
+  const species = Dex.species.get(speciesName);
+  return species?.exists ? species : null;
+}
+
 /** Get abilities available for a species */
 export function getSpeciesAbilities(speciesName: string): string[] {
-  const species = gen9.species.get(speciesName);
+  const species = getSpecies(speciesName);
   if (!species) return [];
 
   const abilities: string[] = [];
@@ -74,9 +93,23 @@ export function getAllItems(): string[] {
   return items.sort((a, b) => a.localeCompare(b));
 }
 
+/**
+ * The species' highest base stats, strongest first.
+ * Ties break by canonical stat order (HP, Atk, Def, SpA, SpD, Spe) so the
+ * same species always renders the same way.
+ */
+export function getTopBaseStats(speciesName: string, count = 2): { key: keyof StatSpread; label: string; value: number }[] {
+  const species = getSpecies(speciesName);
+  if (!species) return [];
+
+  return STAT_LABELS.map(({ key, label }) => ({ key, label, value: species.baseStats[key] }))
+    .sort((a, b) => b.value - a.value)
+    .slice(0, count);
+}
+
 /** Get type names for a species */
 export function getSpeciesTypes(speciesName: string): string[] {
-  const species = gen9.species.get(speciesName);
+  const species = getSpecies(speciesName);
   if (!species) return [];
   return [...species.types];
 }

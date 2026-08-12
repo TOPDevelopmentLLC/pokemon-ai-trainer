@@ -2,7 +2,8 @@
  * Damage calculation service wrapping @smogon/calc.
  * Provides a simplified API for our threat analysis use case.
  */
-import { calculate, Pokemon, Move, Field, Generations } from '@smogon/calc';
+import { calculate, Pokemon, Move, Field, Generations, toID } from '@smogon/calc';
+import type { TypeName } from '@smogon/calc/dist/data/interface';
 import type { PokemonConfig, StatSpread } from '../types';
 
 const gen = Generations.get(9);
@@ -42,7 +43,7 @@ export function calcDamage(
       item: attackerConfig.item || undefined,
       evs: toCalcStats(attackerConfig.evs),
       ivs: toCalcStats(attackerConfig.ivs),
-      teraType: attackerConfig.teraType || undefined,
+      teraType: (attackerConfig.teraType || undefined) as TypeName | undefined,
     });
 
     const defender = new Pokemon(gen, defenderConfig.species, {
@@ -52,7 +53,7 @@ export function calcDamage(
       item: defenderConfig.item || undefined,
       evs: toCalcStats(defenderConfig.evs),
       ivs: toCalcStats(defenderConfig.ivs),
-      teraType: defenderConfig.teraType || undefined,
+      teraType: (defenderConfig.teraType || undefined) as TypeName | undefined,
     });
 
     const move = new Move(gen, moveName);
@@ -87,12 +88,14 @@ export function calcDamage(
  */
 export function isSuperEffective(moveType: string, defenderTypes: string[]): boolean {
   try {
-    const type = gen.types.get(moveType);
+    const type = gen.types.get(toID(moveType));
     if (!type) return false;
+
+    const chart = type.effectiveness as Record<string, number | undefined>;
 
     let effectiveness = 1;
     for (const defType of defenderTypes) {
-      const e = type.effectiveness[defType];
+      const e = chart[defType];
       if (e !== undefined) effectiveness *= e;
     }
     return effectiveness > 1;

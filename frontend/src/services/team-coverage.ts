@@ -3,7 +3,7 @@
  * Aggregates each team member's type matchups into one score per
  * attacking type, so the team's collective holes are visible at a glance.
  */
-import { gen9 } from './dex';
+import { gen9, getSpecies } from './dex';
 import type { Team } from '../types/pokemon';
 import type { CoverageContribution, TypeCoverage, TeamCoverageResult } from '../types/team-coverage';
 
@@ -86,7 +86,7 @@ export function analyzeTeamCoverage(team: Team): TeamCoverageResult {
   for (const slot of team) {
     if (!slot) continue;
 
-    const species = gen9.species.get(slot.config.species);
+    const species = getSpecies(slot.config.species);
     if (!species) continue;
 
     const defenderTypes = [...species.types];

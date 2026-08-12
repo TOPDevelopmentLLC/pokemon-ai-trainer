@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useTeam } from '../../context/TeamContext';
+import { useTeam } from '../../hooks/useTeam';
 import { PokemonSearchModal } from './PokemonSearchModal';
-import { gen9 } from '../../services/dex';
+import { getSpecies } from '../../services/dex';
 import { TypeBadge } from '../common/TypeBadge';
 import { Sprites } from '@pkmn/img';
 
@@ -56,7 +56,7 @@ export const TeamPanel = () => {
                     {slot.config.species}
                   </div>
                   <div style={{ display: 'flex', gap: '3px' }}>
-                    {gen9.species.get(slot.config.species)?.types.map(t => (
+                    {getSpecies(slot.config.species)?.types.map(t => (
                       <TypeBadge key={t} type={t} />
                     ))}
                   </div>

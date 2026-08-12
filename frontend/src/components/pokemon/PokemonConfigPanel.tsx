@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import type { PokemonConfig, StatSpread } from '../../types';
-import { MAX_EV_PER_STAT, MAX_EV_TOTAL, MAX_IV } from '../../types';
-import { getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
-import { gen9 } from '../../services/dex';
+import { MAX_EV_PER_STAT, MAX_EV_TOTAL, MAX_IV, STAT_LABELS } from '../../types';
+import { getSpecies, getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
 import { TypeBadge } from '../common/TypeBadge';
 import { StatBar } from '../common/StatBar';
 import { Sprites } from '@pkmn/img';
@@ -12,30 +11,30 @@ interface PokemonConfigPanelProps {
   onChange: (config: PokemonConfig) => void;
 }
 
-const STAT_LABELS: { key: keyof StatSpread; label: string }[] = [
-  { key: 'hp', label: 'HP' },
-  { key: 'atk', label: 'Atk' },
-  { key: 'def', label: 'Def' },
-  { key: 'spa', label: 'SpA' },
-  { key: 'spd', label: 'SpD' },
-  { key: 'spe', label: 'Spe' },
-];
-
 export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps) => {
-  const [abilities, setAbilities] = useState<string[]>([]);
-  const species = gen9.species.get(config.species);
+  const species = getSpecies(config.species);
   const sprite = Sprites.getPokemon(config.species, { gen: 'ani' });
   const natures = getAllNatures();
   const items = getAllItems();
 
+  // Abilities are a pure function of species — derive rather than store.
+  const abilities = useMemo(() => getSpeciesAbilities(config.species), [config.species]);
+
+  // Keep the latest config/onChange reachable without making the auto-select
+  // effect re-run on every parent render. Written in an effect, since refs
+  // must not be mutated during render.
+  const latest = useRef({ config, onChange });
   useEffect(() => {
-    const abs = getSpeciesAbilities(config.species);
-    setAbilities(abs);
-    // Auto-set first ability if none selected
-    if (!config.ability && abs.length > 0) {
-      onChange({ ...config, ability: abs[0] });
+    latest.current = { config, onChange };
+  });
+
+  // Auto-select the first ability when a species has none chosen yet.
+  useEffect(() => {
+    const { config: current, onChange: notify } = latest.current;
+    if (!current.ability && abilities.length > 0) {
+      notify({ ...current, ability: abilities[0] });
     }
-  }, [config.species]);
+  }, [abilities]);
 
   const totalEvs = Object.values(config.evs).reduce((sum, v) => sum + v, 0);
 

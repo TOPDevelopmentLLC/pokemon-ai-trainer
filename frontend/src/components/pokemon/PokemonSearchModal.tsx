@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { usePokemonSearch } from '../../hooks/usePokemonSearch';
-import { gen9 } from '../../services/dex';
+import { getSpecies, getTopBaseStats } from '../../services/dex';
 import { TypeBadge } from '../common/TypeBadge';
 import { StatBar } from '../common/StatBar';
 import { Sprites } from '@pkmn/img';
@@ -51,7 +51,7 @@ export const PokemonSearchModal = ({ onSelect, onClose }: PokemonSearchModalProp
             </div>
           )}
           {results.map(name => {
-            const species = gen9.species.get(name);
+            const species = getSpecies(name);
             if (!species) return null;
             const sprite = Sprites.getPokemon(name, { gen: 'ani' });
 
@@ -82,8 +82,9 @@ export const PokemonSearchModal = ({ onSelect, onClose }: PokemonSearchModalProp
                   </div>
                 </div>
                 <div style={{ width: '120px' }}>
-                  <StatBar label="HP" value={species.baseStats.hp} />
-                  <StatBar label="Spe" value={species.baseStats.spe} />
+                  {getTopBaseStats(name).map(stat => (
+                    <StatBar key={stat.key} label={stat.label} value={stat.value} />
+                  ))}
                 </div>
               </button>
             );
