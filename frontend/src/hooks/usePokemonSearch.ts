@@ -2,7 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { searchSpecies } from '../services/dex';
 
 const DEBOUNCE_MS = 150;
-const MIN_QUERY_LENGTH = 2;
+/** Shortest query that runs a search; shorter input returns no results. */
+export const MIN_QUERY_LENGTH = 2;
 
 /**
  * Debounced species search.
