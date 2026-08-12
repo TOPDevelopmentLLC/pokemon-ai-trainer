@@ -1,21 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { searchSpecies } from '../services/dex';
 
+const DEBOUNCE_MS = 150;
+const MIN_QUERY_LENGTH = 2;
+
+/**
+ * Debounced species search.
+ * The effect only syncs the debounced query; results are derived from it
+ * during render, so a cleared query updates without an extra render pass.
+ */
 export function usePokemonSearch(query: string) {
-  const [results, setResults] = useState<string[]>([]);
+  const [debouncedQuery, setDebouncedQuery] = useState(query);
 
   useEffect(() => {
-    if (query.length < 2) {
-      setResults([]);
-      return;
-    }
+    if (query === debouncedQuery) return;
 
-    const timeoutId = setTimeout(() => {
-      setResults(searchSpecies(query, 10));
-    }, 150); // debounce
-
+    const timeoutId = setTimeout(() => setDebouncedQuery(query), DEBOUNCE_MS);
     return () => clearTimeout(timeoutId);
-  }, [query]);
+  }, [query, debouncedQuery]);
 
-  return results;
+  return useMemo(() => {
+    if (debouncedQuery.length < MIN_QUERY_LENGTH) return [];
+    return searchSpecies(debouncedQuery, 10);
+  }, [debouncedQuery]);
 }
