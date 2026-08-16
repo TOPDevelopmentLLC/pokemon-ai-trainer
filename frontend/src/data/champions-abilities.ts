@@ -11,86 +11,86 @@
  */
 export const CHAMPIONS_MEGA_ABILITIES: Record<string, string[]> = {
   // Barbaracle has: Tough Claws, Sniper, Pickpocket
-  'Barbaracle-Mega': [],
+  'Barbaracle-Mega': ['Tough Claws'],
 
   // Chandelure has: Flash Fire, Flame Body, Infiltrator
-  'Chandelure-Mega': [],
+  'Chandelure-Mega': ['Infiltrator'],
 
   // Chimecho has: Levitate
-  'Chimecho-Mega': [],
+  'Chimecho-Mega': ['Levitate'],
 
   // Clefable has: Cute Charm, Magic Guard, Unaware
-  'Clefable-Mega': [],
+  'Clefable-Mega': ['Magic Bounce'],
 
   // Crabominable has: Hyper Cutter, Iron Fist, Anger Point
-  'Crabominable-Mega': [],
+  'Crabominable-Mega': ['Iron Fist'],
 
   // Dragalge has: Poison Point, Poison Touch, Adaptability
-  'Dragalge-Mega': [],
+  'Dragalge-Mega': ['Regenerator'],
 
   // Dragonite has: Inner Focus, Multiscale
-  'Dragonite-Mega': [],
+  'Dragonite-Mega': ['Multiscale'],
 
   // Drampa has: Berserk, Sap Sipper, Cloud Nine
-  'Drampa-Mega': [],
+  'Drampa-Mega': ['Berserk'],
 
   // Eelektross has: Levitate
-  'Eelektross-Mega': [],
+  'Eelektross-Mega': ['Eelevate'],
 
   // Emboar has: Blaze, Reckless
-  'Emboar-Mega': [],
+  'Emboar-Mega': ['Mold Breaker'],
 
   // Excadrill has: Sand Rush, Sand Force, Mold Breaker
-  'Excadrill-Mega': [],
+  'Excadrill-Mega': ['Piercing Drill'],
 
   // Falinks has: Battle Armor, Defiant
-  'Falinks-Mega': [],
+  'Falinks-Mega': ['Defiant'],
 
   // Feraligatr has: Torrent, Sheer Force
-  'Feraligatr-Mega': [],
+  'Feraligatr-Mega': ['Dragonize'],
 
   // Floette has: Flower Veil, Symbiosis
-  'Floette-Mega': [],
+  'Floette-Mega': ['Fairy Aura'],
 
   // Froslass has: Snow Cloak, Cursed Body
-  'Froslass-Mega': [],
+  'Froslass-Mega': ['Snow Warning'],
 
   // Glimmora has: Toxic Debris, Corrosion
-  'Glimmora-Mega': [],
+  'Glimmora-Mega': ['Adaptability'],
 
   // Golurk has: Iron Fist, Klutz, No Guard
-  'Golurk-Mega': [],
+  'Golurk-Mega': ['Unseen Fist'],
 
   // Hawlucha has: Limber, Unburden, Mold Breaker
-  'Hawlucha-Mega': [],
+  'Hawlucha-Mega': ['No Guard'],
 
   // Malamar has: Contrary, Suction Cups, Infiltrator
-  'Malamar-Mega': [],
+  'Malamar-Mega': ['Contrary'],
 
   // Meganium has: Overgrow, Leaf Guard
-  'Meganium-Mega': [],
+  'Meganium-Mega': ['Mega Sol'],
 
   // Pyroar has: Rivalry, Unnerve, Moxie
-  'Pyroar-Mega': [],
+  'Pyroar-Mega': ['Fire Mane'],
 
   // Scolipede has: Poison Point, Swarm, Speed Boost
-  'Scolipede-Mega': [],
+  'Scolipede-Mega': ['Shell Armor'],
 
   // Scovillain has: Chlorophyll, Insomnia, Moody
-  'Scovillain-Mega': [],
+  'Scovillain-Mega': ['Spicy Spray'],
 
   // Scrafty has: Shed Skin, Moxie, Intimidate
-  'Scrafty-Mega': [],
+  'Scrafty-Mega': ['Intimidate'],
 
   // Skarmory has: Keen Eye, Sturdy, Weak Armor
-  'Skarmory-Mega': [],
+  'Skarmory-Mega': ['Stalwart'],
 
   // Staraptor has: Intimidate, Reckless
-  'Staraptor-Mega': [],
+  'Staraptor-Mega': ['Contrary'],
 
   // Starmie has: Illuminate, Natural Cure, Analytic
-  'Starmie-Mega': [],
+  'Starmie-Mega': ['Huge Power'],
 
   // Victreebel has: Chlorophyll, Gluttony
-  'Victreebel-Mega': [],
+  'Victreebel-Mega': ['Innards Out'],
 };
