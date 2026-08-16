@@ -13,6 +13,7 @@ import { Generations } from '@pkmn/data';
 import { Sprites } from '@pkmn/img';
 import { CHAMPIONS_LEGAL_SPECIES } from './champions-roster';
 import { CHAMPIONS_MEGA_ABILITIES } from '@data/champions-abilities';
+import { CHAMPIONS_ABILITY_DESCRIPTIONS } from '@data/champions-ability-descriptions';
 import { STAT_LABELS, type StatSpread } from '@app-types/pokemon';
 
 export const generations = new Generations(Dex);
@@ -72,6 +73,21 @@ export function getSpeciesAbilities(speciesName: string): string[] {
   if (data.H) abilities.push(data.H);
   if (data.S) abilities.push(data.S);
   return abilities;
+}
+
+/**
+ * Description for an ability, or null when nothing is known about it.
+ * Champions-original abilities are checked first since @pkmn/dex has no
+ * entry for them.
+ */
+export function getAbilityDescription(abilityName: string): string | null {
+  const champions = CHAMPIONS_ABILITY_DESCRIPTIONS[abilityName];
+  if (champions) return champions;
+
+  const ability = Dex.abilities.get(abilityName);
+  if (!ability?.exists) return null;
+
+  return ability.shortDesc || ability.desc || null;
 }
 
 /** Get moves a species can learn */
