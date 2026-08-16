@@ -3,6 +3,7 @@ import type { StatSpread } from '@app-types';
 import type { SpeciesSearchResult } from '@app-types/species-search';
 import { getSpriteUrl } from '@services/dex';
 import { TypeBadge } from '@components/common/TypeBadge';
+import { AbilityName } from './AbilityName';
 
 interface SpeciesSearchRowProps {
   result: SpeciesSearchResult;
@@ -103,9 +104,13 @@ export const SpeciesSearchRow = ({ result, sortStat, onAdd, canAdd }: SpeciesSea
           color: '#64748b',
           lineHeight: 1.4,
         }}
-        title={result.abilities.join(', ')}
       >
-        {result.abilities.join(', ')}
+        {result.abilities.map((ability, index) => (
+          <span key={ability}>
+            {index > 0 && ', '}
+            <AbilityName ability={ability} />
+          </span>
+        ))}
       </div>
 
       <button
