@@ -10,6 +10,7 @@
  */
 import { Dex } from '@pkmn/dex';
 import { Generations } from '@pkmn/data';
+import { Sprites } from '@pkmn/img';
 import { CHAMPIONS_LEGAL_SPECIES } from './champions-roster';
 import { STAT_LABELS, type StatSpread } from '@app-types/pokemon';
 
@@ -105,6 +106,29 @@ export function getTopBaseStats(speciesName: string, count = 2): { key: keyof St
   return STAT_LABELS.map(({ key, label }) => ({ key, label, value: species.baseStats[key] }))
     .sort((a, b) => b.value - a.value)
     .slice(0, count);
+}
+
+/**
+ * Sprite URL for a species.
+ *
+ * Champions introduces Mega Evolutions that do not exist in mainline games —
+ * Mega Scrafty, Mega Dragalge, Mega Raichu X/Y and 21 others. @pkmn/img has no
+ * artwork for them and hands back a gen5 PNG path that 404s, so those fall back
+ * to the base species' sprite rather than rendering a broken image.
+ */
+export function getSpriteUrl(speciesName: string): string {
+  const url = Sprites.getPokemon(speciesName, { gen: 'ani' }).url;
+
+  // A real animated sprite always resolves under /ani/; anything else is the
+  // library's fallback for artwork it does not have.
+  if (url.includes('/ani/')) return url;
+
+  const baseSpecies = getSpecies(speciesName)?.baseSpecies;
+  if (baseSpecies && baseSpecies !== speciesName) {
+    return Sprites.getPokemon(baseSpecies, { gen: 'ani' }).url;
+  }
+
+  return url;
 }
 
 /** Get type names for a species */
