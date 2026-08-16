@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTeam } from '../hooks/useTeam';
-import { getSpecies } from '../services/dex';
 import { NavBar } from '../components/common/NavBar';
-import { TypeBadge } from '../components/common/TypeBadge';
 import { InlineEditableName } from '../components/common/InlineEditableName';
-import { Sprites } from '@pkmn/img';
+import { TeamRosterPreview } from '../components/pokemon/TeamRosterPreview';
 import { DEFAULT_TEAM_NAME, type SavedTeam } from '../types';
 
 function formatDate(iso: string): string {
@@ -60,32 +58,7 @@ const TeamCard = ({ team, isActive, onOpen, onRename, onDuplicate, onDelete }: T
         </span>
       </div>
 
-      {/* Roster preview */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '12px', minHeight: '44px', flexWrap: 'wrap' }}>
-        {members.length === 0 && (
-          <span style={{ fontSize: '12px', color: '#475569', alignSelf: 'center' }}>Empty team</span>
-        )}
-        {members.map(slot => {
-          const species = getSpecies(slot.config.species);
-          return (
-            <div key={slot.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '52px' }}>
-              <img
-                src={Sprites.getPokemon(slot.config.species, { gen: 'ani' }).url}
-                alt={slot.config.species}
-                width={40}
-                height={40}
-              />
-              <div style={{ display: 'flex', gap: '2px', flexWrap: 'wrap', justifyContent: 'center' }}>
-                {species?.types.map(t => (
-                  <span key={t} style={{ transform: 'scale(0.7)', transformOrigin: 'center' }}>
-                    <TypeBadge type={t} />
-                  </span>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <TeamRosterPreview members={members} />
 
       <div style={{ display: 'flex', gap: '6px' }}>
         <button onClick={onOpen} style={primaryButtonStyle}>
