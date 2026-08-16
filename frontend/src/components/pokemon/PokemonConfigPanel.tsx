@@ -1,16 +1,11 @@
 import { useEffect, useMemo, useRef } from 'react';
-import type { PokemonConfig, StatSpread } from '../../types';
-import {
-  MAX_STAT_POINTS_PER_STAT,
-  MAX_STAT_POINTS_TOTAL,
-  MAX_IV,
-  STAT_LABELS,
-  totalStatPoints,
-} from '../../types';
-import { getSpecies, getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
-import { TypeBadge } from '../common/TypeBadge';
-import { StatBar } from '../common/StatBar';
-import { Sprites } from '@pkmn/img';
+import type { PokemonConfig, StatSpread } from '@app-types';
+import { MAX_STAT_POINTS_PER_STAT, MAX_STAT_POINTS_TOTAL, totalStatPoints } from '@app-types';
+import { getSpeciesAbilities, getAllNatures, getAllItems } from '@services/dex';
+import { LabeledSelect } from '@components/common/LabeledSelect';
+import { PokemonHeader } from './PokemonHeader';
+import { BaseStatsPanel } from './BaseStatsPanel';
+import { StatPointsSection } from './StatPointsSection';
 
 interface PokemonConfigPanelProps {
   config: PokemonConfig;
@@ -18,8 +13,6 @@ interface PokemonConfigPanelProps {
 }
 
 export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps) => {
-  const species = getSpecies(config.species);
-  const sprite = Sprites.getPokemon(config.species, { gen: 'ani' });
   const natures = getAllNatures();
   const items = getAllItems();
 
@@ -54,155 +47,42 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
     onChange({ ...config, evs: { ...config.evs, [stat]: clamped } });
   };
 
-  const updateIv = (stat: keyof StatSpread, value: number) => {
-    const clamped = Math.max(0, Math.min(MAX_IV, value));
-    onChange({ ...config, ivs: { ...config.ivs, [stat]: clamped } });
-  };
-
   return (
     <div style={{
       padding: '20px',
       borderBottom: '1px solid #1e293b',
       backgroundColor: '#0f172a',
     }}>
-      {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-        <img src={sprite.url} alt={config.species} width={80} height={80} />
-        <div>
-          <h2 style={{ margin: 0, fontSize: '22px', fontWeight: 700, color: '#e2e8f0' }}>
-            {config.species}
-          </h2>
-          <div style={{ display: 'flex', gap: '4px', marginTop: '4px' }}>
-            {species?.types.map(t => <TypeBadge key={t} type={t} />)}
-          </div>
-        </div>
-      </div>
+      <PokemonHeader species={config.species} />
 
-      {/* Base Stats */}
-      {species && (
-        <div style={{ marginBottom: '16px' }}>
-          <h4 style={{ margin: '0 0 6px', fontSize: '12px', color: '#64748b', textTransform: 'uppercase' }}>
-            Base Stats (BST: {species.baseStats.hp + species.baseStats.atk + species.baseStats.def + species.baseStats.spa + species.baseStats.spd + species.baseStats.spe})
-          </h4>
-          {STAT_LABELS.map(({ key, label }) => (
-            <StatBar key={key} label={label} value={species.baseStats[key]} />
-          ))}
-        </div>
-      )}
+      <BaseStatsPanel species={config.species} />
 
       {/* Nature / Ability / Item selectors */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '16px' }}>
-        <div>
-          <label style={labelStyle}>Nature</label>
-          <select
-            value={config.nature}
-            onChange={e => onChange({ ...config, nature: e.target.value })}
-            style={selectStyle}
-          >
-            {natures.map(n => <option key={n} value={n}>{n}</option>)}
-          </select>
-        </div>
-        <div>
-          <label style={labelStyle}>Ability</label>
-          <select
-            value={config.ability}
-            onChange={e => onChange({ ...config, ability: e.target.value })}
-            style={selectStyle}
-          >
-            {abilities.map(a => <option key={a} value={a}>{a}</option>)}
-          </select>
-        </div>
-        <div>
-          <label style={labelStyle}>Item</label>
-          <select
-            value={config.item}
-            onChange={e => onChange({ ...config, item: e.target.value })}
-            style={selectStyle}
-          >
-            <option value="">None</option>
-            {items.map(i => <option key={i} value={i}>{i}</option>)}
-          </select>
-        </div>
+        <LabeledSelect
+          label="Nature"
+          value={config.nature}
+          options={natures}
+          onChange={nature => onChange({ ...config, nature })}
+        />
+        <LabeledSelect
+          label="Ability"
+          value={config.ability}
+          options={abilities}
+          onChange={ability => onChange({ ...config, ability })}
+        />
+        <LabeledSelect
+          label="Item"
+          value={config.item}
+          options={items}
+          onChange={item => onChange({ ...config, item })}
+          emptyOption="None"
+        />
       </div>
 
-      {/* Stat point spread */}
-      <div style={{ marginBottom: '12px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-          <label style={labelStyle}>Stat Points</label>
-          <span style={{ fontSize: '11px', color: totalPoints > MAX_STAT_POINTS_TOTAL ? '#ef4444' : '#64748b' }}>
-            {totalPoints}/{MAX_STAT_POINTS_TOTAL}
-          </span>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '6px' }}>
-          {STAT_LABELS.map(({ key, label }) => (
-            <div key={key}>
-              <div style={{ fontSize: '10px', color: '#64748b', textAlign: 'center', marginBottom: '2px' }}>
-                {label}
-              </div>
-              <input
-                type="number"
-                min={0}
-                max={MAX_STAT_POINTS_PER_STAT}
-                value={config.evs[key]}
-                onChange={e => updateEv(key, parseInt(e.target.value) || 0)}
-                style={{ ...inputStyle, textAlign: 'center', padding: '4px' }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* IV Spread */}
-      <div>
-        <label style={labelStyle}>IVs</label>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '6px', marginTop: '4px' }}>
-          {STAT_LABELS.map(({ key, label }) => (
-            <div key={key}>
-              <div style={{ fontSize: '10px', color: '#64748b', textAlign: 'center', marginBottom: '2px' }}>
-                {label}
-              </div>
-              <input
-                type="number"
-                min={0}
-                max={MAX_IV}
-                value={config.ivs[key]}
-                onChange={e => updateIv(key, parseInt(e.target.value) || 0)}
-                style={{ ...inputStyle, textAlign: 'center', padding: '4px' }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      <StatPointsSection spread={config.evs} onChange={updateEv} />
     </div>
   );
 };
 
-const labelStyle: React.CSSProperties = {
-  display: 'block',
-  fontSize: '11px',
-  fontWeight: 600,
-  color: '#64748b',
-  textTransform: 'uppercase',
-  marginBottom: '4px',
-};
 
-const selectStyle: React.CSSProperties = {
-  width: '100%',
-  padding: '6px 8px',
-  backgroundColor: '#1e293b',
-  border: '1px solid #334155',
-  borderRadius: '6px',
-  color: '#e2e8f0',
-  fontSize: '13px',
-};
-
-const inputStyle: React.CSSProperties = {
-  width: '100%',
-  padding: '6px 8px',
-  backgroundColor: '#1e293b',
-  border: '1px solid #334155',
-  borderRadius: '6px',
-  color: '#e2e8f0',
-  fontSize: '13px',
-  boxSizing: 'border-box',
-};

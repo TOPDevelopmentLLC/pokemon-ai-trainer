@@ -12,6 +12,21 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
+
+    /* Path aliases — keep in sync with resolve.alias in vite.config.ts.
+       Domain types use @app-types rather than @types, which TypeScript
+       reserves for declaration packages under node_modules/@types. */
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@context/*": ["src/context/*"],
+      "@data/*": ["src/data/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"],
+      "@services/*": ["src/services/*"],
+      "@app-types": ["src/types/index.ts"],
+      "@app-types/*": ["src/types/*"]
+    },
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,

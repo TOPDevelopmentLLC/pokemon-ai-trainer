@@ -1,7 +1,7 @@
 import { useReducer, useEffect, useRef, type ReactNode } from 'react';
-import type { Team, TeamSlot, PokemonConfig, SavedTeam } from '../types';
-import { createDefaultConfig, MAX_TEAM_SIZE, DEFAULT_TEAM_NAME } from '../types';
-import { loadState, saveState } from '../services/team-storage';
+import type { Team, TeamSlot, PokemonConfig, SavedTeam } from '@app-types';
+import { createDefaultConfig, MAX_TEAM_SIZE, DEFAULT_TEAM_NAME } from '@app-types';
+import { loadState, saveState } from '@services/team-storage';
 import { TeamContext, type TeamContextValue } from './team-context';
 
 interface TeamState {

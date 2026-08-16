@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTeam } from '../hooks/useTeam';
-import { getSpecies } from '../services/dex';
-import { NavBar } from '../components/common/NavBar';
-import { TypeBadge } from '../components/common/TypeBadge';
-import { Sprites } from '@pkmn/img';
-import type { SavedTeam } from '../types';
+import { useTeam } from '@hooks/useTeam';
+import { NavBar } from '@components/common/NavBar';
+import { InlineEditableName } from '@components/common/InlineEditableName';
+import { TeamRosterPreview } from '@components/pokemon/TeamRosterPreview';
+import { DEFAULT_TEAM_NAME, type SavedTeam } from '@app-types';
 
 function formatDate(iso: string): string {
   const date = new Date(iso);
@@ -23,17 +22,9 @@ interface TeamCardProps {
 }
 
 const TeamCard = ({ team, isActive, onOpen, onRename, onDuplicate, onDelete }: TeamCardProps) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [draftName, setDraftName] = useState(team.name);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   const members = team.slots.filter(slot => slot !== null);
-
-  const commitRename = () => {
-    setIsEditing(false);
-    if (draftName.trim() && draftName !== team.name) onRename(draftName);
-    else setDraftName(team.name);
-  };
 
   return (
     <div
@@ -46,86 +37,28 @@ const TeamCard = ({ team, isActive, onOpen, onRename, onDuplicate, onDelete }: T
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-        {isEditing ? (
-          <input
-            value={draftName}
-            autoFocus
-            onChange={e => setDraftName(e.target.value)}
-            onBlur={commitRename}
-            onKeyDown={e => {
-              if (e.key === 'Enter') commitRename();
-              if (e.key === 'Escape') {
-                setDraftName(team.name);
-                setIsEditing(false);
-              }
-            }}
-            style={{
-              flex: 1,
-              padding: '5px 8px',
-              backgroundColor: '#1e293b',
-              border: '1px solid #334155',
-              borderRadius: '6px',
-              color: '#e2e8f0',
-              fontSize: '15px',
-              fontWeight: 700,
-            }}
-          />
-        ) : (
-          <button
-            onClick={() => setIsEditing(true)}
-            title="Rename"
-            style={{
-              flex: 1,
-              textAlign: 'left',
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              color: '#e2e8f0',
-              fontSize: '15px',
-              fontWeight: 700,
-              cursor: 'text',
-            }}
-          >
-            {team.name}
-            {isActive && (
-              <span style={{ marginLeft: '8px', fontSize: '10px', color: '#38bdf8', fontWeight: 600 }}>
-                OPEN
-              </span>
-            )}
-          </button>
-        )}
+        <InlineEditableName
+          value={team.name}
+          fallback={DEFAULT_TEAM_NAME}
+          onCommit={onRename}
+          displayStyle={{ flex: 1, fontSize: '15px' }}
+          inputStyle={{ flex: 1, fontSize: '15px', fontWeight: 700 }}
+        >
+          {isActive && (
+            <span
+              style={{ marginLeft: '8px', fontSize: '10px', color: '#38bdf8', fontWeight: 600 }}
+            >
+              OPEN
+            </span>
+          )}
+        </InlineEditableName>
 
         <span style={{ fontSize: '11px', color: '#64748b', whiteSpace: 'nowrap' }}>
           {members.length}/6 &middot; {formatDate(team.updatedAt)}
         </span>
       </div>
 
-      {/* Roster preview */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '12px', minHeight: '44px', flexWrap: 'wrap' }}>
-        {members.length === 0 && (
-          <span style={{ fontSize: '12px', color: '#475569', alignSelf: 'center' }}>Empty team</span>
-        )}
-        {members.map(slot => {
-          const species = getSpecies(slot.config.species);
-          return (
-            <div key={slot.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '52px' }}>
-              <img
-                src={Sprites.getPokemon(slot.config.species, { gen: 'ani' }).url}
-                alt={slot.config.species}
-                width={40}
-                height={40}
-              />
-              <div style={{ display: 'flex', gap: '2px', flexWrap: 'wrap', justifyContent: 'center' }}>
-                {species?.types.map(t => (
-                  <span key={t} style={{ transform: 'scale(0.7)', transformOrigin: 'center' }}>
-                    <TypeBadge type={t} />
-                  </span>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <TeamRosterPreview members={members} />
 
       <div style={{ display: 'flex', gap: '6px' }}>
         <button onClick={onOpen} style={primaryButtonStyle}>

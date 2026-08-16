@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import type { Team } from '../types';
-import type { TeamCoverageResult } from '../types/team-coverage';
-import { analyzeTeamCoverage } from '../services/team-coverage';
+import type { Team } from '@app-types';
+import type { TeamCoverageResult } from '@app-types/team-coverage';
+import { analyzeTeamCoverage } from '@services/team-coverage';
 
 /**
  * Computes team-wide defensive type coverage.

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useTeam } from '../../hooks/useTeam';
-import { DEFAULT_TEAM_NAME } from '../../types';
+import { useTeam } from '@hooks/useTeam';
+import { DEFAULT_TEAM_NAME } from '@app-types';
+import { InlineEditableName } from '@components/common/InlineEditableName';
 
 /**
  * Shows the open team's name and lets it be renamed inline.
@@ -9,34 +10,30 @@ import { DEFAULT_TEAM_NAME } from '../../types';
  */
 export const TeamNameBar = () => {
   const { team, activeTeam, saveCurrentTeam, renameTeam } = useTeam();
-  const [isNaming, setIsNaming] = useState(false);
+  const [isNamingNew, setIsNamingNew] = useState(false);
   const [draftName, setDraftName] = useState('');
 
   const isEmpty = team.every(slot => slot === null);
 
-  const beginNaming = () => {
-    setDraftName(activeTeam?.name ?? DEFAULT_TEAM_NAME);
-    setIsNaming(true);
-  };
+  // An unsaved team has no name to edit yet, so naming it is a separate flow
+  // from renaming one that already exists.
+  if (isNamingNew) {
+    const commit = () => {
+      saveCurrentTeam(draftName.trim() || DEFAULT_TEAM_NAME);
+      setIsNamingNew(false);
+    };
 
-  const commit = () => {
-    const name = draftName.trim() || DEFAULT_TEAM_NAME;
-    if (activeTeam) renameTeam(activeTeam.id, name);
-    else saveCurrentTeam(name);
-    setIsNaming(false);
-  };
-
-  if (isNaming) {
     return (
       <input
         value={draftName}
         autoFocus
         placeholder={DEFAULT_TEAM_NAME}
+        aria-label="Team name"
         onChange={e => setDraftName(e.target.value)}
         onBlur={commit}
         onKeyDown={e => {
           if (e.key === 'Enter') commit();
-          if (e.key === 'Escape') setIsNaming(false);
+          if (e.key === 'Escape') setIsNamingNew(false);
         }}
         style={{
           padding: '5px 10px',
@@ -47,6 +44,7 @@ export const TeamNameBar = () => {
           fontSize: '13px',
           fontWeight: 600,
           width: '180px',
+          boxSizing: 'border-box',
         }}
       />
     );
@@ -56,28 +54,23 @@ export const TeamNameBar = () => {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <span style={{ fontSize: '11px', color: '#22c55e', fontWeight: 600 }}>SAVED</span>
-        <button
-          onClick={beginNaming}
+        <InlineEditableName
+          value={activeTeam.name}
+          fallback={DEFAULT_TEAM_NAME}
           title="Rename team"
-          style={{
-            background: 'none',
-            border: 'none',
-            color: '#e2e8f0',
-            fontSize: '13px',
-            fontWeight: 700,
-            cursor: 'text',
-            padding: 0,
-          }}
-        >
-          {activeTeam.name}
-        </button>
+          onCommit={name => renameTeam(activeTeam.id, name)}
+          inputStyle={{ width: '180px' }}
+        />
       </div>
     );
   }
 
   return (
     <button
-      onClick={beginNaming}
+      onClick={() => {
+        setDraftName(DEFAULT_TEAM_NAME);
+        setIsNamingNew(true);
+      }}
       disabled={isEmpty}
       title={isEmpty ? 'Add a Pokemon before saving' : 'Save this team'}
       style={{

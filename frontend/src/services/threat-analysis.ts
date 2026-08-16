@@ -6,12 +6,13 @@
 import { gen9, getSpecies, LEGAL_SPECIES_NAMES } from './dex';
 import { isChampionsLegal } from './champions-roster';
 import { calcDamage } from './damage-calc';
-import type { PokemonConfig, StatSpread } from '../types/pokemon';
+import type { PokemonConfig, StatSpread } from '@app-types/pokemon';
 import {
+  DEFAULT_IVS,
   MAX_STAT_POINTS_PER_STAT,
   MAX_STAT_POINTS_TOTAL,
   totalStatPoints,
-} from '../types/pokemon';
+} from '@app-types/pokemon';
 import type {
   TypeVulnerabilityProfile,
   TypeThreat,
@@ -19,7 +20,7 @@ import type {
   ThreatSeverity,
   Recommendation,
   ThreatAnalysisResult,
-} from '../types/threat-analysis';
+} from '@app-types/threat-analysis';
 
 // =============================================================================
 // Common competitive sets — a curated metagame pool to analyze against.
@@ -152,7 +153,7 @@ export function analyzeOhkoThreats(defenderConfig: PokemonConfig): OhkoThreat[] 
       ability: set.ability,
       item: set.item,
       evs: set.evs,
-      ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 },
+      ivs: { ...DEFAULT_IVS },
       moves: set.moves,
     };
 

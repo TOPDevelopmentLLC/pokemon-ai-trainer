@@ -11,7 +11,7 @@
 import { Dex } from '@pkmn/dex';
 import { Generations } from '@pkmn/data';
 import { CHAMPIONS_LEGAL_SPECIES } from './champions-roster';
-import { STAT_LABELS, type StatSpread } from '../types/pokemon';
+import { STAT_LABELS, type StatSpread } from '@app-types/pokemon';
 
 export const generations = new Generations(Dex);
 export const gen9 = generations.get(9);

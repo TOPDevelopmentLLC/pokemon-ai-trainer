@@ -1,5 +1,5 @@
-import type { PokemonConfig, StatSpread } from '../../types';
-import { useThreatAnalysis } from '../../hooks/useThreatAnalysis';
+import type { PokemonConfig, StatSpread } from '@app-types';
+import { useThreatAnalysis } from '@hooks/useThreatAnalysis';
 import { PokemonConfigPanel } from './PokemonConfigPanel';
 import { TypeThreatsSection } from './TypeThreatsSection';
 import { OhkoThreatsSection } from './OhkoThreatsSection';

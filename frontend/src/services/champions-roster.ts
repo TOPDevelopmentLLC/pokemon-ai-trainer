@@ -8,7 +8,7 @@
  * and exposes membership checks over the result.
  */
 import { Dex } from '@pkmn/dex';
-import rosterData from '../data/pokemon-champions-legal.json';
+import rosterData from '@data/pokemon-champions-legal.json';
 
 interface RosterEntry {
   id: string;

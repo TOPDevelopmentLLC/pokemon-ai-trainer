@@ -1,4 +1,4 @@
-import { useTeam } from '../../hooks/useTeam';
+import { useTeam } from '@hooks/useTeam';
 
 /**
  * Surfaced when a write to localStorage fails (quota exceeded, storage
