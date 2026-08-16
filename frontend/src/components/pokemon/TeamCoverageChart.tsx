@@ -1,5 +1,6 @@
 import type { TypeCoverage, TeamCoverageResult } from '../../types/team-coverage';
 import { TypeBadge } from '../common/TypeBadge';
+import { CoverageWeakestSummary } from './CoverageWeakestSummary';
 
 interface TeamCoverageChartProps {
   result: TeamCoverageResult;
@@ -114,8 +115,6 @@ export const TeamCoverageChart = ({ result }: TeamCoverageChartProps) => {
   // its width, with a floor of 1 to avoid dividing by zero on a flat team.
   const scale = Math.max(1, ...coverage.map(c => Math.abs(c.score)));
 
-  const worst = coverage.filter(c => c.score < 0).sort((a, b) => a.score - b.score);
-
   return (
     <div style={{ padding: '16px', overflowY: 'auto', height: '100%' }}>
       <div style={{ marginBottom: '4px', display: 'flex', alignItems: 'baseline', gap: '8px' }}>
@@ -148,22 +147,7 @@ export const TeamCoverageChart = ({ result }: TeamCoverageChartProps) => {
         ))}
       </div>
 
-      {/* Summary of the softest matchups */}
-      {worst.length > 0 && (
-        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #1e293b' }}>
-          <div style={{ fontSize: '11px', color: '#ef4444', fontWeight: 600, textTransform: 'uppercase', marginBottom: '8px' }}>
-            Weakest Coverage
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-            {worst.slice(0, 5).map(c => (
-              <span key={c.type} style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                <TypeBadge type={c.type} />
-                <span style={{ fontSize: '12px', fontWeight: 700, color: '#ef4444' }}>{c.score}</span>
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
+      <CoverageWeakestSummary coverage={coverage} />
     </div>
   );
 };
