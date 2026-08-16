@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useRef } from 'react';
 import type { PokemonConfig, StatSpread } from '@app-types';
 import { MAX_STAT_POINTS_PER_STAT, MAX_STAT_POINTS_TOTAL, totalStatPoints } from '@app-types';
-import { getSpeciesAbilities, getAllNatures, getAllItems } from '@services/dex';
+import {
+  getAbilityDescription,
+  getSpeciesAbilities,
+  getAllNatures,
+  getAllItems,
+} from '@services/dex';
 import { LabeledSelect } from '@components/common/LabeledSelect';
 import { PokemonHeader } from './PokemonHeader';
 import { BaseStatsPanel } from './BaseStatsPanel';
@@ -18,6 +23,7 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
 
   // Abilities are a pure function of species — derive rather than store.
   const abilities = useMemo(() => getSpeciesAbilities(config.species), [config.species]);
+  const abilityDescription = config.ability ? getAbilityDescription(config.ability) : null;
 
   // Keep the latest config/onChange reachable without making the auto-select
   // effect re-run on every parent render. Written in an effect, since refs
@@ -79,6 +85,21 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
           emptyOption="None"
         />
       </div>
+
+      {/* A <select> option cannot carry a tooltip, so the chosen ability is
+          explained here instead. */}
+      {abilityDescription && (
+        <p
+          style={{
+            margin: '-8px 0 16px',
+            fontSize: '11px',
+            color: '#64748b',
+            lineHeight: 1.5,
+          }}
+        >
+          <strong style={{ color: '#94a3b8' }}>{config.ability}:</strong> {abilityDescription}
+        </p>
+      )}
 
       <StatPointsSection spread={config.evs} onChange={updateEv} />
     </div>

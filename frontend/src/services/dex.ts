@@ -10,7 +10,10 @@
  */
 import { Dex } from '@pkmn/dex';
 import { Generations } from '@pkmn/data';
+import { Sprites } from '@pkmn/img';
 import { CHAMPIONS_LEGAL_SPECIES } from './champions-roster';
+import { CHAMPIONS_MEGA_ABILITIES } from '@data/champions-abilities';
+import { CHAMPIONS_ABILITY_DESCRIPTIONS } from '@data/champions-ability-descriptions';
 import { STAT_LABELS, type StatSpread } from '@app-types/pokemon';
 
 export const generations = new Generations(Dex);
@@ -49,10 +52,19 @@ export function getSpecies(speciesName: string) {
   return species?.exists ? species : null;
 }
 
-/** Get abilities available for a species */
+/**
+ * Get abilities available for a species.
+ *
+ * Champions-original Megas have no entry in @pkmn/dex, which reports the base
+ * species' abilities for them. CHAMPIONS_MEGA_ABILITIES overrides those where
+ * the real values are known; an empty override falls through to the dex.
+ */
 export function getSpeciesAbilities(speciesName: string): string[] {
   const species = getSpecies(speciesName);
   if (!species) return [];
+
+  const override = CHAMPIONS_MEGA_ABILITIES[species.name];
+  if (override?.length) return [...override];
 
   const abilities: string[] = [];
   const data = species.abilities;
@@ -61,6 +73,21 @@ export function getSpeciesAbilities(speciesName: string): string[] {
   if (data.H) abilities.push(data.H);
   if (data.S) abilities.push(data.S);
   return abilities;
+}
+
+/**
+ * Description for an ability, or null when nothing is known about it.
+ * Champions-original abilities are checked first since @pkmn/dex has no
+ * entry for them.
+ */
+export function getAbilityDescription(abilityName: string): string | null {
+  const champions = CHAMPIONS_ABILITY_DESCRIPTIONS[abilityName];
+  if (champions) return champions;
+
+  const ability = Dex.abilities.get(abilityName);
+  if (!ability?.exists) return null;
+
+  return ability.shortDesc || ability.desc || null;
 }
 
 /** Get moves a species can learn */
@@ -105,6 +132,29 @@ export function getTopBaseStats(speciesName: string, count = 2): { key: keyof St
   return STAT_LABELS.map(({ key, label }) => ({ key, label, value: species.baseStats[key] }))
     .sort((a, b) => b.value - a.value)
     .slice(0, count);
+}
+
+/**
+ * Sprite URL for a species.
+ *
+ * Champions introduces Mega Evolutions that do not exist in mainline games —
+ * Mega Scrafty, Mega Dragalge, Mega Raichu X/Y and 21 others. @pkmn/img has no
+ * artwork for them and hands back a gen5 PNG path that 404s, so those fall back
+ * to the base species' sprite rather than rendering a broken image.
+ */
+export function getSpriteUrl(speciesName: string): string {
+  const url = Sprites.getPokemon(speciesName, { gen: 'ani' }).url;
+
+  // A real animated sprite always resolves under /ani/; anything else is the
+  // library's fallback for artwork it does not have.
+  if (url.includes('/ani/')) return url;
+
+  const baseSpecies = getSpecies(speciesName)?.baseSpecies;
+  if (baseSpecies && baseSpecies !== speciesName) {
+    return Sprites.getPokemon(baseSpecies, { gen: 'ani' }).url;
+  }
+
+  return url;
 }
 
 /** Get type names for a species */

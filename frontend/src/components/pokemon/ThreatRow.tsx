@@ -1,7 +1,7 @@
 import type { OhkoThreat } from '@app-types/threat-analysis';
+import { getSpriteUrl } from '@services/dex';
 import { TypeBadge } from '@components/common/TypeBadge';
 import { SEVERITY_LABELS } from './severity-labels';
-import { Sprites } from '@pkmn/img';
 
 interface ThreatRowProps {
   threat: OhkoThreat;
@@ -19,7 +19,7 @@ function formatSpread(evs: OhkoThreat['attackerSet']['evs']): string {
 
 export const ThreatRow = ({ threat, isExpanded, onToggle }: ThreatRowProps) => {
   const severity = SEVERITY_LABELS[threat.severity];
-  const sprite = Sprites.getPokemon(threat.attackerSpecies, { gen: 'ani' });
+  const spriteUrl = getSpriteUrl(threat.attackerSpecies);
 
   return (
     <div>
@@ -40,7 +40,7 @@ export const ThreatRow = ({ threat, isExpanded, onToggle }: ThreatRowProps) => {
           textAlign: 'left',
         }}
       >
-        <img src={sprite.url} alt={threat.attackerSpecies} width={32} height={32} />
+        <img src={spriteUrl} alt={threat.attackerSpecies} width={32} height={32} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span style={{ fontWeight: 600, fontSize: '13px' }}>{threat.attackerSpecies}</span>

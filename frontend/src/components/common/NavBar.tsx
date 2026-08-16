@@ -26,6 +26,9 @@ export const NavBar = ({ children }: { children?: React.ReactNode }) => {
       <NavLink to="/" style={({ isActive }) => linkStyle(isActive)} end>
         Builder
       </NavLink>
+      <NavLink to="/search" style={({ isActive }) => linkStyle(isActive)}>
+        Search
+      </NavLink>
       <NavLink to="/teams" style={({ isActive }) => linkStyle(isActive)}>
         Saved Teams
       </NavLink>

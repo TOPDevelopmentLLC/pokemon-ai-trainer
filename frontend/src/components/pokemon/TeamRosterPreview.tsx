@@ -1,7 +1,6 @@
 import type { TeamSlot } from '@app-types';
-import { getSpecies } from '@services/dex';
+import { getSpecies, getSpriteUrl } from '@services/dex';
 import { TypeBadge } from '@components/common/TypeBadge';
-import { Sprites } from '@pkmn/img';
 
 interface TeamRosterPreviewProps {
   /** Filled slots only; empty slots are not shown. */
@@ -38,7 +37,7 @@ export const TeamRosterPreview = ({ members }: TeamRosterPreviewProps) => {
             }}
           >
             <img
-              src={Sprites.getPokemon(slot.config.species, { gen: 'ani' }).url}
+              src={getSpriteUrl(slot.config.species)}
               alt={slot.config.species}
               width={40}
               height={40}

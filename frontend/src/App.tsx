@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { TeamProvider } from '@context/TeamContext';
 import { TeamBuilderPage } from '@pages/TeamBuilderPage';
 import { SavedTeamsPage } from '@pages/SavedTeamsPage';
+import { SpeciesSearchPage } from '@pages/SpeciesSearchPage';
 import { StorageWarning } from '@components/common/StorageWarning';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <StorageWarning />
           <Routes>
             <Route path="/" element={<TeamBuilderPage />} />
+            <Route path="/search" element={<SpeciesSearchPage />} />
             <Route path="/teams" element={<SavedTeamsPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
