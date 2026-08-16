@@ -1,5 +1,5 @@
-import type { TypeCoverage, TeamCoverageResult } from '../../types/team-coverage';
-import { TypeBadge } from '../common/TypeBadge';
+import type { TypeCoverage, TeamCoverageResult } from '@app-types/team-coverage';
+import { TypeBadge } from '@components/common/TypeBadge';
 import { CoverageWeakestSummary } from './CoverageWeakestSummary';
 
 interface TeamCoverageChartProps {

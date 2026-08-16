@@ -1,5 +1,5 @@
-import type { OhkoThreat } from '../../types/threat-analysis';
-import { TypeBadge } from '../common/TypeBadge';
+import type { OhkoThreat } from '@app-types/threat-analysis';
+import { TypeBadge } from '@components/common/TypeBadge';
 import { SEVERITY_LABELS } from './severity-labels';
 import { Sprites } from '@pkmn/img';
 

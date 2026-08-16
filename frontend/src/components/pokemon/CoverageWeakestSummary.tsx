@@ -1,5 +1,5 @@
-import type { TypeCoverage } from '../../types/team-coverage';
-import { TypeBadge } from '../common/TypeBadge';
+import type { TypeCoverage } from '@app-types/team-coverage';
+import { TypeBadge } from '@components/common/TypeBadge';
 
 /** How many of the softest matchups to list. */
 const MAX_LISTED = 5;

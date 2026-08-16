@@ -1,5 +1,5 @@
-import type { Recommendation } from '../../types/threat-analysis';
-import type { StatSpread } from '../../types/pokemon';
+import type { Recommendation } from '@app-types/threat-analysis';
+import type { StatSpread } from '@app-types/pokemon';
 import { RecommendationCard } from './RecommendationCard';
 
 interface RecommendationsSectionProps {

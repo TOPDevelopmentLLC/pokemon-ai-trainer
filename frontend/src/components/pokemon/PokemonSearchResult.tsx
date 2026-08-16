@@ -1,6 +1,6 @@
-import { getSpecies, getTopBaseStats } from '../../services/dex';
-import { TypeBadge } from '../common/TypeBadge';
-import { StatBar } from '../common/StatBar';
+import { getSpecies, getTopBaseStats } from '@services/dex';
+import { TypeBadge } from '@components/common/TypeBadge';
+import { StatBar } from '@components/common/StatBar';
 import { Sprites } from '@pkmn/img';
 
 interface PokemonSearchResultProps {

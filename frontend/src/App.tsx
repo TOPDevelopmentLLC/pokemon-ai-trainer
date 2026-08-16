@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { TeamProvider } from './context/TeamContext';
-import { TeamBuilderPage } from './pages/TeamBuilderPage';
-import { SavedTeamsPage } from './pages/SavedTeamsPage';
-import { StorageWarning } from './components/common/StorageWarning';
+import { TeamProvider } from '@context/TeamContext';
+import { TeamBuilderPage } from '@pages/TeamBuilderPage';
+import { SavedTeamsPage } from '@pages/SavedTeamsPage';
+import { StorageWarning } from '@components/common/StorageWarning';
 
 function App() {
   return (

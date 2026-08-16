@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { searchSpecies } from '../services/dex';
+import { searchSpecies } from '@services/dex';
 
 const DEBOUNCE_MS = 150;
 /** Shortest query that runs a search; shorter input returns no results. */

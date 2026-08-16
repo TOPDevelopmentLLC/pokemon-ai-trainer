@@ -1,5 +1,5 @@
-import { getSpecies } from '../../services/dex';
-import { TypeBadge } from '../common/TypeBadge';
+import { getSpecies } from '@services/dex';
+import { TypeBadge } from '@components/common/TypeBadge';
 import { Sprites } from '@pkmn/img';
 
 interface PokemonHeaderProps {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { OhkoThreat } from '../../types/threat-analysis';
+import type { OhkoThreat } from '@app-types/threat-analysis';
 import { ThreatRow } from './ThreatRow';
 
 interface ThreatListProps {

@@ -4,8 +4,8 @@
  * attacking type, so the team's collective holes are visible at a glance.
  */
 import { gen9, getSpecies } from './dex';
-import type { Team } from '../types/pokemon';
-import type { CoverageContribution, TypeCoverage, TeamCoverageResult } from '../types/team-coverage';
+import type { Team } from '@app-types/pokemon';
+import type { CoverageContribution, TypeCoverage, TeamCoverageResult } from '@app-types/team-coverage';
 
 /** Attacking types to chart, in canonical dex order. Excludes ??? and Stellar. */
 export function getChartableTypes(): string[] {

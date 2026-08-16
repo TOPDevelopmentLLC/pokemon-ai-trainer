@@ -1,4 +1,4 @@
-import type { RecommendationCategory } from '../../types/threat-analysis';
+import type { RecommendationCategory } from '@app-types/threat-analysis';
 
 const CATEGORY_LABELS: Record<string, string> = {
   ev_spread: 'EVs',

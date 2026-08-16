@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import type { PokemonConfig } from '../types';
-import type { ThreatAnalysisResult } from '../types/threat-analysis';
-import { runThreatAnalysis } from '../services/threat-analysis';
+import type { PokemonConfig } from '@app-types';
+import type { ThreatAnalysisResult } from '@app-types/threat-analysis';
+import { runThreatAnalysis } from '@services/threat-analysis';
 
 interface UseThreatAnalysisReturn {
   result: ThreatAnalysisResult | null;

@@ -1,6 +1,6 @@
-import type { Recommendation } from '../../types/threat-analysis';
-import type { StatSpread } from '../../types/pokemon';
-import { TypeBadge } from '../common/TypeBadge';
+import type { Recommendation } from '@app-types/threat-analysis';
+import type { StatSpread } from '@app-types/pokemon';
+import { TypeBadge } from '@components/common/TypeBadge';
 import { RecommendationCategoryBadge } from './RecommendationCategoryBadge';
 import { Sprites } from '@pkmn/img';
 

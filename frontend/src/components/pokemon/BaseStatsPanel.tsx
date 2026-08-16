@@ -1,6 +1,6 @@
-import { getSpecies } from '../../services/dex';
-import { STAT_LABELS } from '../../types';
-import { StatBar } from '../common/StatBar';
+import { getSpecies } from '@services/dex';
+import { STAT_LABELS } from '@app-types';
+import { StatBar } from '@components/common/StatBar';
 
 interface BaseStatsPanelProps {
   species: string;

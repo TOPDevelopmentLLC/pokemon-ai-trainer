@@ -1,4 +1,4 @@
-import { MIN_QUERY_LENGTH } from '../../hooks/usePokemonSearch';
+import { MIN_QUERY_LENGTH } from '@hooks/usePokemonSearch';
 
 interface SearchEmptyStateProps {
   query: string;

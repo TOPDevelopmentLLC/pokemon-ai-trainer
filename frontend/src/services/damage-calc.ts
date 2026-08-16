@@ -4,8 +4,8 @@
  */
 import { calculate, Pokemon, Move, Field, Generations, toID } from '@smogon/calc';
 import type { TypeName } from '@smogon/calc/dist/data/interface';
-import { statPointsToEvs } from '../types';
-import type { PokemonConfig, StatSpread } from '../types';
+import { statPointsToEvs } from '@app-types';
+import type { PokemonConfig, StatSpread } from '@app-types';
 
 const gen = Generations.get(9);
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTeam } from '../../hooks/useTeam';
+import { useTeam } from '@hooks/useTeam';
 import { PokemonSearchModal } from './PokemonSearchModal';
 import { TeamSlotRow } from './TeamSlotRow';
 

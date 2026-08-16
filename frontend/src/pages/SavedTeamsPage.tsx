@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTeam } from '../hooks/useTeam';
-import { NavBar } from '../components/common/NavBar';
-import { InlineEditableName } from '../components/common/InlineEditableName';
-import { TeamRosterPreview } from '../components/pokemon/TeamRosterPreview';
-import { DEFAULT_TEAM_NAME, type SavedTeam } from '../types';
+import { useTeam } from '@hooks/useTeam';
+import { NavBar } from '@components/common/NavBar';
+import { InlineEditableName } from '@components/common/InlineEditableName';
+import { TeamRosterPreview } from '@components/pokemon/TeamRosterPreview';
+import { DEFAULT_TEAM_NAME, type SavedTeam } from '@app-types';
 
 function formatDate(iso: string): string {
   const date = new Date(iso);

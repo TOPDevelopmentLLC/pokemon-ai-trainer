@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef } from 'react';
-import type { PokemonConfig, StatSpread } from '../../types';
-import { MAX_STAT_POINTS_PER_STAT, MAX_STAT_POINTS_TOTAL, totalStatPoints } from '../../types';
-import { getSpeciesAbilities, getAllNatures, getAllItems } from '../../services/dex';
-import { LabeledSelect } from '../common/LabeledSelect';
+import type { PokemonConfig, StatSpread } from '@app-types';
+import { MAX_STAT_POINTS_PER_STAT, MAX_STAT_POINTS_TOTAL, totalStatPoints } from '@app-types';
+import { getSpeciesAbilities, getAllNatures, getAllItems } from '@services/dex';
+import { LabeledSelect } from '@components/common/LabeledSelect';
 import { PokemonHeader } from './PokemonHeader';
 import { BaseStatsPanel } from './BaseStatsPanel';
 import { StatPointsSection } from './StatPointsSection';

@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import type { Team, TeamSlot, PokemonConfig, SavedTeam } from '../types';
+import type { Team, TeamSlot, PokemonConfig, SavedTeam } from '@app-types';
 
 export interface TeamContextValue {
   team: Team;

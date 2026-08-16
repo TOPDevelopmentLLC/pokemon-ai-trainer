@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useTeam } from '../hooks/useTeam';
-import { useTeamCoverage } from '../hooks/useTeamCoverage';
-import { TeamPanel } from '../components/pokemon/TeamPanel';
-import { ThreatAnalysisView } from '../components/pokemon/ThreatAnalysisView';
-import { TeamCoverageChart } from '../components/pokemon/TeamCoverageChart';
-import { Tabs, type TabDefinition } from '../components/common/Tabs';
-import { NavBar } from '../components/common/NavBar';
-import { TeamNameBar } from '../components/pokemon/TeamNameBar';
+import { useTeam } from '@hooks/useTeam';
+import { useTeamCoverage } from '@hooks/useTeamCoverage';
+import { TeamPanel } from '@components/pokemon/TeamPanel';
+import { ThreatAnalysisView } from '@components/pokemon/ThreatAnalysisView';
+import { TeamCoverageChart } from '@components/pokemon/TeamCoverageChart';
+import { Tabs, type TabDefinition } from '@components/common/Tabs';
+import { NavBar } from '@components/common/NavBar';
+import { TeamNameBar } from '@components/pokemon/TeamNameBar';
 
 const TABS: TabDefinition[] = [
   { id: 'analysis', label: 'Threat Analysis' },

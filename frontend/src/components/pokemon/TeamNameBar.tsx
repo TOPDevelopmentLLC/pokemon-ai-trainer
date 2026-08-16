@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useTeam } from '../../hooks/useTeam';
-import { DEFAULT_TEAM_NAME } from '../../types';
-import { InlineEditableName } from '../common/InlineEditableName';
+import { useTeam } from '@hooks/useTeam';
+import { DEFAULT_TEAM_NAME } from '@app-types';
+import { InlineEditableName } from '@components/common/InlineEditableName';
 
 /**
  * Shows the open team's name and lets it be renamed inline.

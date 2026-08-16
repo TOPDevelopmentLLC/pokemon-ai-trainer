@@ -1,5 +1,5 @@
-import type { TypeVulnerabilityProfile, TypeThreat } from '../../types/threat-analysis';
-import { TypeBadge } from '../common/TypeBadge';
+import type { TypeVulnerabilityProfile, TypeThreat } from '@app-types/threat-analysis';
+import { TypeBadge } from '@components/common/TypeBadge';
 
 interface TypeThreatsSectionProps {
   profile: TypeVulnerabilityProfile;

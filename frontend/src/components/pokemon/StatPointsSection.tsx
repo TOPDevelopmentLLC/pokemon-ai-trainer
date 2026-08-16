@@ -1,5 +1,5 @@
-import { MAX_STAT_POINTS_PER_STAT, MAX_STAT_POINTS_TOTAL, totalStatPoints } from '../../types';
-import type { StatSpread } from '../../types';
+import { MAX_STAT_POINTS_PER_STAT, MAX_STAT_POINTS_TOTAL, totalStatPoints } from '@app-types';
+import type { StatSpread } from '@app-types';
 import { StatSpreadGrid } from './StatSpreadGrid';
 
 interface StatPointsSectionProps {

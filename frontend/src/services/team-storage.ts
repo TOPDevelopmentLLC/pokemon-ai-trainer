@@ -6,10 +6,10 @@
  * throwing during render. Writes are wrapped because localStorage throws
  * when full or when the browser blocks it (private mode, disabled cookies).
  */
-import { MAX_TEAM_SIZE, DEFAULT_IVS } from '../types/pokemon';
-import type { Team, TeamSlot } from '../types/pokemon';
-import type { PersistedState, SavedTeam } from '../types/saved-team';
-import { STORAGE_VERSION } from '../types/saved-team';
+import { MAX_TEAM_SIZE, DEFAULT_IVS } from '@app-types/pokemon';
+import type { Team, TeamSlot } from '@app-types/pokemon';
+import type { PersistedState, SavedTeam } from '@app-types/saved-team';
+import { STORAGE_VERSION } from '@app-types/saved-team';
 
 const STORAGE_KEY = 'pokemon-ai-trainer:state';
 

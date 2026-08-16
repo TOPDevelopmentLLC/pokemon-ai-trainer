@@ -1,5 +1,5 @@
-import { STAT_LABELS } from '../../types';
-import type { StatSpread } from '../../types';
+import { STAT_LABELS } from '@app-types';
+import type { StatSpread } from '@app-types';
 
 interface StatSpreadGridProps {
   spread: StatSpread;

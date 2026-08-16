@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { usePokemonSearch } from '../../hooks/usePokemonSearch';
+import { usePokemonSearch } from '@hooks/usePokemonSearch';
 import { SearchInput } from './SearchInput';
 import { PokemonSearchResult } from './PokemonSearchResult';
 import { SearchEmptyState } from './SearchEmptyState';
