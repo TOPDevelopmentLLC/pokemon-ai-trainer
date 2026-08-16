@@ -12,6 +12,7 @@ import { Dex } from '@pkmn/dex';
 import { Generations } from '@pkmn/data';
 import { Sprites } from '@pkmn/img';
 import { CHAMPIONS_LEGAL_SPECIES } from './champions-roster';
+import { CHAMPIONS_MEGA_ABILITIES } from '@data/champions-abilities';
 import { STAT_LABELS, type StatSpread } from '@app-types/pokemon';
 
 export const generations = new Generations(Dex);
@@ -50,10 +51,19 @@ export function getSpecies(speciesName: string) {
   return species?.exists ? species : null;
 }
 
-/** Get abilities available for a species */
+/**
+ * Get abilities available for a species.
+ *
+ * Champions-original Megas have no entry in @pkmn/dex, which reports the base
+ * species' abilities for them. CHAMPIONS_MEGA_ABILITIES overrides those where
+ * the real values are known; an empty override falls through to the dex.
+ */
 export function getSpeciesAbilities(speciesName: string): string[] {
   const species = getSpecies(speciesName);
   if (!species) return [];
+
+  const override = CHAMPIONS_MEGA_ABILITIES[species.name];
+  if (override?.length) return [...override];
 
   const abilities: string[] = [];
   const data = species.abilities;
