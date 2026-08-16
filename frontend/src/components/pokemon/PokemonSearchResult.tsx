@@ -1,7 +1,6 @@
-import { getSpecies, getTopBaseStats } from '@services/dex';
+import { getSpecies, getSpriteUrl, getTopBaseStats } from '@services/dex';
 import { TypeBadge } from '@components/common/TypeBadge';
 import { StatBar } from '@components/common/StatBar';
-import { Sprites } from '@pkmn/img';
 
 interface PokemonSearchResultProps {
   species: string;
@@ -13,7 +12,7 @@ export const PokemonSearchResult = ({ species, onSelect }: PokemonSearchResultPr
   const data = getSpecies(species);
   if (!data) return null;
 
-  const sprite = Sprites.getPokemon(species, { gen: 'ani' });
+  const spriteUrl = getSpriteUrl(species);
 
   return (
     <button
@@ -35,11 +34,10 @@ export const PokemonSearchResult = ({ species, onSelect }: PokemonSearchResultPr
       onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
     >
       <img
-        src={sprite.url}
+        src={spriteUrl}
         alt={species}
         width={48}
         height={48}
-        style={{ imageRendering: sprite.pixelated ? 'pixelated' : 'auto' }}
       />
       <div style={{ flex: 1 }}>
         <div style={{ fontWeight: 600, marginBottom: '4px' }}>{species}</div>

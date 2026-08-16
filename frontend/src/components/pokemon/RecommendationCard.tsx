@@ -1,8 +1,8 @@
 import type { Recommendation } from '@app-types/threat-analysis';
 import type { StatSpread } from '@app-types/pokemon';
+import { getSpriteUrl } from '@services/dex';
 import { TypeBadge } from '@components/common/TypeBadge';
 import { RecommendationCategoryBadge } from './RecommendationCategoryBadge';
-import { Sprites } from '@pkmn/img';
 
 interface RecommendationCardProps {
   recommendation: Recommendation;
@@ -58,7 +58,7 @@ export const RecommendationCard = ({
       {recommendation.category === 'teammate' && (
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
           <img
-            src={Sprites.getPokemon(recommendation.species, { gen: 'ani' }).url}
+            src={getSpriteUrl(recommendation.species)}
             alt={recommendation.species}
             width={40}
             height={40}

@@ -1,8 +1,8 @@
 import { STAT_LABELS } from '@app-types';
 import type { StatSpread } from '@app-types';
 import type { SpeciesSearchResult } from '@app-types/species-search';
+import { getSpriteUrl } from '@services/dex';
 import { TypeBadge } from '@components/common/TypeBadge';
-import { Sprites } from '@pkmn/img';
 
 interface SpeciesSearchRowProps {
   result: SpeciesSearchResult;
@@ -27,7 +27,7 @@ export const SpeciesSearchRow = ({ result, sortStat, onAdd, canAdd }: SpeciesSea
       }}
     >
       <img
-        src={Sprites.getPokemon(result.name, { gen: 'ani' }).url}
+        src={getSpriteUrl(result.name)}
         alt={result.name}
         width={48}
         height={48}
