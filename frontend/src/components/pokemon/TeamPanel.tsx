@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useTeam } from '../../hooks/useTeam';
 import { PokemonSearchModal } from './PokemonSearchModal';
-import { getSpecies } from '../../services/dex';
-import { TypeBadge } from '../common/TypeBadge';
-import { Sprites } from '@pkmn/img';
+import { TeamSlotRow } from './TeamSlotRow';
 
 export const TeamPanel = () => {
   const { team, selectedSlotIndex, addPokemon, removePokemon, selectSlot } = useTeam();
@@ -31,56 +29,13 @@ export const TeamPanel = () => {
 
       <div style={{ flex: 1, overflowY: 'auto', padding: '8px' }}>
         {team.map((slot, index) => (
-          <div
+          <TeamSlotRow
             key={index}
-            onClick={() => slot ? selectSlot(index) : undefined}
-            style={{
-              display: 'flex', alignItems: 'center', gap: '10px',
-              padding: '10px 12px', marginBottom: '4px', borderRadius: '8px',
-              backgroundColor: selectedSlotIndex === index ? '#1e293b' : 'transparent',
-              border: selectedSlotIndex === index ? '1px solid #334155' : '1px solid transparent',
-              cursor: slot ? 'pointer' : 'default',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            {slot ? (
-              <>
-                <img
-                  src={Sprites.getPokemon(slot.config.species, { gen: 'ani' }).url}
-                  alt={slot.config.species}
-                  width={40} height={40}
-                  style={{ imageRendering: 'auto' }}
-                />
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontWeight: 600, fontSize: '14px', color: '#e2e8f0', marginBottom: '2px' }}>
-                    {slot.config.species}
-                  </div>
-                  <div style={{ display: 'flex', gap: '3px' }}>
-                    {getSpecies(slot.config.species)?.types.map(t => (
-                      <TypeBadge key={t} type={t} />
-                    ))}
-                  </div>
-                </div>
-                <button
-                  onClick={e => { e.stopPropagation(); removePokemon(index); }}
-                  title="Remove"
-                  style={{
-                    border: 'none', background: 'none', cursor: 'pointer',
-                    color: '#64748b', fontSize: '16px', padding: '4px',
-                  }}
-                >
-                  ✕
-                </button>
-              </>
-            ) : (
-              <div style={{
-                width: '100%', textAlign: 'center', color: '#475569',
-                fontSize: '13px', padding: '6px 0',
-              }}>
-                Empty Slot
-              </div>
-            )}
-          </div>
+            slot={slot}
+            isSelected={selectedSlotIndex === index}
+            onSelect={() => selectSlot(index)}
+            onRemove={() => removePokemon(index)}
+          />
         ))}
       </div>
 
