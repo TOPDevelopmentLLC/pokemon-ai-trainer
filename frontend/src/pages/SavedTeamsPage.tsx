@@ -4,8 +4,9 @@ import { useTeam } from '../hooks/useTeam';
 import { getSpecies } from '../services/dex';
 import { NavBar } from '../components/common/NavBar';
 import { TypeBadge } from '../components/common/TypeBadge';
+import { InlineEditableName } from '../components/common/InlineEditableName';
 import { Sprites } from '@pkmn/img';
-import type { SavedTeam } from '../types';
+import { DEFAULT_TEAM_NAME, type SavedTeam } from '../types';
 
 function formatDate(iso: string): string {
   const date = new Date(iso);
@@ -23,17 +24,9 @@ interface TeamCardProps {
 }
 
 const TeamCard = ({ team, isActive, onOpen, onRename, onDuplicate, onDelete }: TeamCardProps) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [draftName, setDraftName] = useState(team.name);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   const members = team.slots.filter(slot => slot !== null);
-
-  const commitRename = () => {
-    setIsEditing(false);
-    if (draftName.trim() && draftName !== team.name) onRename(draftName);
-    else setDraftName(team.name);
-  };
 
   return (
     <div
@@ -46,54 +39,21 @@ const TeamCard = ({ team, isActive, onOpen, onRename, onDuplicate, onDelete }: T
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-        {isEditing ? (
-          <input
-            value={draftName}
-            autoFocus
-            onChange={e => setDraftName(e.target.value)}
-            onBlur={commitRename}
-            onKeyDown={e => {
-              if (e.key === 'Enter') commitRename();
-              if (e.key === 'Escape') {
-                setDraftName(team.name);
-                setIsEditing(false);
-              }
-            }}
-            style={{
-              flex: 1,
-              padding: '5px 8px',
-              backgroundColor: '#1e293b',
-              border: '1px solid #334155',
-              borderRadius: '6px',
-              color: '#e2e8f0',
-              fontSize: '15px',
-              fontWeight: 700,
-            }}
-          />
-        ) : (
-          <button
-            onClick={() => setIsEditing(true)}
-            title="Rename"
-            style={{
-              flex: 1,
-              textAlign: 'left',
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              color: '#e2e8f0',
-              fontSize: '15px',
-              fontWeight: 700,
-              cursor: 'text',
-            }}
-          >
-            {team.name}
-            {isActive && (
-              <span style={{ marginLeft: '8px', fontSize: '10px', color: '#38bdf8', fontWeight: 600 }}>
-                OPEN
-              </span>
-            )}
-          </button>
-        )}
+        <InlineEditableName
+          value={team.name}
+          fallback={DEFAULT_TEAM_NAME}
+          onCommit={onRename}
+          displayStyle={{ flex: 1, fontSize: '15px' }}
+          inputStyle={{ flex: 1, fontSize: '15px', fontWeight: 700 }}
+        >
+          {isActive && (
+            <span
+              style={{ marginLeft: '8px', fontSize: '10px', color: '#38bdf8', fontWeight: 600 }}
+            >
+              OPEN
+            </span>
+          )}
+        </InlineEditableName>
 
         <span style={{ fontSize: '11px', color: '#64748b', whiteSpace: 'nowrap' }}>
           {members.length}/6 &middot; {formatDate(team.updatedAt)}
