@@ -51,15 +51,12 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
 
-      # Hashed filenames under assets/ can cache forever; a new build produces
-      # new names. Everything at the root is excluded and handled below.
+      # Only assets/ carries content-hashed filenames, so only it is safe to
+      # cache forever. Root-level files are handled in the steps below.
       - name: Sync hashed assets to S3 (long cache)
         run: |
-          aws s3 sync dist/ "s3://${{ vars.S3_BUCKET }}/" \
+          aws s3 sync dist/assets/ "s3://${{ vars.S3_BUCKET }}/assets/" \
             --delete \
-            --exclude "index.html" \
-            --exclude "favicon.svg" \
-            --exclude "icons.svg" \
             --cache-control "public, max-age=31536000, immutable"
 
       # index.html must never be cached, or clients keep loading the old bundle.
@@ -69,15 +66,25 @@ jobs:
             --cache-control "no-cache, no-store, must-revalidate" \
             --content-type "text/html"
 
-      - name: Upload unhashed SVG assets (short cache)
+      # Root-level assets (favicons, icons) keep their real filenames, so they
+      # get a short cache and are discovered rather than listed by name — a new
+      # icon should not need a workflow edit.
+      - name: Upload unhashed root assets (short cache)
         run: |
-          for asset in favicon.svg icons.svg; do
-            if [ -f "dist/$asset" ]; then
-              aws s3 cp "dist/$asset" "s3://${{ vars.S3_BUCKET }}/$asset" \
-                --cache-control "public, max-age=86400" \
-                --content-type "image/svg+xml"
-            fi
-          done
+          find dist -maxdepth 1 -type f ! -name 'index.html' -print0 |
+            while IFS= read -r -d '' file; do
+              aws s3 cp "$file" "s3://${{ vars.S3_BUCKET }}/$(basename "$file")" \
+                --cache-control "public, max-age=86400"
+            done
+
+      # assets/ was synced with --delete above; this prunes stale root-level
+      # files (a renamed favicon, say) without touching the hashed bundles.
+      - name: Prune removed root assets
+        run: |
+          aws s3 sync dist/ "s3://${{ vars.S3_BUCKET }}/" \
+            --delete \
+            --exclude "assets/*" \
+            --cache-control "public, max-age=86400"
 
       - name: Invalidate CloudFront
         run: |
