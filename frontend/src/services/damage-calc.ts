@@ -10,11 +10,16 @@ import type { PokemonConfig, StatSpread } from '@app-types';
 const gen = Generations.get(9);
 
 export interface DamageResult {
+  /** Percentage of the defender's max HP, 0-100+. */
   minPercent: number;
   maxPercent: number;
+  /** Raw damage in HP points, before conversion to a percentage. */
+  minDamage: number;
+  maxDamage: number;
   ohkoChance: number;
   koChanceText: string;
   description: string;
+  /** The defender's max HP at their configured stat points. */
   defenderMaxHp: number;
 }
 
@@ -71,9 +76,17 @@ export function calcDamage(
 
     const result = calculate(gen, attacker, defender, move, field);
 
-    const range = result.range();
-    const minPercent = range[0];
-    const maxPercent = range[1];
+    // `range()` returns raw damage in HP points, not percentages. Convert
+    // against the defender's ACTUAL max HP, which already reflects the stat
+    // points they have invested in HP — the same raw damage is a smaller
+    // fraction of a bulkier spread.
+    const defenderMaxHp = defender.maxHP();
+    const [minDamage, maxDamage] = result.range();
+    const toPercent = (damage: number) =>
+      defenderMaxHp > 0 ? (damage / defenderMaxHp) * 100 : 0;
+
+    const minPercent = toPercent(minDamage);
+    const maxPercent = toPercent(maxDamage);
 
     const kochance = result.kochance();
     const ohkoChance = kochance.n === 1 ? (kochance.chance ?? 0) : 0;
@@ -81,10 +94,12 @@ export function calcDamage(
     return {
       minPercent,
       maxPercent,
+      minDamage,
+      maxDamage,
       ohkoChance,
       koChanceText: kochance.text,
       description: result.desc(),
-      defenderMaxHp: defender.maxHP(),
+      defenderMaxHp,
     };
   } catch {
     // Move may not exist, species may be invalid, etc.
