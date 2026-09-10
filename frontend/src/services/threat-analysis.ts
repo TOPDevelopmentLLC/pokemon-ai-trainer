@@ -17,6 +17,7 @@ import type {
   TypeVulnerabilityProfile,
   TypeThreat,
   OhkoThreat,
+  ThreatMove,
   ThreatSeverity,
   Recommendation,
   ThreatAnalysisResult,
@@ -273,6 +274,14 @@ export function analyzeTypeVulnerabilities(speciesName: string): {
 // OHKO Threat Analysis
 // =============================================================================
 
+/** Ranking order for severities, worst first. */
+const SEVERITY_ORDER: Record<ThreatSeverity, number> = {
+  ohko: 0,
+  near_ohko: 1,
+  two_hko: 2,
+  pressure: 3,
+};
+
 function classifySeverity(minPercent: number, maxPercent: number, ohkoChance: number): ThreatSeverity {
   if (ohkoChance > 0 || maxPercent >= 100) return 'ohko';
   if (minPercent >= 75) return 'near_ohko';
@@ -302,7 +311,9 @@ export async function analyzeOhkoThreats(defenderConfig: PokemonConfig): Promise
       moves: set.moves,
     };
 
-    // Only calc damaging moves
+    // Collect every dangerous move this attacker has, so it becomes one entry.
+    const dangerousMoves: ThreatMove[] = [];
+
     for (const moveName of set.moves) {
       const move = gen9.moves.get(moveName);
       if (!move || move.category === 'Status') continue;
@@ -325,35 +336,47 @@ export async function analyzeOhkoThreats(defenderConfig: PokemonConfig): Promise
       const result = calcDamage(attackerConfig, moveName, defenderConfig);
       if (!result) continue;
 
-      // Only include threats that deal meaningful damage (>40%)
+      // Only include moves that deal meaningful damage (>40%)
       if (result.maxPercent < 40) continue;
 
-      const severity = classifySeverity(result.minPercent, result.maxPercent, result.ohkoChance);
-
-      threats.push({
+      dangerousMoves.push({
         id: `threat-${threatId++}`,
-        attackerSpecies: set.species,
         move: moveName,
         moveType: move.type,
         moveCategory: move.category,
         damageRange: { min: result.minPercent, max: result.maxPercent },
         ohkoChance: result.ohkoChance,
-        severity,
-        attackerSet: {
-          nature: set.nature,
-          statPoints: set.statPoints,
-          ability: set.ability,
-          item: set.item,
-        },
+        severity: classifySeverity(result.minPercent, result.maxPercent, result.ohkoChance),
         description: result.description,
       });
     }
+
+    if (dangerousMoves.length === 0) continue;
+
+    // Most damaging first, so the collapsed row shows the worst case.
+    dangerousMoves.sort((a, b) => b.damageRange.max - a.damageRange.max);
+    const worst = dangerousMoves.reduce((a, b) =>
+      SEVERITY_ORDER[a.severity] <= SEVERITY_ORDER[b.severity] ? a : b,
+    );
+
+    threats.push({
+      id: `attacker-${set.species}`,
+      attackerSpecies: set.species,
+      attackerSet: {
+        nature: set.nature,
+        statPoints: set.statPoints,
+        ability: set.ability,
+        item: set.item,
+      },
+      moves: dangerousMoves,
+      severity: worst.severity,
+      damageRange: { ...dangerousMoves[0].damageRange },
+    });
   }
 
-  // Sort: OHKOs first, then by max damage descending
+  // Sort: most severe attackers first, then by their hardest hit.
   threats.sort((a, b) => {
-    const severityOrder: Record<ThreatSeverity, number> = { ohko: 0, near_ohko: 1, two_hko: 2, pressure: 3 };
-    const severityDiff = severityOrder[a.severity] - severityOrder[b.severity];
+    const severityDiff = SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity];
     if (severityDiff !== 0) return severityDiff;
     return b.damageRange.max - a.damageRange.max;
   });
@@ -402,8 +425,9 @@ export function generateRecommendations(
   for (const weakness of doubleWeakTypes) {
     const berry = berryMap[weakness.type];
     if (berry && defenderConfig.item !== berry) {
+      // An attacker counts if any of its dangerous moves is this type.
       const addressedThreats = actualOhkos
-        .filter(t => t.moveType === weakness.type)
+        .filter(t => t.moves.some(m => m.moveType === weakness.type))
         .map(t => t.id);
 
       recommendations.push({
@@ -422,8 +446,9 @@ export function generateRecommendations(
   const defensivePoints = defenderConfig.statPoints.hp + defenderConfig.statPoints.def + defenderConfig.statPoints.spd;
   if (defensivePoints < MAX_STAT_POINTS_PER_STAT / 2 && actualOhkos.length > 0) {
     // Determine if threats are more physical or special
-    const physicalThreats = actualOhkos.filter(t => t.moveCategory === 'Physical').length;
-    const specialThreats = actualOhkos.filter(t => t.moveCategory === 'Special').length;
+    // Categorize each attacker by its most damaging dangerous move.
+    const physicalThreats = actualOhkos.filter(t => t.moves[0]?.moveCategory === 'Physical').length;
+    const specialThreats = actualOhkos.filter(t => t.moves[0]?.moveCategory === 'Special').length;
 
     const defStat = physicalThreats >= specialThreats ? 'def' : 'spd';
     const defName = defStat === 'def' ? 'Defense' : 'Sp. Def';
