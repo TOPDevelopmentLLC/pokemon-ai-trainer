@@ -28,7 +28,7 @@ interface IndexedSpecies {
  * writes a Pokemon still finds it. Returns null when no alias applies.
  */
 function gameFacingName(dexName: string): string | null {
-  const mega = dexName.match(/^(.+)-Mega(?:-([XY]))?$/);
+  const mega = dexName.match(/^(.+)-Mega(?:-([XYZ]))?$/);
   if (mega) {
     const [, base, variant] = mega;
     return `mega ${base} ${variant ?? ''}`.trim().toLowerCase();
@@ -51,7 +51,7 @@ function gameFacingName(dexName: string): string | null {
 /**
  * Built once on first search. The roster is fixed at module load, so there is
  * nothing to invalidate, and rebuilding per keystroke would re-read the dex
- * for all 298 species.
+ * for every species in the roster.
  */
 let index: IndexedSpecies[] | null = null;
 

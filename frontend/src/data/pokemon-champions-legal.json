@@ -1,20 +1,28 @@
 {
   "game": "Pokemon Champions",
-  "regulation": "Regular Roster M-B",
-  "regulationEndDate": "2026-09-02",
-  "retrievedOn": "2026-08-11",
+  "regulation": "Regulation M-C",
+  "gameVersion": "1.2.0",
+  "regulationStartDate": "2026-09-09",
+  "regulationEndDate": "2026-12-02",
+  "retrievedOn": "2026-09-09",
   "sources": [
     "https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_in_Pok%C3%A9mon_Champions",
-    "https://www.serebii.net/pokemonchampions/pokemon.shtml"
+    "https://nintendoeverything.com/list-of-every-new-pokemon-just-added-to-pokemon-champions-for-1-2-0-update-and-regulation-m-c/",
+    "https://www.pokemon-zone.com/champions/regulations/m-c/",
+    "https://www.serebii.net/pokemonchampions/pokemon.shtml",
+    "https://www.vice.com/en/article/pokemon-champions-regulation-mc-all-new-pokemon-list/"
   ],
   "counts": {
-    "species": 208,
-    "megaEvolutions": 75,
-    "totalEntries": 298
+    "species": 231,
+    "megaEvolutions": 81,
+    "totalEntries": 333
   },
   "notes": [
     "Regional forms are listed as separate entries but count as one species.",
-    "Purely cosmetic or in-battle forms (Vivillon patterns, Furfrou trims, Alcremie flavours, Rotom appliances, Maushold/Palafin/Aegislash forms, etc.) are not broken out."
+    "Purely cosmetic or in-battle forms (Vivillon patterns, Furfrou trims, Alcremie flavours, Rotom appliances, Maushold/Palafin/Aegislash forms, etc.) are not broken out.",
+    "Mega Heatran was teased for M-C but is not in the 1.2.0 update; it is expected in a December update.",
+    "Farfetch'd and Mr. Mime are the Kantonian forms, not the Galarian ones, even though Sirfetch'd and Perrserker are present.",
+    "Pawmot appears in Pokemon Zone's M-C diff but is missing from several outlets' lists, which report 34 entries instead of 35."
   ],
   "pokemon": [
     {
@@ -27,7 +35,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-venusaur",
@@ -39,7 +48,8 @@
         "Poison"
       ],
       "isMega": true,
-      "baseSpecies": "Venusaur"
+      "baseSpecies": "Venusaur",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "charizard",
@@ -51,7 +61,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-charizard-x",
@@ -63,7 +74,8 @@
         "Dragon"
       ],
       "isMega": true,
-      "baseSpecies": "Charizard"
+      "baseSpecies": "Charizard",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-charizard-y",
@@ -75,7 +87,8 @@
         "Flying"
       ],
       "isMega": true,
-      "baseSpecies": "Charizard"
+      "baseSpecies": "Charizard",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "blastoise",
@@ -86,7 +99,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-blastoise",
@@ -97,7 +111,8 @@
         "Water"
       ],
       "isMega": true,
-      "baseSpecies": "Blastoise"
+      "baseSpecies": "Blastoise",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "beedrill",
@@ -109,7 +124,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-beedrill",
@@ -121,7 +137,8 @@
         "Poison"
       ],
       "isMega": true,
-      "baseSpecies": "Beedrill"
+      "baseSpecies": "Beedrill",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "pidgeot",
@@ -133,7 +150,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-pidgeot",
@@ -145,7 +163,8 @@
         "Flying"
       ],
       "isMega": true,
-      "baseSpecies": "Pidgeot"
+      "baseSpecies": "Pidgeot",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "arbok",
@@ -156,7 +175,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "pikachu",
@@ -168,7 +188,8 @@
       ],
       "isMega": false,
       "baseSpecies": null,
-      "notes": "Regular form only"
+      "notes": "Regular form only",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "raichu",
@@ -179,7 +200,8 @@
         "Electric"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "raichu-alolan",
@@ -191,7 +213,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-raichu-x",
@@ -202,7 +225,8 @@
         "Electric"
       ],
       "isMega": true,
-      "baseSpecies": "Raichu"
+      "baseSpecies": "Raichu",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-raichu-y",
@@ -213,7 +237,8 @@
         "Electric"
       ],
       "isMega": true,
-      "baseSpecies": "Raichu"
+      "baseSpecies": "Raichu",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "clefable",
@@ -224,7 +249,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-clefable",
@@ -236,7 +262,8 @@
         "Flying"
       ],
       "isMega": true,
-      "baseSpecies": "Clefable"
+      "baseSpecies": "Clefable",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "ninetales",
@@ -247,7 +274,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "ninetales-alolan",
@@ -259,7 +287,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "vileplume",
@@ -271,7 +300,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "arcanine",
@@ -282,7 +312,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "arcanine-hisuian",
@@ -294,7 +325,8 @@
         "Rock"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "alakazam",
@@ -305,7 +337,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-alakazam",
@@ -316,7 +349,8 @@
         "Psychic"
       ],
       "isMega": true,
-      "baseSpecies": "Alakazam"
+      "baseSpecies": "Alakazam",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "machamp",
@@ -327,7 +361,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "victreebel",
@@ -339,7 +374,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-victreebel",
@@ -351,7 +387,8 @@
         "Poison"
       ],
       "isMega": true,
-      "baseSpecies": "Victreebel"
+      "baseSpecies": "Victreebel",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "slowbro",
@@ -363,7 +400,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "slowbro-galarian",
@@ -375,7 +413,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-slowbro",
@@ -387,7 +426,8 @@
         "Psychic"
       ],
       "isMega": true,
-      "baseSpecies": "Slowbro"
+      "baseSpecies": "Slowbro",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "gengar",
@@ -399,7 +439,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-gengar",
@@ -411,7 +452,8 @@
         "Poison"
       ],
       "isMega": true,
-      "baseSpecies": "Gengar"
+      "baseSpecies": "Gengar",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "kangaskhan",
@@ -422,7 +464,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-kangaskhan",
@@ -433,7 +476,8 @@
         "Normal"
       ],
       "isMega": true,
-      "baseSpecies": "Kangaskhan"
+      "baseSpecies": "Kangaskhan",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "starmie",
@@ -445,7 +489,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-starmie",
@@ -457,7 +502,8 @@
         "Psychic"
       ],
       "isMega": true,
-      "baseSpecies": "Starmie"
+      "baseSpecies": "Starmie",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "pinsir",
@@ -468,7 +514,8 @@
         "Bug"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-pinsir",
@@ -480,7 +527,8 @@
         "Flying"
       ],
       "isMega": true,
-      "baseSpecies": "Pinsir"
+      "baseSpecies": "Pinsir",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "tauros",
@@ -491,7 +539,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "tauros-paldean-combat-breed",
@@ -502,7 +551,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "tauros-paldean-blaze-breed",
@@ -514,7 +564,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "tauros-paldean-aqua-breed",
@@ -526,7 +577,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "gyarados",
@@ -538,7 +590,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-gyarados",
@@ -550,7 +603,8 @@
         "Dark"
       ],
       "isMega": true,
-      "baseSpecies": "Gyarados"
+      "baseSpecies": "Gyarados",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "ditto",
@@ -561,7 +615,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "vaporeon",
@@ -572,7 +627,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "jolteon",
@@ -583,7 +639,8 @@
         "Electric"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "flareon",
@@ -594,7 +651,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "aerodactyl",
@@ -606,7 +664,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-aerodactyl",
@@ -618,7 +677,8 @@
         "Flying"
       ],
       "isMega": true,
-      "baseSpecies": "Aerodactyl"
+      "baseSpecies": "Aerodactyl",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "snorlax",
@@ -629,7 +689,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "dragonite",
@@ -641,7 +702,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-dragonite",
@@ -653,7 +715,8 @@
         "Flying"
       ],
       "isMega": true,
-      "baseSpecies": "Dragonite"
+      "baseSpecies": "Dragonite",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "meganium",
@@ -664,7 +727,8 @@
         "Grass"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-meganium",
@@ -676,7 +740,8 @@
         "Fairy"
       ],
       "isMega": true,
-      "baseSpecies": "Meganium"
+      "baseSpecies": "Meganium",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "typhlosion",
@@ -687,7 +752,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "typhlosion-hisuian",
@@ -699,7 +765,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "feraligatr",
@@ -710,7 +777,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-feraligatr",
@@ -722,7 +790,8 @@
         "Dragon"
       ],
       "isMega": true,
-      "baseSpecies": "Feraligatr"
+      "baseSpecies": "Feraligatr",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "ariados",
@@ -734,7 +803,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "ampharos",
@@ -745,7 +815,8 @@
         "Electric"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-ampharos",
@@ -757,7 +828,8 @@
         "Dragon"
       ],
       "isMega": true,
-      "baseSpecies": "Ampharos"
+      "baseSpecies": "Ampharos",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "azumarill",
@@ -769,7 +841,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "politoed",
@@ -780,7 +853,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "espeon",
@@ -791,7 +865,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "umbreon",
@@ -802,7 +877,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "slowking",
@@ -814,7 +890,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "slowking-galarian",
@@ -826,7 +903,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "forretress",
@@ -838,7 +916,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "steelix",
@@ -850,7 +929,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-steelix",
@@ -862,7 +942,8 @@
         "Ground"
       ],
       "isMega": true,
-      "baseSpecies": "Steelix"
+      "baseSpecies": "Steelix",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "qwilfish",
@@ -874,7 +955,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "scizor",
@@ -886,7 +968,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-scizor",
@@ -898,7 +981,8 @@
         "Steel"
       ],
       "isMega": true,
-      "baseSpecies": "Scizor"
+      "baseSpecies": "Scizor",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "heracross",
@@ -910,7 +994,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-heracross",
@@ -922,7 +1007,8 @@
         "Fighting"
       ],
       "isMega": true,
-      "baseSpecies": "Heracross"
+      "baseSpecies": "Heracross",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "skarmory",
@@ -934,7 +1020,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-skarmory",
@@ -946,7 +1033,8 @@
         "Flying"
       ],
       "isMega": true,
-      "baseSpecies": "Skarmory"
+      "baseSpecies": "Skarmory",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "houndoom",
@@ -958,7 +1046,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-houndoom",
@@ -970,7 +1059,8 @@
         "Fire"
       ],
       "isMega": true,
-      "baseSpecies": "Houndoom"
+      "baseSpecies": "Houndoom",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "tyranitar",
@@ -982,7 +1072,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-tyranitar",
@@ -994,7 +1085,8 @@
         "Dark"
       ],
       "isMega": true,
-      "baseSpecies": "Tyranitar"
+      "baseSpecies": "Tyranitar",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "sceptile",
@@ -1005,7 +1097,8 @@
         "Grass"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-sceptile",
@@ -1017,7 +1110,8 @@
         "Dragon"
       ],
       "isMega": true,
-      "baseSpecies": "Sceptile"
+      "baseSpecies": "Sceptile",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "blaziken",
@@ -1029,7 +1123,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-blaziken",
@@ -1041,7 +1136,8 @@
         "Fighting"
       ],
       "isMega": true,
-      "baseSpecies": "Blaziken"
+      "baseSpecies": "Blaziken",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "swampert",
@@ -1053,7 +1149,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-swampert",
@@ -1065,7 +1162,8 @@
         "Ground"
       ],
       "isMega": true,
-      "baseSpecies": "Swampert"
+      "baseSpecies": "Swampert",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "pelipper",
@@ -1077,7 +1175,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "gardevoir",
@@ -1089,7 +1188,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-gardevoir",
@@ -1101,7 +1201,8 @@
         "Fairy"
       ],
       "isMega": true,
-      "baseSpecies": "Gardevoir"
+      "baseSpecies": "Gardevoir",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "sableye",
@@ -1113,7 +1214,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-sableye",
@@ -1125,7 +1227,8 @@
         "Ghost"
       ],
       "isMega": true,
-      "baseSpecies": "Sableye"
+      "baseSpecies": "Sableye",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mawile",
@@ -1137,7 +1240,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-mawile",
@@ -1149,7 +1253,8 @@
         "Fairy"
       ],
       "isMega": true,
-      "baseSpecies": "Mawile"
+      "baseSpecies": "Mawile",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "aggron",
@@ -1161,7 +1266,8 @@
         "Rock"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-aggron",
@@ -1172,7 +1278,8 @@
         "Steel"
       ],
       "isMega": true,
-      "baseSpecies": "Aggron"
+      "baseSpecies": "Aggron",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "medicham",
@@ -1184,7 +1291,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-medicham",
@@ -1196,7 +1304,8 @@
         "Psychic"
       ],
       "isMega": true,
-      "baseSpecies": "Medicham"
+      "baseSpecies": "Medicham",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "manectric",
@@ -1207,7 +1316,8 @@
         "Electric"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-manectric",
@@ -1218,7 +1328,8 @@
         "Electric"
       ],
       "isMega": true,
-      "baseSpecies": "Manectric"
+      "baseSpecies": "Manectric",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "sharpedo",
@@ -1230,7 +1341,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-sharpedo",
@@ -1242,7 +1354,8 @@
         "Dark"
       ],
       "isMega": true,
-      "baseSpecies": "Sharpedo"
+      "baseSpecies": "Sharpedo",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "camerupt",
@@ -1254,7 +1367,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-camerupt",
@@ -1266,7 +1380,8 @@
         "Ground"
       ],
       "isMega": true,
-      "baseSpecies": "Camerupt"
+      "baseSpecies": "Camerupt",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "torkoal",
@@ -1277,7 +1392,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "altaria",
@@ -1289,7 +1405,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-altaria",
@@ -1301,7 +1418,8 @@
         "Fairy"
       ],
       "isMega": true,
-      "baseSpecies": "Altaria"
+      "baseSpecies": "Altaria",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "milotic",
@@ -1312,7 +1430,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "castform",
@@ -1323,7 +1442,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "banette",
@@ -1334,7 +1454,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-banette",
@@ -1345,7 +1466,8 @@
         "Ghost"
       ],
       "isMega": true,
-      "baseSpecies": "Banette"
+      "baseSpecies": "Banette",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "chimecho",
@@ -1356,7 +1478,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-chimecho",
@@ -1368,7 +1491,8 @@
         "Steel"
       ],
       "isMega": true,
-      "baseSpecies": "Chimecho"
+      "baseSpecies": "Chimecho",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "absol",
@@ -1379,7 +1503,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-absol",
@@ -1390,7 +1515,8 @@
         "Dark"
       ],
       "isMega": true,
-      "baseSpecies": "Absol"
+      "baseSpecies": "Absol",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "glalie",
@@ -1401,7 +1527,8 @@
         "Ice"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-glalie",
@@ -1412,7 +1539,8 @@
         "Ice"
       ],
       "isMega": true,
-      "baseSpecies": "Glalie"
+      "baseSpecies": "Glalie",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "metagross",
@@ -1424,7 +1552,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-metagross",
@@ -1436,7 +1565,8 @@
         "Psychic"
       ],
       "isMega": true,
-      "baseSpecies": "Metagross"
+      "baseSpecies": "Metagross",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "torterra",
@@ -1448,7 +1578,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "infernape",
@@ -1460,7 +1591,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "empoleon",
@@ -1472,7 +1604,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "staraptor",
@@ -1484,7 +1617,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-staraptor",
@@ -1496,7 +1630,8 @@
         "Flying"
       ],
       "isMega": true,
-      "baseSpecies": "Staraptor"
+      "baseSpecies": "Staraptor",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "luxray",
@@ -1507,7 +1642,8 @@
         "Electric"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "roserade",
@@ -1519,7 +1655,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "rampardos",
@@ -1530,7 +1667,8 @@
         "Rock"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "bastiodon",
@@ -1542,7 +1680,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "lopunny",
@@ -1553,7 +1692,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-lopunny",
@@ -1565,7 +1705,8 @@
         "Fighting"
       ],
       "isMega": true,
-      "baseSpecies": "Lopunny"
+      "baseSpecies": "Lopunny",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "spiritomb",
@@ -1577,7 +1718,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "garchomp",
@@ -1589,7 +1731,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-garchomp",
@@ -1601,7 +1744,8 @@
         "Ground"
       ],
       "isMega": true,
-      "baseSpecies": "Garchomp"
+      "baseSpecies": "Garchomp",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "lucario",
@@ -1613,7 +1757,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-lucario",
@@ -1625,7 +1770,8 @@
         "Steel"
       ],
       "isMega": true,
-      "baseSpecies": "Lucario"
+      "baseSpecies": "Lucario",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "hippowdon",
@@ -1636,7 +1782,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "toxicroak",
@@ -1648,7 +1795,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "abomasnow",
@@ -1660,7 +1808,8 @@
         "Ice"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-abomasnow",
@@ -1672,7 +1821,8 @@
         "Ice"
       ],
       "isMega": true,
-      "baseSpecies": "Abomasnow"
+      "baseSpecies": "Abomasnow",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "weavile",
@@ -1684,7 +1834,8 @@
         "Ice"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "rhyperior",
@@ -1696,7 +1847,8 @@
         "Rock"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "leafeon",
@@ -1707,7 +1859,8 @@
         "Grass"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "glaceon",
@@ -1718,7 +1871,8 @@
         "Ice"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "gliscor",
@@ -1730,7 +1884,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mamoswine",
@@ -1742,7 +1897,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "gallade",
@@ -1754,7 +1910,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-gallade",
@@ -1766,7 +1923,8 @@
         "Fighting"
       ],
       "isMega": true,
-      "baseSpecies": "Gallade"
+      "baseSpecies": "Gallade",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "froslass",
@@ -1778,7 +1936,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-froslass",
@@ -1790,7 +1949,8 @@
         "Ghost"
       ],
       "isMega": true,
-      "baseSpecies": "Froslass"
+      "baseSpecies": "Froslass",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "rotom",
@@ -1802,7 +1962,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "serperior",
@@ -1813,7 +1974,8 @@
         "Grass"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "emboar",
@@ -1825,7 +1987,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-emboar",
@@ -1837,7 +2000,8 @@
         "Fighting"
       ],
       "isMega": true,
-      "baseSpecies": "Emboar"
+      "baseSpecies": "Emboar",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "samurott",
@@ -1848,7 +2012,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "samurott-hisuian",
@@ -1860,7 +2025,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "watchog",
@@ -1871,7 +2037,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "liepard",
@@ -1882,7 +2049,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "simisage",
@@ -1893,7 +2061,8 @@
         "Grass"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "simisear",
@@ -1904,7 +2073,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "simipour",
@@ -1915,7 +2085,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "musharna",
@@ -1926,7 +2097,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "excadrill",
@@ -1938,7 +2110,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-excadrill",
@@ -1950,7 +2123,8 @@
         "Steel"
       ],
       "isMega": true,
-      "baseSpecies": "Excadrill"
+      "baseSpecies": "Excadrill",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "audino",
@@ -1961,7 +2135,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-audino",
@@ -1973,7 +2148,8 @@
         "Fairy"
       ],
       "isMega": true,
-      "baseSpecies": "Audino"
+      "baseSpecies": "Audino",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "conkeldurr",
@@ -1984,7 +2160,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "scolipede",
@@ -1996,7 +2173,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-scolipede",
@@ -2008,7 +2186,8 @@
         "Poison"
       ],
       "isMega": true,
-      "baseSpecies": "Scolipede"
+      "baseSpecies": "Scolipede",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "whimsicott",
@@ -2020,7 +2199,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "krookodile",
@@ -2032,7 +2212,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "scrafty",
@@ -2044,7 +2225,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-scrafty",
@@ -2056,7 +2238,8 @@
         "Fighting"
       ],
       "isMega": true,
-      "baseSpecies": "Scrafty"
+      "baseSpecies": "Scrafty",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "cofagrigus",
@@ -2067,7 +2250,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "garbodor",
@@ -2078,7 +2262,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "zoroark",
@@ -2089,7 +2274,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "zoroark-hisuian",
@@ -2101,7 +2287,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "reuniclus",
@@ -2112,7 +2299,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "vanilluxe",
@@ -2123,7 +2311,8 @@
         "Ice"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "emolga",
@@ -2135,7 +2324,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "eelektross",
@@ -2146,7 +2336,8 @@
         "Electric"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-eelektross",
@@ -2157,7 +2348,8 @@
         "Electric"
       ],
       "isMega": true,
-      "baseSpecies": "Eelektross"
+      "baseSpecies": "Eelektross",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "chandelure",
@@ -2169,7 +2361,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-chandelure",
@@ -2181,7 +2374,8 @@
         "Fire"
       ],
       "isMega": true,
-      "baseSpecies": "Chandelure"
+      "baseSpecies": "Chandelure",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "beartic",
@@ -2192,7 +2386,8 @@
         "Ice"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "stunfisk",
@@ -2204,7 +2399,8 @@
         "Electric"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "stunfisk-galarian",
@@ -2216,7 +2412,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "golurk",
@@ -2228,7 +2425,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-golurk",
@@ -2240,7 +2438,8 @@
         "Ghost"
       ],
       "isMega": true,
-      "baseSpecies": "Golurk"
+      "baseSpecies": "Golurk",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "hydreigon",
@@ -2252,7 +2451,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "volcarona",
@@ -2264,7 +2464,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "chesnaught",
@@ -2276,7 +2477,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-chesnaught",
@@ -2288,7 +2490,8 @@
         "Fighting"
       ],
       "isMega": true,
-      "baseSpecies": "Chesnaught"
+      "baseSpecies": "Chesnaught",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "delphox",
@@ -2300,7 +2503,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-delphox",
@@ -2312,7 +2516,8 @@
         "Psychic"
       ],
       "isMega": true,
-      "baseSpecies": "Delphox"
+      "baseSpecies": "Delphox",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "greninja",
@@ -2325,7 +2530,8 @@
       ],
       "isMega": false,
       "baseSpecies": null,
-      "notes": "Regular form only"
+      "notes": "Regular form only",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-greninja",
@@ -2337,7 +2543,8 @@
         "Dark"
       ],
       "isMega": true,
-      "baseSpecies": "Greninja"
+      "baseSpecies": "Greninja",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "diggersby",
@@ -2349,7 +2556,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "talonflame",
@@ -2361,7 +2569,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "vivillon",
@@ -2373,7 +2582,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "pyroar",
@@ -2385,7 +2595,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-pyroar",
@@ -2397,7 +2608,8 @@
         "Normal"
       ],
       "isMega": true,
-      "baseSpecies": "Pyroar"
+      "baseSpecies": "Pyroar",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "floette-eternal-flower",
@@ -2409,7 +2621,8 @@
       ],
       "isMega": false,
       "baseSpecies": null,
-      "notes": "Transfer only: must be moved from Legends Z-A via HOME"
+      "notes": "Transfer only: must be moved from Legends Z-A via HOME",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-floette",
@@ -2420,7 +2633,8 @@
         "Fairy"
       ],
       "isMega": true,
-      "baseSpecies": "Floette"
+      "baseSpecies": "Floette",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "florges",
@@ -2431,7 +2645,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "pangoro",
@@ -2443,7 +2658,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "furfrou",
@@ -2454,7 +2670,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "meowstic",
@@ -2465,7 +2682,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-meowstic",
@@ -2476,7 +2694,8 @@
         "Psychic"
       ],
       "isMega": true,
-      "baseSpecies": "Meowstic"
+      "baseSpecies": "Meowstic",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "aegislash",
@@ -2488,7 +2707,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "aromatisse",
@@ -2499,7 +2719,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "slurpuff",
@@ -2510,7 +2731,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "malamar",
@@ -2522,7 +2744,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-malamar",
@@ -2534,7 +2757,8 @@
         "Psychic"
       ],
       "isMega": true,
-      "baseSpecies": "Malamar"
+      "baseSpecies": "Malamar",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "barbaracle",
@@ -2546,7 +2770,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-barbaracle",
@@ -2558,7 +2783,8 @@
         "Fighting"
       ],
       "isMega": true,
-      "baseSpecies": "Barbaracle"
+      "baseSpecies": "Barbaracle",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "dragalge",
@@ -2570,7 +2796,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-dragalge",
@@ -2582,7 +2809,8 @@
         "Dragon"
       ],
       "isMega": true,
-      "baseSpecies": "Dragalge"
+      "baseSpecies": "Dragalge",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "clawitzer",
@@ -2593,7 +2821,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "heliolisk",
@@ -2605,7 +2834,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "tyrantrum",
@@ -2617,7 +2847,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "aurorus",
@@ -2629,7 +2860,8 @@
         "Ice"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "sylveon",
@@ -2640,7 +2872,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "hawlucha",
@@ -2652,7 +2885,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-hawlucha",
@@ -2664,7 +2898,8 @@
         "Flying"
       ],
       "isMega": true,
-      "baseSpecies": "Hawlucha"
+      "baseSpecies": "Hawlucha",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "dedenne",
@@ -2676,7 +2911,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "goodra",
@@ -2687,7 +2923,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "goodra-hisuian",
@@ -2699,7 +2936,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "klefki",
@@ -2711,7 +2949,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "trevenant",
@@ -2723,7 +2962,8 @@
         "Grass"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "gourgeist",
@@ -2735,7 +2975,8 @@
         "Grass"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "avalugg",
@@ -2746,7 +2987,8 @@
         "Ice"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "avalugg-hisuian",
@@ -2758,7 +3000,8 @@
         "Rock"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "noivern",
@@ -2770,7 +3013,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "decidueye",
@@ -2782,7 +3026,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "decidueye-hisuian",
@@ -2794,7 +3039,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "incineroar",
@@ -2806,7 +3052,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "primarina",
@@ -2818,7 +3065,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "toucannon",
@@ -2830,7 +3078,8 @@
         "Flying"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "crabominable",
@@ -2842,7 +3091,8 @@
         "Ice"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-crabominable",
@@ -2854,7 +3104,8 @@
         "Ice"
       ],
       "isMega": true,
-      "baseSpecies": "Crabominable"
+      "baseSpecies": "Crabominable",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "lycanroc",
@@ -2865,7 +3116,8 @@
         "Rock"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "toxapex",
@@ -2877,7 +3129,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mudsdale",
@@ -2888,7 +3141,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "araquanid",
@@ -2900,7 +3154,8 @@
         "Bug"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "salazzle",
@@ -2912,7 +3167,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "tsareena",
@@ -2923,7 +3179,8 @@
         "Grass"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "oranguru",
@@ -2935,7 +3192,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "passimian",
@@ -2946,7 +3204,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mimikyu",
@@ -2958,7 +3217,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "drampa",
@@ -2970,7 +3230,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-drampa",
@@ -2982,7 +3243,8 @@
         "Dragon"
       ],
       "isMega": true,
-      "baseSpecies": "Drampa"
+      "baseSpecies": "Drampa",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "kommo-o",
@@ -2994,7 +3256,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "corviknight",
@@ -3006,7 +3269,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "flapple",
@@ -3018,7 +3282,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "appletun",
@@ -3030,7 +3295,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "sandaconda",
@@ -3041,7 +3307,8 @@
         "Ground"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "polteageist",
@@ -3052,7 +3319,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "hatterene",
@@ -3064,7 +3332,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "grimmsnarl",
@@ -3076,7 +3345,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mr-rime",
@@ -3088,7 +3358,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "runerigus",
@@ -3100,7 +3371,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "alcremie",
@@ -3111,7 +3383,8 @@
         "Fairy"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "falinks",
@@ -3122,7 +3395,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-falinks",
@@ -3133,7 +3407,8 @@
         "Fighting"
       ],
       "isMega": true,
-      "baseSpecies": "Falinks"
+      "baseSpecies": "Falinks",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "morpeko",
@@ -3145,7 +3420,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "dragapult",
@@ -3157,7 +3433,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "wyrdeer",
@@ -3169,7 +3446,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "kleavor",
@@ -3181,7 +3459,8 @@
         "Rock"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "basculegion",
@@ -3193,7 +3472,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "sneasler",
@@ -3205,7 +3485,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "overqwil",
@@ -3217,7 +3498,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "meowscarada",
@@ -3229,7 +3511,8 @@
         "Dark"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "skeledirge",
@@ -3241,7 +3524,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "quaquaval",
@@ -3253,7 +3537,8 @@
         "Fighting"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "maushold",
@@ -3264,7 +3549,8 @@
         "Normal"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "garganacl",
@@ -3275,7 +3561,8 @@
         "Rock"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "armarouge",
@@ -3287,7 +3574,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "ceruledge",
@@ -3299,7 +3587,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "bellibolt",
@@ -3310,7 +3599,8 @@
         "Electric"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "scovillain",
@@ -3322,7 +3612,8 @@
         "Fire"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-scovillain",
@@ -3334,7 +3625,8 @@
         "Fire"
       ],
       "isMega": true,
-      "baseSpecies": "Scovillain"
+      "baseSpecies": "Scovillain",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "espathra",
@@ -3345,7 +3637,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "tinkaton",
@@ -3357,7 +3650,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "palafin",
@@ -3368,7 +3662,8 @@
         "Water"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "orthworm",
@@ -3379,7 +3674,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "glimmora",
@@ -3391,7 +3687,8 @@
         "Poison"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "mega-glimmora",
@@ -3403,7 +3700,8 @@
         "Poison"
       ],
       "isMega": true,
-      "baseSpecies": "Glimmora"
+      "baseSpecies": "Glimmora",
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "houndstone",
@@ -3414,7 +3712,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "annihilape",
@@ -3426,7 +3725,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "farigiraf",
@@ -3438,7 +3738,8 @@
         "Psychic"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "kingambit",
@@ -3450,7 +3751,8 @@
         "Steel"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "gholdengo",
@@ -3462,7 +3764,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "sinistcha",
@@ -3474,7 +3777,8 @@
         "Ghost"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "archaludon",
@@ -3486,7 +3790,8 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
     },
     {
       "id": "hydrapple",
@@ -3498,7 +3803,449 @@
         "Dragon"
       ],
       "isMega": false,
-      "baseSpecies": null
+      "baseSpecies": null,
+      "addedIn": "M-B or earlier"
+    },
+    {
+      "id": "wigglytuff",
+      "dexNumber": 40,
+      "name": "Wigglytuff",
+      "form": null,
+      "types": [
+        "Normal",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "persian",
+      "dexNumber": 53,
+      "name": "Persian",
+      "form": null,
+      "types": [
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "persian-alolan",
+      "dexNumber": 53,
+      "name": "Persian",
+      "form": "Alolan",
+      "types": [
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "farfetchd",
+      "dexNumber": 83,
+      "name": "Farfetch'd",
+      "form": null,
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "mr-mime",
+      "dexNumber": 122,
+      "name": "Mr. Mime",
+      "form": null,
+      "types": [
+        "Psychic",
+        "Fairy"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "swalot",
+      "dexNumber": 317,
+      "name": "Swalot",
+      "form": null,
+      "types": [
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "mega-absol-z",
+      "dexNumber": 359,
+      "name": "Mega Absol Z",
+      "form": "Mega Evolution",
+      "types": [
+        "Dark",
+        "Ghost"
+      ],
+      "isMega": true,
+      "baseSpecies": "Absol",
+      "addedIn": "M-C"
+    },
+    {
+      "id": "salamence",
+      "dexNumber": 373,
+      "name": "Salamence",
+      "form": null,
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "mega-salamence",
+      "dexNumber": 373,
+      "name": "Mega Salamence",
+      "form": "Mega Evolution",
+      "types": [
+        "Dragon",
+        "Flying"
+      ],
+      "isMega": true,
+      "baseSpecies": "Salamence",
+      "addedIn": "M-C"
+    },
+    {
+      "id": "mega-garchomp-z",
+      "dexNumber": 445,
+      "name": "Mega Garchomp Z",
+      "form": "Mega Evolution",
+      "types": [
+        "Dragon"
+      ],
+      "isMega": true,
+      "baseSpecies": "Garchomp",
+      "addedIn": "M-C"
+    },
+    {
+      "id": "mega-lucario-z",
+      "dexNumber": 448,
+      "name": "Mega Lucario Z",
+      "form": "Mega Evolution",
+      "types": [
+        "Fighting",
+        "Steel"
+      ],
+      "isMega": true,
+      "baseSpecies": "Lucario",
+      "addedIn": "M-C"
+    },
+    {
+      "id": "gogoat",
+      "dexNumber": 673,
+      "name": "Gogoat",
+      "form": null,
+      "types": [
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "golisopod",
+      "dexNumber": 768,
+      "name": "Golisopod",
+      "form": null,
+      "types": [
+        "Bug",
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "mega-golisopod",
+      "dexNumber": 768,
+      "name": "Mega Golisopod",
+      "form": "Mega Evolution",
+      "types": [
+        "Bug",
+        "Steel"
+      ],
+      "isMega": true,
+      "baseSpecies": "Golisopod",
+      "addedIn": "M-C"
+    },
+    {
+      "id": "rillaboom",
+      "dexNumber": 812,
+      "name": "Rillaboom",
+      "form": null,
+      "types": [
+        "Grass"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "cinderace",
+      "dexNumber": 815,
+      "name": "Cinderace",
+      "form": null,
+      "types": [
+        "Fire"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "inteleon",
+      "dexNumber": 818,
+      "name": "Inteleon",
+      "form": null,
+      "types": [
+        "Water"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "thievul",
+      "dexNumber": 828,
+      "name": "Thievul",
+      "form": null,
+      "types": [
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "toxtricity-amped-form",
+      "dexNumber": 849,
+      "name": "Toxtricity",
+      "form": "Amped Form",
+      "types": [
+        "Electric",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "toxtricity-low-key-form",
+      "dexNumber": 849,
+      "name": "Toxtricity",
+      "form": "Low Key Form",
+      "types": [
+        "Electric",
+        "Poison"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "grapploct",
+      "dexNumber": 853,
+      "name": "Grapploct",
+      "form": null,
+      "types": [
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "perrserker",
+      "dexNumber": 863,
+      "name": "Perrserker",
+      "form": null,
+      "types": [
+        "Steel"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "sirfetchd",
+      "dexNumber": 865,
+      "name": "Sirfetch'd",
+      "form": null,
+      "types": [
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "pincurchin",
+      "dexNumber": 871,
+      "name": "Pincurchin",
+      "form": null,
+      "types": [
+        "Electric"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "indeedee-female",
+      "dexNumber": 876,
+      "name": "Indeedee",
+      "form": "Female",
+      "types": [
+        "Psychic",
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "indeedee-male",
+      "dexNumber": 876,
+      "name": "Indeedee",
+      "form": "Male",
+      "types": [
+        "Psychic",
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "pawmot",
+      "dexNumber": 923,
+      "name": "Pawmot",
+      "form": null,
+      "types": [
+        "Electric",
+        "Fighting"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "arboliva",
+      "dexNumber": 930,
+      "name": "Arboliva",
+      "form": null,
+      "types": [
+        "Grass",
+        "Normal"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "squawkabilly-blue-plumage",
+      "dexNumber": 931,
+      "name": "Squawkabilly",
+      "form": "Blue Plumage",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "squawkabilly-green-plumage",
+      "dexNumber": 931,
+      "name": "Squawkabilly",
+      "form": "Green Plumage",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "squawkabilly-white-plumage",
+      "dexNumber": 931,
+      "name": "Squawkabilly",
+      "form": "White Plumage",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "squawkabilly-yellow-plumage",
+      "dexNumber": 931,
+      "name": "Squawkabilly",
+      "form": "Yellow Plumage",
+      "types": [
+        "Normal",
+        "Flying"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "mabosstiff",
+      "dexNumber": 943,
+      "name": "Mabosstiff",
+      "form": null,
+      "types": [
+        "Dark"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "baxcalibur",
+      "dexNumber": 998,
+      "name": "Baxcalibur",
+      "form": null,
+      "types": [
+        "Dragon",
+        "Ice"
+      ],
+      "isMega": false,
+      "baseSpecies": null,
+      "addedIn": "M-C"
+    },
+    {
+      "id": "mega-baxcalibur",
+      "dexNumber": 998,
+      "name": "Mega Baxcalibur",
+      "form": "Mega Evolution",
+      "types": [
+        "Dragon",
+        "Ice"
+      ],
+      "isMega": true,
+      "baseSpecies": "Baxcalibur",
+      "addedIn": "M-C"
     }
   ]
 }

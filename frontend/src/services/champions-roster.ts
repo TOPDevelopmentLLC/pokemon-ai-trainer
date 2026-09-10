@@ -40,6 +40,25 @@ const REGIONAL_SUFFIXES: Record<string, string> = {
 /** Paldean Tauros breeds are distinct species in the dex. */
 const TAUROS_BREEDS = ['Combat', 'Blaze', 'Aqua'];
 
+/** Mega variant letters. Champions introduces Z alongside the mainline X/Y. */
+const MEGA_VARIANT_SUFFIXES = ['X', 'Y', 'Z'];
+
+/**
+ * Form wordings that map to a dex forme suffix, for families where the forms
+ * differ in stats or abilities and so must stay distinct.
+ * Keys are matched against the lowercased form string.
+ */
+const FORM_SUFFIXES: Record<string, string> = {
+  'low key': 'Low-Key',
+  amped: 'Amped',
+  female: 'F',
+  male: 'M',
+  'blue plumage': 'Blue',
+  'green plumage': 'Green',
+  'white plumage': 'White',
+  'yellow plumage': 'Yellow',
+};
+
 /**
  * Candidate dex names for a roster entry, most specific first.
  * The first candidate that exists in the dex wins, so breed- and
@@ -54,7 +73,11 @@ function candidateNames(entry: RosterEntry): string[] {
     const parts = base.split(' ');
     const suffix = parts[parts.length - 1];
 
-    if (parts.length > 1 && (suffix === 'X' || suffix === 'Y')) {
+    // Champions adds "Z" variants alongside the mainline X/Y ones, and they are
+    // distinct species with their own typing — Absol-Mega-Z is Dark/Ghost where
+    // Absol-Mega is pure Dark. Without this the Z entry silently resolves to
+    // the non-Z Mega and reports the wrong types.
+    if (parts.length > 1 && MEGA_VARIANT_SUFFIXES.includes(suffix)) {
       candidates.push(`${parts.slice(0, -1).join(' ')}-Mega-${suffix}`);
     }
     candidates.push(`${base}-Mega`);
@@ -75,6 +98,12 @@ function candidateNames(entry: RosterEntry): string[] {
     }
 
     if (form.includes('eternal')) candidates.push(`${entry.name}-Eternal`);
+
+    // Gender, plumage and Amped/Low Key forms differ in stats or abilities, so
+    // each resolves to its own dex entry rather than collapsing to the base.
+    for (const [wording, suffix] of Object.entries(FORM_SUFFIXES)) {
+      if (form.includes(wording)) candidates.push(`${entry.name}-${suffix}`);
+    }
   }
 
   candidates.push(entry.name);

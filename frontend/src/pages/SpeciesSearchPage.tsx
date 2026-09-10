@@ -4,7 +4,7 @@ import { NavBar } from '@components/common/NavBar';
 import { SpeciesSearchFilters } from '@components/pokemon/SpeciesSearchFilters';
 import { SpeciesSearchRow } from '@components/pokemon/SpeciesSearchRow';
 
-/** How many results to render at once, so a 298-row list stays responsive. */
+/** How many results to render at once, so a long result list stays responsive. */
 const PAGE_SIZE = 60;
 
 export const SpeciesSearchPage = () => {

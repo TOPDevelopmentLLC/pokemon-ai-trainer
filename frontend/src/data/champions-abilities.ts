@@ -93,4 +93,14 @@ export const CHAMPIONS_MEGA_ABILITIES: Record<string, string[]> = {
 
   // Victreebel has: Chlorophyll, Gluttony
   'Victreebel-Mega': ['Innards Out'],
+
+  // --- Added in Regulation M-C ---
+  // Champions-original Megas whose abilities @pkmn/dex does not know, so it
+  // reports the base species' list. Fill in to override.
+
+  // Golisopod has: Emergency Exit
+  'Golisopod-Mega': ['Tough Claws'],
+
+  // Baxcalibur has: Thermal Exchange, Ice Body
+  'Baxcalibur-Mega': ['Thermal Exchange'],
 };
