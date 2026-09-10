@@ -3,7 +3,14 @@
  * Given a Pokemon config, identifies type vulnerabilities, OHKO threats
  * from common competitive Pokemon, and survival recommendations.
  */
-import { gen9, generations, getSpecies, getSpeciesAbilities, LEGAL_SPECIES_NAMES } from './dex';
+import {
+  gen9,
+  generations,
+  getChampionsAbilityImmunity,
+  getSpecies,
+  getSpeciesAbilities,
+  LEGAL_SPECIES_NAMES,
+} from './dex';
 import type { Move } from '@pkmn/dex-types';
 import { calcDamage } from './damage-calc';
 import type { PokemonConfig, StatSpread } from '@app-types/pokemon';
@@ -295,6 +302,11 @@ export async function analyzeOhkoThreats(defenderConfig: PokemonConfig): Promise
   if (!defenderSpecies) return threats;
 
   const defenderTypes = [...defenderSpecies.types];
+
+  // Champions abilities @smogon/calc does not know would otherwise compute
+  // full damage for a move the defender is immune to.
+  const abilityImmuneType = getChampionsAbilityImmunity(defenderConfig.species);
+
   let threatId = 0;
 
   for (const set of await championsMetagameSets()) {
@@ -331,6 +343,7 @@ export async function analyzeOhkoThreats(defenderConfig: PokemonConfig): Promise
 
       // Skip if immune or heavily resisted (unless very high BP)
       if (typeEffectiveness === 0) continue;
+      if (moveType === abilityImmuneType) continue;
       if (typeEffectiveness < 1 && move.basePower < 100) continue;
 
       const result = calcDamage(attackerConfig, moveName, defenderConfig);

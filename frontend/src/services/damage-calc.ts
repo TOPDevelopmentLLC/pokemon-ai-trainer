@@ -125,8 +125,13 @@ export function calcDamage(
     const minPercent = toPercent(minDamage);
     const maxPercent = toPercent(maxDamage);
 
-    const kochance = result.kochance();
-    const ohkoChance = kochance.n === 1 ? (kochance.chance ?? 0) : 0;
+    // Both kochance() and desc() throw when the defender is immune, because
+    // every damage roll is 0. That would surface as a null result — which is
+    // indistinguishable from a genuine failure — so immunity is reported
+    // explicitly instead: a real answer of zero damage.
+    const isImmune = maxDamage === 0;
+    const kochance = isImmune ? null : result.kochance();
+    const ohkoChance = kochance && kochance.n === 1 ? (kochance.chance ?? 0) : 0;
 
     return {
       minPercent,
@@ -134,8 +139,10 @@ export function calcDamage(
       minDamage,
       maxDamage,
       ohkoChance,
-      koChanceText: kochance.text,
-      description: toStatPointDescription(result.desc()),
+      koChanceText: kochance?.text ?? 'immune',
+      description: isImmune
+        ? `${attackerConfig.species} ${moveName} vs. ${defenderConfig.species}: immune`
+        : toStatPointDescription(result.desc()),
       defenderMaxHp,
     };
   } catch {

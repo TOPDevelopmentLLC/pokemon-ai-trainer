@@ -14,6 +14,7 @@ import { Sprites } from '@pkmn/img';
 import { CHAMPIONS_LEGAL_SPECIES } from './champions-roster';
 import { CHAMPIONS_MEGA_ABILITIES } from '@data/champions-abilities';
 import { CHAMPIONS_ABILITY_DESCRIPTIONS } from '@data/champions-ability-descriptions';
+import { CHAMPIONS_ABILITY_IMMUNITIES } from '@data/champions-ability-immunities';
 import { HOLDABLE_ITEM_NAMES } from './champions-items';
 import { STAT_LABELS, type StatSpread } from '@app-types/pokemon';
 
@@ -74,6 +75,20 @@ export function getSpeciesAbilities(speciesName: string): string[] {
   if (data.H) abilities.push(data.H);
   if (data.S) abilities.push(data.S);
   return abilities;
+}
+
+/**
+ * Type a species is immune to via a Champions-original ability, or null.
+ *
+ * Only covers abilities @smogon/calc does not know; it already applies
+ * Levitate, Flash Fire and the rest itself.
+ */
+export function getChampionsAbilityImmunity(speciesName: string): string | null {
+  for (const ability of getSpeciesAbilities(speciesName)) {
+    const immuneType = CHAMPIONS_ABILITY_IMMUNITIES[ability];
+    if (immuneType) return immuneType;
+  }
+  return null;
 }
 
 /**
