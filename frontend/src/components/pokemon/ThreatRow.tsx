@@ -10,8 +10,8 @@ interface ThreatRowProps {
 }
 
 /** Format a stat-point spread as "32 ATK / 32 SPE", omitting unallocated stats. */
-function formatSpread(evs: OhkoThreat['attackerSet']['evs']): string {
-  return Object.entries(evs)
+function formatSpread(statPoints: OhkoThreat['attackerSet']['statPoints']): string {
+  return Object.entries(statPoints)
     .filter(([, value]) => value > 0)
     .map(([stat, value]) => `${value} ${stat.toUpperCase()}`)
     .join(' / ');
@@ -77,7 +77,7 @@ export const ThreatRow = ({ threat, isExpanded, onToggle }: ThreatRowProps) => {
             {threat.attackerSet.item && ` @ ${threat.attackerSet.item}`}
           </div>
           <div style={{ marginBottom: '4px' }}>
-            <strong>Stat Points:</strong> {formatSpread(threat.attackerSet.evs)}
+            <strong>Stat Points:</strong> {formatSpread(threat.attackerSet.statPoints)}
           </div>
           <div style={{ fontStyle: 'italic', color: '#64748b', marginTop: '6px' }}>
             {threat.description}

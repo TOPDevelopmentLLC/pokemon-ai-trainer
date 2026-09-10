@@ -32,8 +32,7 @@ export function useThreatAnalysis(config: PokemonConfig | null): UseThreatAnalys
         config.ability,
         config.item,
         config.teraType,
-        config.evs,
-        config.ivs,
+        config.statPoints,
       ])
     : null;
 

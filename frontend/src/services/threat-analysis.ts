@@ -8,7 +8,6 @@ import type { Move } from '@pkmn/dex-types';
 import { calcDamage } from './damage-calc';
 import type { PokemonConfig, StatSpread } from '@app-types/pokemon';
 import {
-  DEFAULT_IVS,
   MAX_STAT_POINTS_PER_STAT,
   MAX_STAT_POINTS_TOTAL,
   STAT_LABELS,
@@ -41,7 +40,7 @@ interface CompetitiveSet {
   nature: string;
   ability: string;
   item: string;
-  evs: StatSpread;
+  statPoints: StatSpread;
   moves: string[];
 }
 
@@ -208,7 +207,7 @@ async function championsMetagameSets(): Promise<CompetitiveSet[]> {
       // Champions items are all situational rather than flat damage boosts,
       // so threats are modeled itemless — the damage floor, not a guess.
       item: '',
-      evs: offensiveSpread(attackStat),
+      statPoints: offensiveSpread(attackStat),
       moves,
     });
   }
@@ -299,8 +298,7 @@ export async function analyzeOhkoThreats(defenderConfig: PokemonConfig): Promise
       nature: set.nature,
       ability: set.ability,
       item: set.item,
-      evs: set.evs,
-      ivs: { ...DEFAULT_IVS },
+      statPoints: set.statPoints,
       moves: set.moves,
     };
 
@@ -343,7 +341,7 @@ export async function analyzeOhkoThreats(defenderConfig: PokemonConfig): Promise
         severity,
         attackerSet: {
           nature: set.nature,
-          evs: set.evs,
+          statPoints: set.statPoints,
           ability: set.ability,
           item: set.item,
         },
@@ -421,7 +419,7 @@ export function generateRecommendations(
   }
 
   // Recommendation: defensive investment if the spread is currently thin there
-  const defensivePoints = defenderConfig.evs.hp + defenderConfig.evs.def + defenderConfig.evs.spd;
+  const defensivePoints = defenderConfig.statPoints.hp + defenderConfig.statPoints.def + defenderConfig.statPoints.spd;
   if (defensivePoints < MAX_STAT_POINTS_PER_STAT / 2 && actualOhkos.length > 0) {
     // Determine if threats are more physical or special
     const physicalThreats = actualOhkos.filter(t => t.moveCategory === 'Physical').length;
@@ -432,13 +430,13 @@ export function generateRecommendations(
 
     // Keep the user's offensive/speed investment and spend what remains of the
     // budget on HP first, then the more relevant defense.
-    const preserved = { ...defenderConfig.evs, hp: 0, def: 0, spd: 0 };
+    const preserved = { ...defenderConfig.statPoints, hp: 0, def: 0, spd: 0 };
     const available = Math.max(0, MAX_STAT_POINTS_TOTAL - totalStatPoints(preserved));
 
     const hp = Math.min(MAX_STAT_POINTS_PER_STAT, available);
     const def = Math.min(MAX_STAT_POINTS_PER_STAT, available - hp);
 
-    const suggestedEvs: StatSpread = {
+    const suggestedStatPoints: StatSpread = {
       ...preserved,
       hp,
       [defStat]: def,
@@ -449,7 +447,7 @@ export function generateRecommendations(
       recommendations.push({
         id: `rec-${recId++}`,
         category: 'ev_spread',
-        suggestedEvs,
+        suggestedStatPoints,
         suggestedNature: defenderConfig.nature,
         title: `Invest in HP / ${defName}`,
         description: `Most OHKO threats are ${physicalThreats >= specialThreats ? 'physical' : 'special'}. Running ${hp} HP / ${def} ${defName} may help survive key hits.`,

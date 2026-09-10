@@ -21,8 +21,12 @@ export interface PokemonConfig {
   nature: string;
   ability: string;
   item: string;
-  evs: StatSpread;
-  ivs: StatSpread;
+  /**
+   * Champions stat points, 0-32 per stat within a 66-point budget.
+   * Not classic EVs — convert with statPointsToEvs() before handing a spread
+   * to the damage calculator.
+   */
+  statPoints: StatSpread;
   moves: string[];
   teraType?: string;
 }
@@ -45,18 +49,17 @@ export const STAT_LABELS: { key: keyof StatSpread; label: string }[] = [
   { key: 'spe', label: 'Spe' },
 ];
 
-export const DEFAULT_EVS: StatSpread = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+export const DEFAULT_STAT_POINTS: StatSpread = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
 
 /**
- * Champions fixes every IV at its maximum, so IVs are not user-editable.
- * `PokemonConfig.ivs` is retained because the damage calculator needs the
- * values, but it should always be this spread.
+ * Champions fixes every IV at its maximum, so IVs are neither user-editable
+ * nor stored on a config. The damage calculator applies this spread itself.
  */
 export const DEFAULT_IVS: StatSpread = { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 };
 
 // Pokemon Champions replaced classic EVs with a smaller stat-point budget.
-// `PokemonConfig.evs` holds stat points, not EVs; convert with statPointsToEvs()
-// before handing a spread to the damage calculator.
+// Configs store stat points; convert with statPointsToEvs() before handing a
+// spread to the damage calculator, which still speaks classic EVs.
 export const MAX_STAT_POINTS_PER_STAT = 32;
 export const MAX_STAT_POINTS_TOTAL = 66;
 
@@ -96,8 +99,7 @@ export function createDefaultConfig(species: string): PokemonConfig {
     nature: 'Hardy',
     ability: '',
     item: '',
-    evs: { ...DEFAULT_EVS },
-    ivs: { ...DEFAULT_IVS },
+    statPoints: { ...DEFAULT_STAT_POINTS },
     moves: [],
   };
 }

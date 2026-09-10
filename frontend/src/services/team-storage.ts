@@ -6,8 +6,8 @@
  * throwing during render. Writes are wrapped because localStorage throws
  * when full or when the browser blocks it (private mode, disabled cookies).
  */
-import { MAX_TEAM_SIZE, DEFAULT_IVS } from '@app-types/pokemon';
-import type { Team, TeamSlot } from '@app-types/pokemon';
+import { MAX_TEAM_SIZE, DEFAULT_STAT_POINTS } from '@app-types/pokemon';
+import type { PokemonConfig, StatSpread, Team, TeamSlot } from '@app-types/pokemon';
 import type { PersistedState, SavedTeam } from '@app-types/saved-team';
 import { STORAGE_VERSION } from '@app-types/saved-team';
 
@@ -33,12 +33,29 @@ function isValidSlot(value: unknown): value is TeamSlot {
 }
 
 /**
- * Force IVs to the Champions-fixed spread.
- * Teams saved before IVs became non-editable may carry other values, and with
- * the editor gone there would be no way to correct them from the UI.
+ * Bring a stored slot up to the current config shape.
+ *
+ * Teams saved before the Champions stat system carry classic `evs`/`ivs`
+ * fields. IVs are dropped (Champions fixes them at max, and the calculator
+ * supplies them), and an `evs` spread is read as stat points, which is what it
+ * has actually held since the stat-point migration.
  */
 function normalizeSlot(slot: TeamSlot): TeamSlot {
-  return { ...slot, config: { ...slot.config, ivs: { ...DEFAULT_IVS } } };
+  const stored = slot.config as PokemonConfig & { evs?: StatSpread; ivs?: StatSpread };
+
+  return {
+    ...slot,
+    config: {
+      species: stored.species,
+      level: stored.level,
+      nature: stored.nature,
+      ability: stored.ability,
+      item: stored.item,
+      statPoints: stored.statPoints ?? stored.evs ?? { ...DEFAULT_STAT_POINTS },
+      moves: stored.moves ?? [],
+      ...(stored.teraType ? { teraType: stored.teraType } : {}),
+    },
+  };
 }
 
 /** Coerce arbitrary parsed JSON into a fixed-length team of MAX_TEAM_SIZE. */

@@ -39,7 +39,7 @@ export interface OhkoThreat {
   severity: ThreatSeverity;
   attackerSet: {
     nature: string;
-    evs: StatSpread;
+    statPoints: StatSpread;
     ability: string;
     item: string;
   };
@@ -69,7 +69,7 @@ export interface BaseRecommendation {
 
 export interface EvSpreadRecommendation extends BaseRecommendation {
   category: 'ev_spread';
-  suggestedEvs: StatSpread;
+  suggestedStatPoints: StatSpread;
   suggestedNature: string;
   tradeoff: string;
 }
