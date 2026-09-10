@@ -41,16 +41,16 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
     }
   }, [abilities]);
 
-  const totalPoints = totalStatPoints(config.evs);
+  const totalPoints = totalStatPoints(config.statPoints);
 
-  const updateEv = (stat: keyof StatSpread, value: number) => {
+  const updateStatPoint = (stat: keyof StatSpread, value: number) => {
     // Clamp to whatever the budget still allows rather than rejecting the edit,
     // so dragging a stat up stops at the limit instead of doing nothing.
-    const spentElsewhere = totalPoints - config.evs[stat];
+    const spentElsewhere = totalPoints - config.statPoints[stat];
     const budgetLeft = MAX_STAT_POINTS_TOTAL - spentElsewhere;
     const clamped = Math.max(0, Math.min(MAX_STAT_POINTS_PER_STAT, budgetLeft, value));
 
-    onChange({ ...config, evs: { ...config.evs, [stat]: clamped } });
+    onChange({ ...config, statPoints: { ...config.statPoints, [stat]: clamped } });
   };
 
   return (
@@ -101,7 +101,7 @@ export const PokemonConfigPanel = ({ config, onChange }: PokemonConfigPanelProps
         </p>
       )}
 
-      <StatPointsSection spread={config.evs} onChange={updateEv} />
+      <StatPointsSection spread={config.statPoints} onChange={updateStatPoint} />
     </div>
   );
 };

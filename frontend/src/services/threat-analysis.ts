@@ -3,70 +3,224 @@
  * Given a Pokemon config, identifies type vulnerabilities, OHKO threats
  * from common competitive Pokemon, and survival recommendations.
  */
-import { gen9, getSpecies, LEGAL_SPECIES_NAMES } from './dex';
-import { isChampionsLegal } from './champions-roster';
+import {
+  gen9,
+  generations,
+  getChampionsAbilityImmunity,
+  getSpecies,
+  getSpeciesAbilities,
+  LEGAL_SPECIES_NAMES,
+} from './dex';
+import type { Move } from '@pkmn/dex-types';
 import { calcDamage } from './damage-calc';
 import type { PokemonConfig, StatSpread } from '@app-types/pokemon';
 import {
-  DEFAULT_IVS,
   MAX_STAT_POINTS_PER_STAT,
   MAX_STAT_POINTS_TOTAL,
+  STAT_LABELS,
   totalStatPoints,
 } from '@app-types/pokemon';
 import type {
   TypeVulnerabilityProfile,
   TypeThreat,
   OhkoThreat,
+  ThreatMove,
   ThreatSeverity,
   Recommendation,
   ThreatAnalysisResult,
 } from '@app-types/threat-analysis';
 
 // =============================================================================
-// Common competitive sets — a curated metagame pool to analyze against.
-// In a real app this would come from Smogon usage stats.
+// Threat pool — derived from the Champions roster, not a hand-written list.
 // =============================================================================
 
+/**
+ * An attacking set used to probe how hard a defender can be hit.
+ *
+ * Champions has no Choice items, Booster Energy, or Heavy-Duty Boots, so the
+ * old hand-written mainline sets could not be represented. Instead each threat
+ * is modeled at its offensive ceiling: max stat points in its better attacking
+ * stat, a boosting nature, and no held item. That answers "what is the worst
+ * this Pokemon can do to me" without inventing item or spread data.
+ */
 interface CompetitiveSet {
   species: string;
   nature: string;
   ability: string;
   item: string;
-  evs: { hp: number; atk: number; def: number; spa: number; spd: number; spe: number };
+  statPoints: StatSpread;
   moves: string[];
 }
 
-/**
- * Top OU threats with their most common competitive sets.
- * Filtered to Champions-legal species at use time via `championsMetagameSets()`,
- * so entries stay here if a future regulation makes them legal again.
- */
-const METAGAME_SETS: CompetitiveSet[] = [
-  { species: 'Dragapult', nature: 'Timid', ability: 'Infiltrator', item: 'Choice Specs', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Shadow Ball', 'Draco Meteor', 'Flamethrower', 'U-turn'] },
-  { species: 'Gholdengo', nature: 'Timid', ability: 'Good as Gold', item: 'Air Balloon', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Make It Rain', 'Shadow Ball', 'Recover', 'Nasty Plot'] },
-  { species: 'Great Tusk', nature: 'Jolly', ability: 'Protosynthesis', item: 'Booster Energy', evs: { hp: 32, atk: 0, def: 2, spa: 0, spd: 0, spe: 32 }, moves: ['Headlong Rush', 'Ice Spinner', 'Knock Off', 'Rapid Spin'] },
-  { species: 'Kingambit', nature: 'Adamant', ability: 'Supreme Overlord', item: 'Leftovers', evs: { hp: 32, atk: 32, def: 0, spa: 0, spd: 2, spe: 0 }, moves: ['Kowtow Cleave', 'Sucker Punch', 'Iron Head', 'Swords Dance'] },
-  { species: 'Garchomp', nature: 'Jolly', ability: 'Rough Skin', item: 'Rocky Helmet', evs: { hp: 0, atk: 32, def: 2, spa: 0, spd: 0, spe: 32 }, moves: ['Earthquake', 'Dragon Claw', 'Stone Edge', 'Swords Dance'] },
-  { species: 'Iron Valiant', nature: 'Timid', ability: 'Quark Drive', item: 'Booster Energy', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Moonblast', 'Aura Sphere', 'Shadow Ball', 'Psyshock'] },
-  { species: 'Heatran', nature: 'Calm', ability: 'Flash Fire', item: 'Leftovers', evs: { hp: 32, atk: 0, def: 0, spa: 2, spd: 32, spe: 0 }, moves: ['Magma Storm', 'Earth Power', 'Stealth Rock', 'Protect'] },
-  { species: 'Raging Bolt', nature: 'Modest', ability: 'Protosynthesis', item: 'Booster Energy', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Thunderclap', 'Draco Meteor', 'Thunderbolt', 'Volt Switch'] },
-  { species: 'Landorus-Therian', nature: 'Jolly', ability: 'Intimidate', item: 'Choice Scarf', evs: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 }, moves: ['Earthquake', 'U-turn', 'Stone Edge', 'Knock Off'] },
-  { species: 'Roaring Moon', nature: 'Jolly', ability: 'Protosynthesis', item: 'Booster Energy', evs: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 }, moves: ['Crunch', 'Dragon Dance', 'Acrobatics', 'Earthquake'] },
-  { species: 'Iron Moth', nature: 'Timid', ability: 'Quark Drive', item: 'Heavy-Duty Boots', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Fiery Dance', 'Sludge Wave', 'Energy Ball', 'Psychic'] },
-  { species: 'Gliscor', nature: 'Impish', ability: 'Poison Heal', item: 'Toxic Orb', evs: { hp: 32, atk: 0, def: 25, spa: 0, spd: 9, spe: 0 }, moves: ['Earthquake', 'Knock Off', 'Roost', 'Toxic'] },
-  { species: 'Kyurem', nature: 'Modest', ability: 'Pressure', item: 'Choice Specs', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Freeze-Dry', 'Draco Meteor', 'Ice Beam', 'Earth Power'] },
-  { species: 'Darkrai', nature: 'Timid', ability: 'Bad Dreams', item: 'Focus Sash', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Dark Pulse', 'Sludge Bomb', 'Nasty Plot', 'Dark Void'] },
-  { species: 'Skeledirge', nature: 'Bold', ability: 'Unaware', item: 'Heavy-Duty Boots', evs: { hp: 32, atk: 0, def: 32, spa: 0, spd: 2, spe: 0 }, moves: ['Torch Song', 'Hex', 'Will-O-Wisp', 'Slack Off'] },
-  { species: 'Weavile', nature: 'Jolly', ability: 'Pressure', item: 'Choice Band', evs: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 }, moves: ['Triple Axel', 'Knock Off', 'Ice Shard', 'Low Kick'] },
-  { species: 'Dragonite', nature: 'Adamant', ability: 'Multiscale', item: 'Choice Band', evs: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 }, moves: ['Outrage', 'Extreme Speed', 'Earthquake', 'Ice Spinner'] },
-  { species: 'Zamazenta', nature: 'Impish', ability: 'Dauntless Shield', item: 'Leftovers', evs: { hp: 32, atk: 0, def: 32, spa: 0, spd: 2, spe: 0 }, moves: ['Body Press', 'Iron Defense', 'Howl', 'Crunch'] },
-  { species: 'Volcarona', nature: 'Timid', ability: 'Flame Body', item: 'Heavy-Duty Boots', evs: { hp: 0, atk: 0, def: 0, spa: 32, spd: 2, spe: 32 }, moves: ['Quiver Dance', 'Flamethrower', 'Bug Buzz', 'Giga Drain'] },
-  { species: 'Toxapex', nature: 'Bold', ability: 'Regenerator', item: 'Rocky Helmet', evs: { hp: 32, atk: 0, def: 32, spa: 0, spd: 2, spe: 0 }, moves: ['Scald', 'Knock Off', 'Recover', 'Toxic Spikes'] },
-];
+/** Full stat points in one attacking stat, plus speed. */
+function offensiveSpread(attackStat: 'atk' | 'spa'): StatSpread {
+  return {
+    hp: 0,
+    atk: attackStat === 'atk' ? MAX_STAT_POINTS_PER_STAT : 0,
+    def: 0,
+    spa: attackStat === 'spa' ? MAX_STAT_POINTS_PER_STAT : 0,
+    spd: 0,
+    // Remaining points go to Speed, capped per stat. Speed does not affect
+    // damage; it just keeps the spread a legal, realistic build.
+    spe: Math.min(
+      MAX_STAT_POINTS_PER_STAT,
+      MAX_STAT_POINTS_TOTAL - MAX_STAT_POINTS_PER_STAT,
+    ),
+  };
+}
 
-/** The metagame pool restricted to Pokemon legal in the current regulation. */
-function championsMetagameSets(): CompetitiveSet[] {
-  return METAGAME_SETS.filter(set => isChampionsLegal(set.species));
+/** Nature that boosts the chosen attacking stat without lowering the other. */
+const ATTACK_NATURE = { atk: 'Adamant', spa: 'Modest' } as const;
+
+/** Minimum accuracy for a move to count as a realistic threat. */
+const MIN_ACCURACY = 85;
+
+/**
+ * Whether a move is something a threat would realistically attack with.
+ *
+ * The highest-base-power moves are dominated by ones with crippling drawbacks —
+ * Explosion faints the user, Prismatic Laser needs a recharge turn, Focus Punch
+ * fails if the user is hit first. Ranking on raw power alone surfaces those as
+ * a Pokemon's scariest attack, which badly misrepresents the real threat.
+ */
+function isRealisticAttack(move: Move): boolean {
+  if (move.selfdestruct) return false;
+  // Recharge and two-turn charge moves only attack every other turn.
+  if (move.flags?.recharge || move.flags?.charge) return false;
+  if (move.self?.volatileStatus === 'mustrecharge') return false;
+  // Negative priority means the move usually goes last (Focus Punch).
+  if (move.priority < 0) return false;
+  if (move.accuracy !== true && move.accuracy < MIN_ACCURACY) return false;
+  return true;
+}
+
+/**
+ * Damaging moves a species can learn, capped so a single threat does not
+ * dominate the analysis. Ordered by base power so the scariest are kept.
+ */
+async function topDamagingMoves(
+  speciesName: string,
+  category: 'Physical' | 'Special',
+  limit: number,
+): Promise<string[]> {
+  const species = getSpecies(speciesName);
+  if (!species) return [];
+
+  // Matching by type alone assigns signature moves to species that cannot
+  // learn them (Belch to Glimmora, Fleur Cannon to Floette), so the learnset
+  // is the source of truth for what a threat can actually use.
+  const learnset = await getLearnableMoveIds(speciesName);
+  if (learnset.size === 0) return [];
+
+  const moves: { name: string; power: number }[] = [];
+  for (const move of gen9.moves) {
+    if (!move.exists || move.category !== category) continue;
+    if (move.basePower <= 0) continue;
+    if (!isRealisticAttack(move)) continue;
+    if (!learnset.has(move.id)) continue;
+    // STAB only — a threat's strongest realistic hits.
+    if (!species.types.includes(move.type)) continue;
+    moves.push({ name: move.name, power: move.basePower });
+  }
+
+  return moves
+    .sort((a, b) => b.power - a.power || a.name.localeCompare(b.name))
+    .slice(0, limit)
+    .map(m => m.name);
+}
+
+/**
+ * Generations to search for a learnset, newest first. Species cut from Gen 9
+ * (Alakazam, Absol and others on the Champions roster) only have data in
+ * earlier generations.
+ */
+const LEARNSET_GENERATIONS = [generations.get(9), generations.get(8), generations.get(7)];
+
+/** Move ids a species can learn, cached since the pool is scanned repeatedly. */
+const learnsetCache = new Map<string, Set<string>>();
+
+async function getLearnableMoveIds(speciesName: string): Promise<Set<string>> {
+  const cached = learnsetCache.get(speciesName);
+  if (cached) return cached;
+
+  // A Mega has no learnset of its own — it uses the base form's. Gen 9 also
+  // dropped many species entirely, so a lookup there returns nothing; fall
+  // back through earlier generations for those.
+  const baseSpecies = getSpecies(speciesName)?.baseSpecies ?? speciesName;
+
+  let ids = new Set<string>();
+  for (const generation of LEARNSET_GENERATIONS) {
+    try {
+      const learnset = await generation.learnsets.learnable(baseSpecies);
+      if (learnset) {
+        ids = new Set(Object.keys(learnset));
+        if (ids.size > 0) break;
+      }
+    } catch {
+      // Try the next generation.
+    }
+  }
+
+  learnsetCache.set(speciesName, ids);
+  return ids;
+}
+
+/** Highest-BST Champions-legal species, the pool worth analyzing against. */
+function threatPool(limit: number): string[] {
+  return [...LEGAL_SPECIES_NAMES]
+    .map(name => {
+      const species = getSpecies(name);
+      if (!species) return null;
+      const stats = species.baseStats;
+      return {
+        name,
+        atk: stats.atk,
+        spa: stats.spa,
+        bst: STAT_LABELS.reduce((sum, { key }) => sum + stats[key], 0),
+      };
+    })
+    .filter((entry): entry is { name: string; atk: number; spa: number; bst: number } => entry !== null)
+    .sort((a, b) => Math.max(b.atk, b.spa) - Math.max(a.atk, a.spa) || b.bst - a.bst)
+    .slice(0, limit)
+    .map(entry => entry.name);
+}
+
+/** How many species to analyze as potential threats. */
+const THREAT_POOL_SIZE = 40;
+
+/** How many damaging moves to test per threat. */
+const MOVES_PER_THREAT = 3;
+
+/**
+ * The metagame pool, derived from the current Champions roster rather than a
+ * hand-maintained list, so a regulation change needs no edit here.
+ */
+async function championsMetagameSets(): Promise<CompetitiveSet[]> {
+  const sets: CompetitiveSet[] = [];
+
+  for (const species of threatPool(THREAT_POOL_SIZE)) {
+    const data = getSpecies(species);
+    if (!data) continue;
+
+    // Model whichever attacking stat is stronger.
+    const attackStat = data.baseStats.atk >= data.baseStats.spa ? 'atk' : 'spa';
+    const category = attackStat === 'atk' ? 'Physical' : 'Special';
+    const moves = await topDamagingMoves(species, category, MOVES_PER_THREAT);
+    if (moves.length === 0) continue;
+
+    sets.push({
+      species,
+      nature: ATTACK_NATURE[attackStat],
+      ability: getSpeciesAbilities(species)[0] ?? '',
+      // Champions items are all situational rather than flat damage boosts,
+      // so threats are modeled itemless — the damage floor, not a guess.
+      item: '',
+      statPoints: offensiveSpread(attackStat),
+      moves,
+    });
+  }
+
+  return sets;
 }
 
 // =============================================================================
@@ -127,6 +281,14 @@ export function analyzeTypeVulnerabilities(speciesName: string): {
 // OHKO Threat Analysis
 // =============================================================================
 
+/** Ranking order for severities, worst first. */
+const SEVERITY_ORDER: Record<ThreatSeverity, number> = {
+  ohko: 0,
+  near_ohko: 1,
+  two_hko: 2,
+  pressure: 3,
+};
+
 function classifySeverity(minPercent: number, maxPercent: number, ohkoChance: number): ThreatSeverity {
   if (ohkoChance > 0 || maxPercent >= 100) return 'ohko';
   if (minPercent >= 75) return 'near_ohko';
@@ -134,15 +296,20 @@ function classifySeverity(minPercent: number, maxPercent: number, ohkoChance: nu
   return 'pressure';
 }
 
-export function analyzeOhkoThreats(defenderConfig: PokemonConfig): OhkoThreat[] {
+export async function analyzeOhkoThreats(defenderConfig: PokemonConfig): Promise<OhkoThreat[]> {
   const threats: OhkoThreat[] = [];
   const defenderSpecies = getSpecies(defenderConfig.species);
   if (!defenderSpecies) return threats;
 
   const defenderTypes = [...defenderSpecies.types];
+
+  // Champions abilities @smogon/calc does not know would otherwise compute
+  // full damage for a move the defender is immune to.
+  const abilityImmuneType = getChampionsAbilityImmunity(defenderConfig.species);
+
   let threatId = 0;
 
-  for (const set of championsMetagameSets()) {
+  for (const set of await championsMetagameSets()) {
     // Skip if attacker is the same species as the defender
     if (set.species === defenderConfig.species) continue;
 
@@ -152,12 +319,13 @@ export function analyzeOhkoThreats(defenderConfig: PokemonConfig): OhkoThreat[] 
       nature: set.nature,
       ability: set.ability,
       item: set.item,
-      evs: set.evs,
-      ivs: { ...DEFAULT_IVS },
+      statPoints: set.statPoints,
       moves: set.moves,
     };
 
-    // Only calc damaging moves
+    // Collect every dangerous move this attacker has, so it becomes one entry.
+    const dangerousMoves: ThreatMove[] = [];
+
     for (const moveName of set.moves) {
       const move = gen9.moves.get(moveName);
       if (!move || move.category === 'Status') continue;
@@ -175,40 +343,53 @@ export function analyzeOhkoThreats(defenderConfig: PokemonConfig): OhkoThreat[] 
 
       // Skip if immune or heavily resisted (unless very high BP)
       if (typeEffectiveness === 0) continue;
+      if (moveType === abilityImmuneType) continue;
       if (typeEffectiveness < 1 && move.basePower < 100) continue;
 
       const result = calcDamage(attackerConfig, moveName, defenderConfig);
       if (!result) continue;
 
-      // Only include threats that deal meaningful damage (>40%)
+      // Only include moves that deal meaningful damage (>40%)
       if (result.maxPercent < 40) continue;
 
-      const severity = classifySeverity(result.minPercent, result.maxPercent, result.ohkoChance);
-
-      threats.push({
+      dangerousMoves.push({
         id: `threat-${threatId++}`,
-        attackerSpecies: set.species,
         move: moveName,
         moveType: move.type,
         moveCategory: move.category,
         damageRange: { min: result.minPercent, max: result.maxPercent },
         ohkoChance: result.ohkoChance,
-        severity,
-        attackerSet: {
-          nature: set.nature,
-          evs: set.evs,
-          ability: set.ability,
-          item: set.item,
-        },
+        severity: classifySeverity(result.minPercent, result.maxPercent, result.ohkoChance),
         description: result.description,
       });
     }
+
+    if (dangerousMoves.length === 0) continue;
+
+    // Most damaging first, so the collapsed row shows the worst case.
+    dangerousMoves.sort((a, b) => b.damageRange.max - a.damageRange.max);
+    const worst = dangerousMoves.reduce((a, b) =>
+      SEVERITY_ORDER[a.severity] <= SEVERITY_ORDER[b.severity] ? a : b,
+    );
+
+    threats.push({
+      id: `attacker-${set.species}`,
+      attackerSpecies: set.species,
+      attackerSet: {
+        nature: set.nature,
+        statPoints: set.statPoints,
+        ability: set.ability,
+        item: set.item,
+      },
+      moves: dangerousMoves,
+      severity: worst.severity,
+      damageRange: { ...dangerousMoves[0].damageRange },
+    });
   }
 
-  // Sort: OHKOs first, then by max damage descending
+  // Sort: most severe attackers first, then by their hardest hit.
   threats.sort((a, b) => {
-    const severityOrder: Record<ThreatSeverity, number> = { ohko: 0, near_ohko: 1, two_hko: 2, pressure: 3 };
-    const severityDiff = severityOrder[a.severity] - severityOrder[b.severity];
+    const severityDiff = SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity];
     if (severityDiff !== 0) return severityDiff;
     return b.damageRange.max - a.damageRange.max;
   });
@@ -257,8 +438,9 @@ export function generateRecommendations(
   for (const weakness of doubleWeakTypes) {
     const berry = berryMap[weakness.type];
     if (berry && defenderConfig.item !== berry) {
+      // An attacker counts if any of its dangerous moves is this type.
       const addressedThreats = actualOhkos
-        .filter(t => t.moveType === weakness.type)
+        .filter(t => t.moves.some(m => m.moveType === weakness.type))
         .map(t => t.id);
 
       recommendations.push({
@@ -274,24 +456,25 @@ export function generateRecommendations(
   }
 
   // Recommendation: defensive investment if the spread is currently thin there
-  const defensivePoints = defenderConfig.evs.hp + defenderConfig.evs.def + defenderConfig.evs.spd;
+  const defensivePoints = defenderConfig.statPoints.hp + defenderConfig.statPoints.def + defenderConfig.statPoints.spd;
   if (defensivePoints < MAX_STAT_POINTS_PER_STAT / 2 && actualOhkos.length > 0) {
     // Determine if threats are more physical or special
-    const physicalThreats = actualOhkos.filter(t => t.moveCategory === 'Physical').length;
-    const specialThreats = actualOhkos.filter(t => t.moveCategory === 'Special').length;
+    // Categorize each attacker by its most damaging dangerous move.
+    const physicalThreats = actualOhkos.filter(t => t.moves[0]?.moveCategory === 'Physical').length;
+    const specialThreats = actualOhkos.filter(t => t.moves[0]?.moveCategory === 'Special').length;
 
     const defStat = physicalThreats >= specialThreats ? 'def' : 'spd';
     const defName = defStat === 'def' ? 'Defense' : 'Sp. Def';
 
     // Keep the user's offensive/speed investment and spend what remains of the
     // budget on HP first, then the more relevant defense.
-    const preserved = { ...defenderConfig.evs, hp: 0, def: 0, spd: 0 };
+    const preserved = { ...defenderConfig.statPoints, hp: 0, def: 0, spd: 0 };
     const available = Math.max(0, MAX_STAT_POINTS_TOTAL - totalStatPoints(preserved));
 
     const hp = Math.min(MAX_STAT_POINTS_PER_STAT, available);
     const def = Math.min(MAX_STAT_POINTS_PER_STAT, available - hp);
 
-    const suggestedEvs: StatSpread = {
+    const suggestedStatPoints: StatSpread = {
       ...preserved,
       hp,
       [defStat]: def,
@@ -302,7 +485,7 @@ export function generateRecommendations(
       recommendations.push({
         id: `rec-${recId++}`,
         category: 'ev_spread',
-        suggestedEvs,
+        suggestedStatPoints,
         suggestedNature: defenderConfig.nature,
         title: `Invest in HP / ${defName}`,
         description: `Most OHKO threats are ${physicalThreats >= specialThreats ? 'physical' : 'special'}. Running ${hp} HP / ${def} ${defName} may help survive key hits.`,
@@ -387,9 +570,9 @@ export function generateRecommendations(
 // Full Analysis
 // =============================================================================
 
-export function runThreatAnalysis(config: PokemonConfig): ThreatAnalysisResult {
+export async function runThreatAnalysis(config: PokemonConfig): Promise<ThreatAnalysisResult> {
   const { profile, threats: typeThreats } = analyzeTypeVulnerabilities(config.species);
-  const ohkoThreats = analyzeOhkoThreats(config);
+  const ohkoThreats = await analyzeOhkoThreats(config);
   const recommendations = generateRecommendations(config, ohkoThreats, typeThreats);
 
   return {

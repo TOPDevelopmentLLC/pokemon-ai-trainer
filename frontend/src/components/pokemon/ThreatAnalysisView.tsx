@@ -18,8 +18,8 @@ export const ThreatAnalysisView = ({ config, onChange, onAddTeammate }: ThreatAn
     onChange({ ...config, item });
   };
 
-  const handleApplyEvSpread = (evs: StatSpread, nature: string) => {
-    onChange({ ...config, evs, nature });
+  const handleApplyStatPoints = (statPoints: StatSpread, nature: string) => {
+    onChange({ ...config, statPoints, nature });
   };
 
   return (
@@ -45,7 +45,7 @@ export const ThreatAnalysisView = ({ config, onChange, onAddTeammate }: ThreatAn
           <RecommendationsSection
             recommendations={result.recommendations}
             onApplyItem={handleApplyItem}
-            onApplyEvSpread={handleApplyEvSpread}
+            onApplyStatPoints={handleApplyStatPoints}
             onAddTeammate={onAddTeammate}
           />
         </>

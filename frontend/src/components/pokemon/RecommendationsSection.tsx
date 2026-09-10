@@ -5,14 +5,14 @@ import { RecommendationCard } from './RecommendationCard';
 interface RecommendationsSectionProps {
   recommendations: Recommendation[];
   onApplyItem?: (item: string) => void;
-  onApplyEvSpread?: (evs: StatSpread, nature: string) => void;
+  onApplyStatPoints?: (statPoints: StatSpread, nature: string) => void;
   onAddTeammate?: (species: string) => void;
 }
 
 export const RecommendationsSection = ({
   recommendations,
   onApplyItem,
-  onApplyEvSpread,
+  onApplyStatPoints,
   onAddTeammate,
 }: RecommendationsSectionProps) => {
   if (recommendations.length === 0) return null;
@@ -29,7 +29,7 @@ export const RecommendationsSection = ({
             key={recommendation.id}
             recommendation={recommendation}
             onApplyItem={onApplyItem}
-            onApplyEvSpread={onApplyEvSpread}
+            onApplyStatPoints={onApplyStatPoints}
             onAddTeammate={onAddTeammate}
           />
         ))}

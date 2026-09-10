@@ -7,7 +7,7 @@ import { RecommendationCategoryBadge } from './RecommendationCategoryBadge';
 interface RecommendationCardProps {
   recommendation: Recommendation;
   onApplyItem?: (item: string) => void;
-  onApplyEvSpread?: (evs: StatSpread, nature: string) => void;
+  onApplyStatPoints?: (statPoints: StatSpread, nature: string) => void;
   onAddTeammate?: (species: string) => void;
 }
 
@@ -15,7 +15,7 @@ interface RecommendationCardProps {
 export const RecommendationCard = ({
   recommendation,
   onApplyItem,
-  onApplyEvSpread,
+  onApplyStatPoints,
   onAddTeammate,
 }: RecommendationCardProps) => {
   return (
@@ -46,7 +46,7 @@ export const RecommendationCard = ({
         <ActionButton
           recommendation={recommendation}
           onApplyItem={onApplyItem}
-          onApplyEvSpread={onApplyEvSpread}
+          onApplyStatPoints={onApplyStatPoints}
           onAddTeammate={onAddTeammate}
         />
       </div>
@@ -87,7 +87,7 @@ export const RecommendationCard = ({
 const ActionButton = ({
   recommendation,
   onApplyItem,
-  onApplyEvSpread,
+  onApplyStatPoints,
   onAddTeammate,
 }: RecommendationCardProps) => {
   if (recommendation.category === 'item' && onApplyItem) {
@@ -98,10 +98,10 @@ const ActionButton = ({
     );
   }
 
-  if (recommendation.category === 'ev_spread' && onApplyEvSpread) {
+  if (recommendation.category === 'ev_spread' && onApplyStatPoints) {
     return (
       <button
-        onClick={() => onApplyEvSpread(recommendation.suggestedEvs, recommendation.suggestedNature)}
+        onClick={() => onApplyStatPoints(recommendation.suggestedStatPoints, recommendation.suggestedNature)}
         style={actionButtonStyle}
       >
         Apply

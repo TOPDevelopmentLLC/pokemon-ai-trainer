@@ -14,6 +14,8 @@ import { Sprites } from '@pkmn/img';
 import { CHAMPIONS_LEGAL_SPECIES } from './champions-roster';
 import { CHAMPIONS_MEGA_ABILITIES } from '@data/champions-abilities';
 import { CHAMPIONS_ABILITY_DESCRIPTIONS } from '@data/champions-ability-descriptions';
+import { CHAMPIONS_ABILITY_IMMUNITIES } from '@data/champions-ability-immunities';
+import { HOLDABLE_ITEM_NAMES } from './champions-items';
 import { STAT_LABELS, type StatSpread } from '@app-types/pokemon';
 
 export const generations = new Generations(Dex);
@@ -76,6 +78,20 @@ export function getSpeciesAbilities(speciesName: string): string[] {
 }
 
 /**
+ * Type a species is immune to via a Champions-original ability, or null.
+ *
+ * Only covers abilities @smogon/calc does not know; it already applies
+ * Levitate, Flash Fire and the rest itself.
+ */
+export function getChampionsAbilityImmunity(speciesName: string): string | null {
+  for (const ability of getSpeciesAbilities(speciesName)) {
+    const immuneType = CHAMPIONS_ABILITY_IMMUNITIES[ability];
+    if (immuneType) return immuneType;
+  }
+  return null;
+}
+
+/**
  * Description for an ability, or null when nothing is known about it.
  * Champions-original abilities are checked first since @pkmn/dex has no
  * entry for them.
@@ -109,15 +125,14 @@ export function getAllNatures(): string[] {
   return natures;
 }
 
-/** Get all holdable item names */
+/**
+ * Item names a Pokemon can hold in Champions.
+ *
+ * Sourced from the Champions item list rather than the mainline dex, which
+ * carries hundreds of items the game does not have.
+ */
 export function getAllItems(): string[] {
-  const items: string[] = [];
-  for (const item of gen9.items) {
-    if (!item.exists) continue;
-    if (item.num <= 0) continue;
-    items.push(item.name);
-  }
-  return items.sort((a, b) => a.localeCompare(b));
+  return [...HOLDABLE_ITEM_NAMES];
 }
 
 /**

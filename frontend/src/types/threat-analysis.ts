@@ -28,23 +28,41 @@ export interface TypeVulnerabilityProfile {
 
 export type ThreatSeverity = 'ohko' | 'near_ohko' | 'two_hko' | 'pressure';
 
-export interface OhkoThreat {
+/** One dangerous move a threat can use, with what it does to the defender. */
+export interface ThreatMove {
   id: string;
-  attackerSpecies: string;
   move: string;
   moveType: string;
   moveCategory: string;
-  damageRange: { min: number; max: number }; // percentage of defender's max HP
+  /** Percentage of the defender's max HP. */
+  damageRange: { min: number; max: number };
   ohkoChance: number; // 0 to 1
   severity: ThreatSeverity;
+  /** Human-readable calc description from @smogon/calc */
+  description: string;
+}
+
+/**
+ * A single attacking Pokemon and every dangerous move it has.
+ *
+ * Grouped by attacker rather than by move: a Pokemon with three threatening
+ * moves is one entry in the list, not three, and its moves are revealed when
+ * the entry is opened.
+ */
+export interface OhkoThreat {
+  id: string;
+  attackerSpecies: string;
   attackerSet: {
     nature: string;
-    evs: StatSpread;
+    statPoints: StatSpread;
     ability: string;
     item: string;
   };
-  /** Human-readable calc description from @smogon/calc */
-  description: string;
+  /** Dangerous moves, most damaging first. */
+  moves: ThreatMove[];
+  /** The worst case across `moves`, used for ranking and the collapsed row. */
+  severity: ThreatSeverity;
+  damageRange: { min: number; max: number };
 }
 
 // =============================================================================
@@ -69,7 +87,7 @@ export interface BaseRecommendation {
 
 export interface EvSpreadRecommendation extends BaseRecommendation {
   category: 'ev_spread';
-  suggestedEvs: StatSpread;
+  suggestedStatPoints: StatSpread;
   suggestedNature: string;
   tradeoff: string;
 }
