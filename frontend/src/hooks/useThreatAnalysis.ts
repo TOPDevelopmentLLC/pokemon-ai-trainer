@@ -14,9 +14,13 @@ interface UseThreatAnalysisReturn {
  * Recalculates when the config changes.
  */
 export function useThreatAnalysis(config: PokemonConfig | null): UseThreatAnalysisReturn {
-  const [result, setResult] = useState<ThreatAnalysisResult | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  // One state object, so a single update moves through loading -> result and
+  // the effect never fires several setState calls in a row.
+  const [state, setState] = useState<UseThreatAnalysisReturn>({
+    result: null,
+    isLoading: true,
+    error: null,
+  });
 
   // Serialize the fields the analysis actually depends on, so the effect
   // compares by value rather than by object identity.
@@ -34,34 +38,49 @@ export function useThreatAnalysis(config: PokemonConfig | null): UseThreatAnalys
     : null;
 
   // Read the latest config without adding it as a dependency; configKey
-  // already captures every field the analysis reads.
+  // already captures every field the analysis reads. Written in an effect,
+  // since refs must not be mutated during render.
   const configRef = useRef(config);
-  configRef.current = config;
+  useEffect(() => {
+    configRef.current = config;
+  });
 
   useEffect(() => {
     const current = configRef.current;
-    if (!current) {
-      setResult(null);
-      return;
-    }
+    // With no config there is nothing to analyze; the empty result is derived
+    // below rather than stored, so the effect does not set state synchronously.
+    if (!current) return;
 
-    setIsLoading(true);
-    setError(null);
+    // Analysis reads learnsets, which resolve asynchronously. `cancelled`
+    // guards against a stale run overwriting a newer one.
+    let cancelled = false;
 
-    // Run analysis in a microtask to avoid blocking the UI
-    const timeoutId = setTimeout(() => {
-      try {
-        const analysisResult = runThreatAnalysis(current);
-        setResult(analysisResult);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Analysis failed');
-      } finally {
-        setIsLoading(false);
-      }
-    }, 0);
+    runThreatAnalysis(current)
+      .then(analysisResult => {
+        if (!cancelled) setState({ result: analysisResult, isLoading: false, error: null });
+      })
+      .catch((err: unknown) => {
+        if (cancelled) return;
+        setState({
+          result: null,
+          isLoading: false,
+          error: err instanceof Error ? err.message : 'Analysis failed',
+        });
+      });
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      cancelled = true;
+    };
   }, [configKey]);
 
-  return { result, isLoading, error };
+  // A cleared config reports empty immediately, without a state write.
+  if (!config) return EMPTY_ANALYSIS;
+
+  return state;
 }
+
+const EMPTY_ANALYSIS: UseThreatAnalysisReturn = {
+  result: null,
+  isLoading: false,
+  error: null,
+};
